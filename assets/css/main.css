@@ -10,9 +10,11 @@
 /* @import './basics/layout.css'; */
 
 /* Pages */
-@import './pages/home.css';
+@import './pages/Home.css';
 
 @import './apps/note/pages/NoteIndex.css';
+@import './apps/note/cmps/NoteList.css';
+@import './apps/note/cmps/NotePreview.css';
 
 @import './apps/mail/pages/MailIndex.css';
 @import './apps/mail/pages/MailDetails.css';
