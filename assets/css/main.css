@@ -1,13 +1,13 @@
 /* Setup */
 
 @import './setup/variables.css';
-/* @import './setup/fonts.css'; */
+@import './setup/fonts.css';
 
 /* Basics */
 
 @import './basics/base.css';
 @import './basics/helpers.css';
-/* @import './basics/layout.css'; */
+@import './basics/layout.css';
 
 /* Pages */
 @import './pages/home.css';
@@ -16,8 +16,10 @@
 
 @import './apps/mail/pages/MailIndex.css';
 @import './apps/mail/pages/MailDetails.css';
+@import './apps/mail/pages/MailCompose.css';
 @import './apps/mail/cmps/MailList.css';
 @import './apps/mail/cmps/MailPreview.css';
+@import './apps/mail/cmps/SideBar.css';
 
 /* Cmps */
 

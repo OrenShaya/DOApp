@@ -4,3 +4,22 @@
 footer grid-column 1/ -1 row 3
 sidebar  column 1 row 2
 rest column 1 row 2 */
+
+/* page layout */
+.mail-page-layout {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 256px 1fr;
+  grid-template-rows: 1fr;
+}
+
+.mail-page-layout > .sidebar {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.mail-page-layout > *:not(.sidebar) {
+  grid-column: 2;
+  grid-row: 1;
+}

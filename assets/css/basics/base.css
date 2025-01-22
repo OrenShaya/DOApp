@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  min-height: 100vh;
 }
 
 h1,
@@ -79,4 +80,27 @@ img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.icon-label {
+  position: relative;
+}
+
+.icon-label::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% -50%;
+  background-color: transparent;
+  color: black;
+  border: 1px solid lightgray;
+  padding: 0.5em 0.2em;
+  border-radius: 6.25em;
+  text-transform: uppercase;
+  display: none;
+}
+
+.icon-label:hover .icon-label::before {
+  display: block;
 }
