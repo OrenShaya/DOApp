@@ -2,6 +2,7 @@
 
 .flex {
   display: flex;
+  display: flex;
 }
 
 .flex.flex-column {
@@ -23,6 +24,7 @@
 /* grid helpers */
 
 .grid {
+  display: grid;
   display: grid;
 }
 
