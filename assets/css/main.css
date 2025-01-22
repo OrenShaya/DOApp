@@ -22,3 +22,6 @@
 @import './cmps/AppHeader.css';
 
 /* @import './apps/mail/cmps/MailList.css'; */
+
+/* mq */
+@import './setup/mq.css';
