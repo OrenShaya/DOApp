@@ -1,0 +1,10 @@
+.note-preview {
+    border: 1px solid var(--notes-color-dark);
+    border-radius: 8px;
+    margin: 1em;
+    padding: 1em;
+}
+
+.note-txt {
+    margin: 0.5em;
+}
