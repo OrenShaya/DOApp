@@ -2,4 +2,10 @@
     min-height: calc(100vh - (70px +  0.5em + 2px));
     color: var(--notes-color-dark);
     background-color: var(--notes-bgc-dark);
+    text-align: center;
+}
+
+.notes-main-title {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }

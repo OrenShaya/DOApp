@@ -1,3 +1,26 @@
+import { noteService } from '../services/notes.service.js'
+import { NotePreview } from './NotePreview.jsx'
+
+const { useEffect, useState } = React
+
 export function NoteList() {
-  return <div>note list</div>
+
+  const [notes, setNotes] = useState([])
+
+  useEffect(() => {
+    noteService.query().then((fetchedNotes) => {
+      console.log(fetchedNotes) 
+      setNotes(fetchedNotes)
+    })
+  }, [])
+
+  return (
+    <section className='notes'>
+      {notes.map(note => 
+        <div key={note.id}>
+          <NotePreview note={note}/>
+        </div>)
+      }
+    </section>
+  )
 }
