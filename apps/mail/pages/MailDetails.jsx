@@ -44,13 +44,13 @@ export function MailDetails() {
   } = mail
 
   return (
-    <section className='mail-details'>
+    <section className='mail-details mail-page-layout'>
       <div className='mail-details-grid'>
         <div className='mail-details-row'>
           <div className='mail-details-actions'>
             <div className='mail-details-actions-btns'>
               <button className='btn btn-back' onClick={onBack}>
-                <Link to='/mail/'>⬅</Link>
+                ⬅
               </button>
               <button
                 className='btn btn-delete'

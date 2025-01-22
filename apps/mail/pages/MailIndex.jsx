@@ -13,6 +13,7 @@ const { Link, useSearchParams } = ReactRouterDOM
 // import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { MailDetails } from './MailDetails.jsx'
+import { SideBar } from '../cmps/SideBar.jsx'
 import { mailService } from '../services/mail.service.js'
 
 import {
@@ -68,26 +69,29 @@ export function MailIndex() {
   if (!mails) return <div>Loading...</div>
   const { status, txt, isRead, isStarred, lables } = filterBy
   return (
-    <section className='mail-index'>
-      <h1 className='text-center'>DO Mail</h1>
-      {selectedMailId ? (
-        <MailDetails
-          onBack={() => handleSetSelectMailId(null)}
-          mailId={selectedMailId}
-        />
-      ) : (
-        <Fragment>
-          {/* <MailFilter
+    <section className='mail-index mail-page-layout'>
+      <div className='mail-index-container'>
+        <h1 className='text-center'>DO Mail</h1>
+        {selectedMailId ? (
+          <MailDetails
+            onBack={() => handleSetSelectMailId(null)}
+            mailId={selectedMailId}
+          />
+        ) : (
+          <Fragment>
+            {/* <MailFilter
             handleSetFilter={handleSetFilter}
             filterBy={{ status, txt, isRead, isStarred, lables }}
-            mailsStats={mailsStats}
+            
           />*/}
 
-          {!!mails.length && (
-            <MailList onRemoveMail={onRemoveMail} mails={mails} />
-          )}
-        </Fragment>
-      )}
+            {!!mails.length && (
+              <MailList onRemoveMail={onRemoveMail} mails={mails} />
+            )}
+          </Fragment>
+        )}
+      </div>
+      <SideBar mails={mails} />
     </section>
   )
 }
