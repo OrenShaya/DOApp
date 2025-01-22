@@ -1,4 +1,6 @@
-export const demoMails = [
+// apps/mail/assets/demoData/mail.js
+
+export default demoMails = [
   {
     id: 'a238947uwjkedlfs',
     subject: 'hey1',
