@@ -36,7 +36,7 @@ export function MailPreview({ mail }) {
         <span className='mail-card-title'>{isStared ? '⭐' : '★'}</span>
       </div>
       <div className='mail-card-select-sender'>
-        <span className='mail-card-title'>{from}</span>
+        <span className='mail-card-title'>{from.name}</span>
       </div>
 
       <div className='mail-card-main'>
@@ -50,7 +50,9 @@ export function MailPreview({ mail }) {
 
       <div className='mail-card-details'>
         <div className='mail-card-date'>
-          <span className='mail-card-details-date'>{createdAt.toDate()}</span>
+          <span className='mail-card-details-date'>
+            {new Date({ createdAt }).toString()}
+          </span>
         </div>
       </div>
     </article>

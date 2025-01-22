@@ -1,16 +1,15 @@
 // apps/mail/services/mail.service.js
 import { storageService } from '../../../services/async-storage.service.js'
 import {
-  loadFromStorage,
+  // loadFromStorage,
   makeId,
-  saveToStorage,
+  // saveToStorage,
   makeLorem,
   getRandomIntInclusive,
 } from '../../../services/util.service.js'
-import { demoMails } from '../assets/demoData'
+import { demoMails } from '../assets/demoData/mail.js'
 
 const MAIL_KEY = 'DOappMailDB'
-_createDemoMails()
 
 export const mailService = {
   // Mail CRUDL
@@ -22,8 +21,10 @@ export const mailService = {
   // Filter
   getDefaultFilter,
   getFilterFromSearchParams,
+  getTruthyValues,
   getUser,
 }
+_createDemoMails()
 
 /////////////////////////////////////// USER //////////////////////////////////////////
 const loggedinUser = {
@@ -74,7 +75,7 @@ function getDefaultFilter() {
   return { status: '', txt: '', isRead: '', isStared: '', lables: '' }
 }
 
-function getFilterFromSearchParams(searchParams) {
+export function getFilterFromSearchParams(searchParams) {
   const status = searchParams.get('status') || ''
   const txt = searchParams.get('txt') || ''
   const isRead = searchParams.get('isRead') || ''
@@ -130,10 +131,12 @@ function save(mail) {
 }
 
 function _createDemoMails() {
-  let mails = loadFromStorage(MAIL_KEY)
+  let mails = _loadFromStorage(MAIL_KEY)
+  console.log('mails', mails)
+
   if (!mails || !mails.length) {
     mails = demoMails
-    saveToStorage(MAIL_KEY, mails)
+    _saveToStorage(MAIL_KEY, mails)
   }
 }
 
@@ -192,4 +195,25 @@ function getEmptyMail(
     to,
   }
   return mail
+}
+function _saveToStorage(key, val) {
+  localStorage.setItem(key, JSON.stringify(val))
+}
+
+function _loadFromStorage(key) {
+  console.log('im in load from')
+
+  var val = localStorage.getItem(key)
+  return JSON.parse(val)
+}
+
+function getTruthyValues(obj) {
+  const newObj = {}
+  for (const key in obj) {
+    const value = obj[key]
+    if (value) {
+      newObj[key] = value
+    }
+  }
+  return newObj
 }

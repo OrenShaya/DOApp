@@ -1,6 +1,6 @@
 // apps/mail/assets/demoData/mail.js
 
-export default demoMails = [
+export const demoMails = [
   {
     id: 'a238947uwjkedlfs',
     subject: 'hey1',
@@ -18,7 +18,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238fdsakedlfs',
+    id: 'a238fdsak444edlfs',
     subject: 'hey17989',
     createdAt: Date.now(),
     updatedAt: null,
@@ -31,7 +31,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a23894fdsadlfs',
+    id: 'a23894fdsad444lfs',
     subject: 'hey389',
     createdAt: Date.now(),
     updatedAt: null,
@@ -44,7 +44,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a2fdsawjddkedlfs',
+    id: 'a2fdsawjddked555lfs',
     subject: 'heyfdsdfss',
     createdAt: Date.now(),
     updatedAt: null,
@@ -57,7 +57,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238asdfjkedlfs',
+    id: 'a238asdfjked22lfs',
     subject: 'hey1000',
     createdAt: Date.now(),
     updatedAt: null,
@@ -70,7 +70,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238947fdsaedlfs',
+    id: 'a238947fdsa4edlfs',
     subject: 'hey19999',
     createdAt: Date.now(),
     updatedAt: null,
@@ -102,7 +102,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238932rwedwjkedlfs',
+    id: 'a238932rwedwjked55lfs',
     subject: 'hey7777',
     createdAt: Date.now(),
     updatedAt: null,
@@ -118,7 +118,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a23895ewstrdewskedlfs',
+    id: 'a23895ewstrdewsk98edlfs',
     subject: 'hey5555',
     createdAt: Date.now(),
     updatedAt: null,
@@ -131,7 +131,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a2389jmklmkljkedlfs',
+    id: 'a2389jmklmklj89kedlfs',
     subject: 'hey444',
     createdAt: Date.now(),
     updatedAt: null,
@@ -147,7 +147,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238947uw078uoijkljkedlfs',
+    id: 'a238947uw078uoi78jkljkedlfs',
     subject: 'hey144',
     createdAt: Date.now(),
     updatedAt: null,
@@ -163,7 +163,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238947umjljwjkedlfs',
+    id: 'a238947umjlj000wjkedlfs',
     subject: 'hey331',
     createdAt: Date.now(),
     updatedAt: null,
@@ -179,7 +179,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238947uwjwtetakedlfs',
+    id: 'a238947uwjw432tetakedlfs',
     subject: 'hey221',
     createdAt: Date.now(),
     updatedAt: null,
@@ -195,7 +195,7 @@ export default demoMails = [
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
-    id: 'a238947uwjke23rwefdsdlfs',
+    id: 'a238947uwjke23r234wefdsdlfs',
     subject: 'hey221',
     createdAt: Date.now(),
     updatedAt: null,

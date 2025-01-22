@@ -11,11 +11,13 @@ export function MailDetails() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    console.log('MailDetails ,useEffect')
     loadMail()
   }, [mailId])
 
   function loadMail() {
-    mailService
+    console.log('loadMail')
+    return mailService
       .get(mailId)
       .then(setMail)
       .catch((err) => {

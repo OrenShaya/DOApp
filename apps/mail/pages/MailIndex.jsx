@@ -13,8 +13,13 @@ const { Link, useSearchParams } = ReactRouterDOM
 // import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { MailDetails } from './MailDetails.jsx'
-import { mailService } from '../mail.service.js'
-import { showSuccessMsg, showErrorMsg } from '../../../event-bus.service.js'
+import { mailService } from '../services/mail.service.js'
+console.log('MailIndex ,mailServices')
+
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from '../../../services/event-bus.service.js'
 import { getTruthyValues } from '../../../services/util.service.js'
 
 export function MailIndex() {
@@ -27,11 +32,15 @@ export function MailIndex() {
 
   useEffect(() => {
     setSearchParams(getTruthyValues(filterBy))
+    console.log('MailIndex ,useEffect')
+
     loadMails()
   }, [filterBy])
 
   function loadMails() {
-    mailService
+    console.log('MailIndex ,loadMails')
+
+    return mailService
       .query(filterBy)
       .then(setMails)
       .catch((err) => {
