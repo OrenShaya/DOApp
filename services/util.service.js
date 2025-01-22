@@ -1,5 +1,5 @@
 export const utilService = {
-  makeId,
+  makeId, 
   makeLorem,
   getRandomIntInclusive,
   getRandomColor,

@@ -21,7 +21,7 @@ function query(filterBy) {
         noop
       }      
       if (!notes.length) {
-        noteDemoData.notes
+        utilService.saveToStorage(NOTES_KEY, noteDemoData.notes)
         return noteDemoData.notes
       }      
       return notes
