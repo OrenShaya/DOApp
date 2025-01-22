@@ -13,7 +13,7 @@ const { Link, useSearchParams } = ReactRouterDOM
 // import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { MailDetails } from './MailDetails.jsx'
-import { mailService } from '../services/mail.service.js'
+import { mailService } from '../mail.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../event-bus.service.js'
 import { getTruthyValues } from '../../../services/util.service.js'
 

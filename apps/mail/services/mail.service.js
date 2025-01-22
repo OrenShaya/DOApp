@@ -1,5 +1,5 @@
 // apps/mail/services/mail.service.js
-import { storageService } from '../../../async-storage.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 import {
   loadFromStorage,
   makeId,
@@ -7,7 +7,7 @@ import {
   makeLorem,
   getRandomIntInclusive,
 } from '../../../services/util.service.js'
-// import { demoMails } from '../assets/demoData/mail.js'
+import { demoMails } from '../assets/demoData'
 
 const MAIL_KEY = 'DOappMailDB'
 _createDemoMails()
