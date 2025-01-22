@@ -15,12 +15,14 @@ export function LongTxt({ txt, length = 100 }) {
   const txtToShow = getTxtToShow()
   return (
     <section className='longTxt'>
-      <p>{txtToShow}</p>
-      {txt.length > length && (
-        <button onClick={onToggleLongTxt}>
-          {isLongTxtShown ? 'Less...' : 'More...'}
-        </button>
-      )}
+      <p>
+        {txtToShow}
+        {txt.length > length && (
+          <span onClick={onToggleLongTxt}>
+            {isLongTxtShown ? ' Less...' : ' More...'}
+          </span>
+        )}
+      </p>
     </section>
   )
 }
