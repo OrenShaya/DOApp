@@ -95,22 +95,22 @@ function get(mailId) {
       console.error('Mail not found:', mailId)
       throw new Error('Mail not found')
     }
-    // return _setNextPrevMailId(mail)
+    return _setNextPrevMailId(mail)
   })
 }
 
-// function _setNextPrevMailId(mail) {
-//   return query().then((mails) => {
-//     const mailIdx = mails.findIndex((currMail) => currMail.id === mail.id)
-//     const nextMail = mails[mailIdx + 1] ? mails[mailIdx + 1] : mails[0]
-//     const prevMail = mails[mailIdx - 1]
-//       ? mails[mailIdx - 1]
-//       : mails[mails.length - 1]
-//     mail.nextMailId = nextMail.id
-//     mail.prevMailId = prevMail.id
-//     return mail
-//   })
-// }
+function _setNextPrevMailId(mail) {
+  return query().then((mails) => {
+    const mailIdx = mails.findIndex((currMail) => currMail.id === mail.id)
+    const nextMail = mails[mailIdx + 1] ? mails[mailIdx + 1] : mails[0]
+    const prevMail = mails[mailIdx - 1]
+      ? mails[mailIdx - 1]
+      : mails[mails.length - 1]
+    mail.nextMailId = nextMail.id
+    mail.prevMailId = prevMail.id
+    return mail
+  })
+}
 
 function remove(mailId) {
   // return Promise.reject('DEBUG: Promise rejected')
@@ -173,6 +173,7 @@ function getEmptyMail(
   updatedAt = null,
   body = '',
   isRead = false,
+  isStared = false,
   sentAt = null,
   removedAt = null,
   from = '',
@@ -184,6 +185,7 @@ function getEmptyMail(
     updatedAt,
     body,
     isRead,
+    isStared,
     sentAt,
     removedAt,
     from,

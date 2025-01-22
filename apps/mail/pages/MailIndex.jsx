@@ -15,7 +15,7 @@ import { MailList } from '../cmps/MailList.jsx'
 import { MailDetails } from './MailDetails.jsx'
 import { mailService } from '../services/mail.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../event-bus.service.js'
-import { getTruthyValues } from 'services/util.service.js'
+import { getTruthyValues } from '../../../services/util.service.js'
 
 export function MailIndex() {
   const [mails, setMails] = useState(null)
