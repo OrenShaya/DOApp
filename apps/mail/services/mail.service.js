@@ -1,12 +1,12 @@
 // apps/mail/services/mail.service.js
-import { storageService } from 'servicesasync-storage.service.js'
+import { storageService } from '../../../async-storage.service.js'
 import {
   loadFromStorage,
   makeId,
   saveToStorage,
   makeLorem,
   getRandomIntInclusive,
-} from './util.service.js'
+} from '../../../services/util.service.js'
 // import { demoMails } from '../assets/demoData/mail.js'
 
 const MAIL_KEY = 'DOappMailDB'
