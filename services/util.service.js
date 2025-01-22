@@ -6,9 +6,24 @@ export const utilService = {
   padNum,
   getDayName,
   getMonthName,
+  loadFromStorage,
+  saveToStorage,
+  getTruthyValues,
+  getDateStr,
+  debounce,
+  animateCSS,
 }
 
-function makeId(length = 6) {
+export function saveToStorage(key, val) {
+  localStorage.setItem(key, JSON.stringify(val))
+}
+
+export function loadFromStorage(key) {
+  var val = localStorage.getItem(key)
+  return JSON.parse(val)
+}
+
+export function makeId(length = 6) {
   var txt = ''
   var possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -20,7 +35,7 @@ function makeId(length = 6) {
   return txt
 }
 
-function makeLorem(size = 100) {
+export function makeLorem(size = 100) {
   var words = [
     'The sky',
     'above',
@@ -63,17 +78,17 @@ function makeLorem(size = 100) {
   return txt
 }
 
-function getRandomIntInclusive(min, max) {
+export function getRandomIntInclusive(min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive
 }
 
-function padNum(num) {
+export function padNum(num) {
   return num > 9 ? num + '' : '0' + num
 }
 
-function getRandomColor() {
+export function getRandomColor() {
   const letters = '0123456789ABCDEF'
   var color = '#'
   for (let i = 0; i < 6; i++) {
@@ -82,12 +97,12 @@ function getRandomColor() {
   return color
 }
 
-function getDayName(date, locale) {
+export function getDayName(date, locale) {
   date = new Date(date)
   return date.toLocaleDateString(locale, { weekday: 'long' })
 }
 
-function getMonthName(date) {
+export function getMonthName(date) {
   const monthNames = [
     'January',
     'February',
@@ -103,4 +118,48 @@ function getMonthName(date) {
     'December',
   ]
   return monthNames[date.getMonth()]
+}
+
+export function getTruthyValues(obj) {
+  const newObj = {}
+  for (const key in obj) {
+    const value = obj[key]
+    if (value) {
+      newObj[key] = value
+    }
+  }
+  return newObj
+}
+
+export function getDateStr(date) {
+  return new Date(date).toISOString().substring(0, 10)
+}
+
+export function debounce(func, delay) {
+  let timeoutId
+  return (...args) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      func(...args)
+    }, delay)
+  }
+}
+
+export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
+  const prefix = 'animate__'
+  return new Promise((resolve, reject) => {
+    if (!el) {
+      Promise.reject('No element sent to animateCSS')
+    }
+    const animationName = `${prefix}${animation}`
+    el.classList.add(`${prefix}animated`, animationName)
+
+    function handleAnimationEnd(event) {
+      event.stopPropagation()
+      if (isRemoveClass) el.classList.remove(`${prefix}animated`, animationName)
+      resolve('Animation ended')
+    }
+
+    el.addEventListener('animationend', handleAnimationEnd, { once: true })
+  })
 }
