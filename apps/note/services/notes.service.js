@@ -14,12 +14,16 @@ export const noteService = {
 }
 
 function query(filterBy) {
-  return storageService.query(NOTES_KEY)
+  
+    return storageService.query(NOTES_KEY)
     .then((notes) => {
       if (filterBy) {
         noop
       }      
-      if (!notes.length) return noteDemoData.notes
+      if (!notes.length) {
+        noteDemoData.notes
+        return noteDemoData.notes
+      }      
       return notes
     })
 }
@@ -58,7 +62,6 @@ function getEmptyNote() {
     info: {
         txt: ''
     }
-
   }
 }
 
@@ -70,7 +73,7 @@ function _createNote() {
     type: 'NoteTxt',
     isPinned: false,
     style: {
-        backgroundColor: 'red', //utilService.getRandomColor(),
+        backgroundColor: 'red',
     },
     info: {
         txt: 'Fullstack Me Baby!'

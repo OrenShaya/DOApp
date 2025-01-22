@@ -1,5 +1,4 @@
 import { noteService } from '../services/notes.service.js'
-import { noteDemoData } from '../services/notes.demo.data.js'
 
 const { useEffect, useState } = React
 
@@ -8,9 +7,8 @@ export function NoteIndex() {
   const [notes, setNotes] = useState([])
 
   useEffect(() => {
-    const fetchedNotes = noteService.query()
-    fetchedNotes.then((fetchedNotes) => {
-      console.log(fetchedNotes)      
+    noteService.query().then((fetchedNotes) => {
+      console.log(fetchedNotes) 
       setNotes(fetchedNotes)
     })
   }, [])
