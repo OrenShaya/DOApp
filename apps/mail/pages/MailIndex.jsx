@@ -81,11 +81,7 @@ export function MailIndex() {
             handleSetFilter={handleSetFilter}
             filterBy={{ status, txt, isRead, isStarred, lables }}
             mailsStats={mailsStats}
-          />
-
-          <button>
-            <Link to='/mail/edit'>Add Mail</Link>
-          </button> */}
+          />*/}
 
           {!!mails.length && (
             <MailList onRemoveMail={onRemoveMail} mails={mails} />

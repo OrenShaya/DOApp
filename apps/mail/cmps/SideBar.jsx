@@ -17,7 +17,11 @@ export function SideBar() {
   return (
     <section className='side-bar'>
       <div className='side-bar-btn-container'>
-        <button type='button' className='btn btn-compose'>
+        <button
+          type='button'
+          className='btn btn-compose'
+          onClick={navigate(`/mail/edit`)}
+        >
           compose
         </button>
       </div>
