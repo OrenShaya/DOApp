@@ -13,6 +13,24 @@ const { useNavigate } = ReactRouter
 export function MailPreview({ mail }) {
   const navigate = useNavigate()
 
+  function formatTimeDiff(date) {
+    const now = new Date()
+    const diffInMs = now - new Date(date)
+    const diffInMinutes = Math.floor(diffInMs / (1000 * 60))
+    const diffInHours = Math.floor(diffInMinutes / 60)
+    const diffInDays = Math.floor(diffInHours / 24)
+
+    if (diffInMinutes < 60) {
+      return `${diffInMinutes} minutes ago`
+    } else if (diffInHours < 24) {
+      return `${diffInHours} hours ago`
+    } else if (diffInDays < 7) {
+      return `${diffInDays} days ago`
+    } else {
+      return new Date(date).toLocaleDateString()
+    }
+  }
+
   const {
     id,
     subject,
@@ -27,7 +45,10 @@ export function MailPreview({ mail }) {
     to,
   } = mail
   return (
-    <article className='mail-preview'>
+    <article
+      className='mail-preview'
+      style={{ backgroundColor: isRead ? 'gray' : '' }}
+    >
       <div className='mail-card-main-select'>
         <div className='mail-card-select-checkbox'>
           <input
@@ -47,7 +68,9 @@ export function MailPreview({ mail }) {
             navigate(`/mail/${mail.id}`)
           }}
         >
-          <span className='mail-card-title'>{from.name}</span>
+          <span className='mail-card-title'>
+            {from.fullname || 'Unknown Sender'}
+          </span>
         </div>
       </div>
 
@@ -70,7 +93,7 @@ export function MailPreview({ mail }) {
       <div className='mail-card-details'>
         <div className='mail-card-date'>
           <span className='mail-card-details-date'>
-            {new Date({ createdAt }).toString()}
+            {formatTimeDiff(createdAt)}
           </span>
         </div>
       </div>
