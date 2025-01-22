@@ -13,7 +13,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatasdfasdma',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -27,7 +27,7 @@ export const demoMails = [
     isStarred: false,
     sentAt: null,
     removedAt: null,
-    from: { email: 'hey17989@appsus.com', fullname: 'Mahatasdfasdma hey17989' },
+    from: { email: 'hey17989@appsus.com', fullname: 'Mahatasdfasdma' },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
@@ -40,7 +40,7 @@ export const demoMails = [
     isStarred: false,
     sentAt: null,
     removedAt: null,
-    from: { email: 'hey389@appsus.com', fullname: 'hey389 Appsus' },
+    from: { email: 'hey389@appsus.com', fullname: 'fdsafdas' },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
@@ -53,7 +53,7 @@ export const demoMails = [
     isStarred: false,
     sentAt: null,
     removedAt: null,
-    from: { email: 'heyfdsdfss@appsus.com', fullname: 'heyfdsdfss Appsus' },
+    from: { email: 'heyfdsdfss@appsus.com', fullname: 'heyfdsdfss' },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
@@ -66,7 +66,7 @@ export const demoMails = [
     isStarred: false,
     sentAt: null,
     removedAt: null,
-    from: { email: 'hey1000@appsus.com', fullname: 'hey1000 Appsus' },
+    from: { email: 'hey1000@appsus.com', fullname: 'hey1000fds ' },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
@@ -81,7 +81,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatasdfasd333',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -97,7 +97,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatasdfadsf',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -113,7 +113,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatasds',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -127,7 +127,7 @@ export const demoMails = [
     isStarred: false,
     sentAt: null,
     removedAt: null,
-    from: { email: 'hey5555@appsus.com', fullname: 'hey5555 Appsus' },
+    from: { email: 'hey5555@appsus.com', fullname: 'hey55psus' },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
   {
@@ -142,7 +142,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahapsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -158,7 +158,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatass',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -174,7 +174,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Masus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -190,7 +190,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatfffffsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -206,7 +206,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'fffff fffff',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -222,7 +222,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatdsdma Appsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -238,7 +238,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatafsdma Appsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -254,7 +254,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatagdma Appsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -270,7 +270,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahatasdma Appsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
@@ -286,7 +286,7 @@ export const demoMails = [
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
-      fullname: 'Mahatasdfasdma Appsus',
+      fullname: 'Mahataedma Appsus',
     },
     to: { email: 'user@appsus.com', fullname: 'Mahatma Appsus' },
   },
