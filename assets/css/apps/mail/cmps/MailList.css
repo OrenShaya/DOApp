@@ -1,1 +1,14 @@
- /* mail list */
+/* mail list */
+
+section.mails-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section.mails-list ul.mail-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto-fit;
+}

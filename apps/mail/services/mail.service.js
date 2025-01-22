@@ -132,7 +132,6 @@ function save(mail) {
 
 function _createDemoMails() {
   let mails = _loadFromStorage(MAIL_KEY)
-  console.log('mails', mails)
 
   if (!mails || !mails.length) {
     mails = demoMails
@@ -201,8 +200,6 @@ function _saveToStorage(key, val) {
 }
 
 function _loadFromStorage(key) {
-  console.log('im in load from')
-
   var val = localStorage.getItem(key)
   return JSON.parse(val)
 }

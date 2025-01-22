@@ -19,8 +19,6 @@ export function saveToStorage(key, val) {
 }
 
 export function loadFromStorage(key) {
-  console.log('im in load from')
-
   var val = localStorage.getItem(key)
   return JSON.parse(val)
 }

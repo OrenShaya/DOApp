@@ -14,7 +14,6 @@ const { Link, useSearchParams } = ReactRouterDOM
 import { MailList } from '../cmps/MailList.jsx'
 import { MailDetails } from './MailDetails.jsx'
 import { mailService } from '../services/mail.service.js'
-console.log('MailIndex ,mailServices')
 
 import {
   showSuccessMsg,
@@ -32,14 +31,11 @@ export function MailIndex() {
 
   useEffect(() => {
     setSearchParams(getTruthyValues(filterBy))
-    console.log('MailIndex ,useEffect')
 
     loadMails()
   }, [filterBy])
 
   function loadMails() {
-    console.log('MailIndex ,loadMails')
-
     return mailService
       .query(filterBy)
       .then(setMails)

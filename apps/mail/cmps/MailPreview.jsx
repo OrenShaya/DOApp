@@ -7,6 +7,8 @@
  * [] Support hover state
  */
 
+import { LongTxt } from './LongTxt.jsx'
+
 export function MailPreview({ mail }) {
   const {
     id,
@@ -44,7 +46,9 @@ export function MailPreview({ mail }) {
           <span className='mail-card-subject'>{subject}</span>
         </div>
         <div className='mail-card-select-body'>
-          <span className='mail-card-body'>{body}</span>
+          <span className='mail-card-body'>
+            <LongTxt txt={body} length={40} />
+          </span>
         </div>
       </div>
 
