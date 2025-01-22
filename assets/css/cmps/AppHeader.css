@@ -22,3 +22,8 @@ nav a.active {
   font-weight: bold;
   text-decoration: overline;
 }
+
+img.logo {
+  width: 70px;
+  height: 70px;
+}
