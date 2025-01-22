@@ -1,4 +1,4 @@
-// apps/mail/cmps/MailList.jsx
+// apps/mail/cmps/MailPreview.jsx
 
 export function MailList() {
   return <div>Mail list</div>
