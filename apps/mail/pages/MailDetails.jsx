@@ -35,7 +35,7 @@ export function MailDetails() {
     updatedAt,
     body,
     isRead,
-    isStared,
+    isStarred,
     sentAt,
     removedAt,
     from,
@@ -115,7 +115,7 @@ export function MailDetails() {
           <div className='mail-details-body-header'>
             <span className='mail-details-body-date'>{createdAt}</span>
             <span className='mail-details-body-info'>
-              {isStared ? '⭐' : '★'}
+              {isStarred ? '⭐' : '★'}
             </span>
           </div>
           <button

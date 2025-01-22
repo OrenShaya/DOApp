@@ -66,7 +66,7 @@ export function MailIndex() {
   }
 
   if (!mails) return <div>Loading...</div>
-  const { status, txt, isRead, isStared, lables } = filterBy
+  const { status, txt, isRead, isStarred, lables } = filterBy
   return (
     <section className='mail-index'>
       <h1 className='text-center'>DO Mail</h1>
@@ -79,7 +79,7 @@ export function MailIndex() {
         <Fragment>
           {/* <MailFilter
             handleSetFilter={handleSetFilter}
-            filterBy={{ status, txt, isRead, isStared, lables }}
+            filterBy={{ status, txt, isRead, isStarred, lables }}
             mailsStats={mailsStats}
           />
 

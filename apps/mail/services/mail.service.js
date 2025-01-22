@@ -55,8 +55,8 @@ function query(filterBy = {}) {
       mails = mails.filter((mail) => mail.isRead === true)
     }
 
-    if (filterBy.isStared) {
-      mails = mails.filter((mail) => mail.isStared === true)
+    if (filterBy.isStarred) {
+      mails = mails.filter((mail) => mail.isStarred === true)
     }
 
     if (filterBy.lables) {
@@ -72,20 +72,20 @@ function query(filterBy = {}) {
 }
 
 function getDefaultFilter() {
-  return { status: '', txt: '', isRead: '', isStared: '', lables: '' }
+  return { status: '', txt: '', isRead: '', isStarred: '', lables: '' }
 }
 
 export function getFilterFromSearchParams(searchParams) {
   const status = searchParams.get('status') || ''
   const txt = searchParams.get('txt') || ''
   const isRead = searchParams.get('isRead') || ''
-  const isStared = searchParams.get('isStared') || ''
+  const isStarred = searchParams.get('isStarred') || ''
   const lables = searchParams.get('lables') || ''
   return {
     status,
     txt,
     isRead,
-    isStared,
+    isStarred,
     lables,
   }
 }
@@ -175,7 +175,7 @@ function getEmptyMail(
   updatedAt = null,
   body = '',
   isRead = false,
-  isStared = false,
+  isStarred = false,
   sentAt = null,
   removedAt = null,
   from = '',
@@ -187,7 +187,7 @@ function getEmptyMail(
     updatedAt,
     body,
     isRead,
-    isStared,
+    isStarred,
     sentAt,
     removedAt,
     from,

@@ -17,7 +17,7 @@ export function MailPreview({ mail }) {
     updatedAt,
     body,
     isRead,
-    isStared,
+    isStarred,
     sentAt,
     removedAt,
     from,
@@ -36,7 +36,7 @@ export function MailPreview({ mail }) {
           />
         </div>
         <div className='mail-card-select-starred'>
-          <span className='mail-card-title'>{isStared ? '⭐' : '★'}</span>
+          <span className='mail-card-title'>{isStarred ? '⭐' : '★'}</span>
         </div>
         <div className='mail-card-select-sender'>
           <span className='mail-card-title'>{from.name}</span>
