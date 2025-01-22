@@ -8,8 +8,11 @@
  */
 
 import { LongTxt } from './LongTxt.jsx'
+const { useNavigate } = ReactRouter
 
 export function MailPreview({ mail }) {
+  const navigate = useNavigate()
+
   const {
     id,
     subject,
@@ -38,12 +41,22 @@ export function MailPreview({ mail }) {
         <div className='mail-card-select-starred'>
           <span className='mail-card-title'>{isStarred ? '⭐' : '★'}</span>
         </div>
-        <div className='mail-card-select-sender'>
+        <div
+          className='mail-card-select-sender'
+          onClick={() => {
+            navigate(`/mail/${mail.id}`)
+          }}
+        >
           <span className='mail-card-title'>{from.name}</span>
         </div>
       </div>
 
-      <div className='mail-card-main'>
+      <div
+        className='mail-card-main'
+        onClick={() => {
+          navigate(`/mail/${mail.id}`)
+        }}
+      >
         <div className='mail-card-select-subject'>
           <span className='mail-card-subject'>{subject}</span>
         </div>
