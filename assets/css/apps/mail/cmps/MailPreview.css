@@ -1,0 +1,38 @@
+.mail-preview {
+  display: grid;
+
+  grid-template-columns: 1fr 4fr 1fr;
+}
+
+.mail-card-main-select {
+  grid-column: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.mail-card-main {
+  grid-column: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.mail-card-details {
+  grid-column: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.mail-card-main-select,
+.mail-card-main,
+.mail-card-details {
+  padding-block: 0.2em;
+}

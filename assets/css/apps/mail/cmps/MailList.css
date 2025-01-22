@@ -1,6 +1,7 @@
 /* mail list */
 
 section.mails-list {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +9,22 @@ section.mails-list {
 }
 
 section.mails-list ul.mail-list {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: auto-fit;
+
+  background-color: rgb(232, 227, 227);
+}
+
+section.mails-list ul.mail-list li {
+  background-color: #f2f6fc;
+
+  &:hover {
+    background-color: rgb(159, 159, 159);
+  }
+}
+
+section.mails-list ul.mail-list li.unread {
+  background-color: #ffffff;
 }
