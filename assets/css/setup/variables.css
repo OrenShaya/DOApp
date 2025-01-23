@@ -1,10 +1,13 @@
 :root {
   --main-bg-color: lightblue;
+  
   /* ---- Primary Colors ---- */
+  --notes-color-dark: #e8eaed;
 
   /* ---- Secondary Colors ---- */
 
   /* ---- Background Colors ---- */
+  --notes-bgc-dark: #202124;
 
   /* ---- Box Shadows ---- */
 }
