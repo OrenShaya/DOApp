@@ -78,7 +78,7 @@ export const demoMails = [
     isRead: true,
     isStarred: false,
     sentAt: null,
-    removedAt: null,
+    removedAt: 1551133930594,
     from: {
       email: 'userasdfasdf@appsus.com',
       fullname: 'Mahatasdfasd333',
@@ -93,7 +93,7 @@ export const demoMails = [
     body: 'boddddddddd8888dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
     isRead: true,
     isStarred: false,
-    sentAt: null,
+    sentAt: 1551132930594,
     removedAt: null,
     from: {
       email: 'userasdfasdf@appsus.com',
