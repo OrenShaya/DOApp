@@ -2,8 +2,7 @@
 
 /**
  * [] Renders a list of <MailPreview> pass down a mail prop
- 
-*/
+ */
 
 const { Link, Navigion } = ReactRouterDOM
 import Icon from '../../../cmps/Icon.jsx'
