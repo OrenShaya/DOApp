@@ -13,6 +13,7 @@ export function MailList({
   onRemoveMail,
   onToggleStarredMail,
   onToggleReadMail,
+  onRestoreMail,
 }) {
   return (
     <section className='mails-list'>
@@ -45,6 +46,13 @@ export function MailList({
                   onToggleReadMail(mail.id)
                 }}
               />
+              {mail.removedAt && (
+                <Icon
+                  name='forwardToInbox'
+                  className='round-hover'
+                  onClick={() => onRestoreMail(mail.id)}
+                />
+              )}
             </div>
           </li>
         ))}

@@ -43,7 +43,7 @@ export function MailIndex() {
       .query(filterBy)
       .then(setMails)
       .catch((err) => {
-        console.error('Problem getting mails:', err)
+        console.error('cannot load mails:', err)
       })
   }
 
@@ -56,8 +56,8 @@ export function MailIndex() {
         showSuccessMsg(`Mail ${mailId} Removed`)
       })
       .catch((err) => {
-        console.error('Problems removing mail:', err)
-        showErrorMsg(`Cannot Remove Mail ${mailId}`)
+        console.error('cannot remove mail:', err)
+        showErrorMsg(`cannot Remove Mail ${mailId}`)
       })
   }
 
@@ -73,8 +73,8 @@ export function MailIndex() {
         showSuccessMsg(`Mail ${mailId} toggle read`)
       })
       .catch((err) => {
-        console.error('Problems toggle read mail:', err)
-        showErrorMsg(`Cannot toggle read Mail ${mailId}`)
+        console.error('cannot toggle read mail:', err)
+        showErrorMsg(`cannot toggle read Mail ${mailId}`)
       })
   }
 
@@ -90,13 +90,30 @@ export function MailIndex() {
         showSuccessMsg(`Mail ${mailId} toggle starred`)
       })
       .catch((err) => {
-        console.error('Problems toggle starred mail:', err)
-        showErrorMsg(`Cannot toggle starred Mail ${mailId}`)
+        console.error('problems toggle starred :', err)
+        showErrorMsg(`cannot toggle starred Mail ${mailId}`)
       })
   }
 
   function handleSetFilter(filterByToEdit) {
     setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterByToEdit }))
+  }
+
+  function onRestoreMail(mailId) {
+    mailService
+      .restoreMail(mailId)
+      .then((restoredMail) => {
+        setMails((prevMails) =>
+          prevMails.map((mail) =>
+            mail.id === restoredMail.id ? restoredMail : mail
+          )
+        )
+        showSuccessMsg(`mail ${mailId} restored `)
+      })
+      .catch((err) => {
+        console.error('error restoring mail:', err)
+        showErrorMsg(`cannot restore mail ${mailId}`)
+      })
   }
 
   if (!mails) return <div>Loading...</div>
@@ -117,6 +134,7 @@ export function MailIndex() {
               mails={mails}
               onToggleStarredMail={onToggleStarredMail}
               onToggleReadMail={onToggleReadMail}
+              onRestoreMail={onRestoreMail}
             />
           )}
         </Fragment>
