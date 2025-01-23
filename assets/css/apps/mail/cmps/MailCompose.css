@@ -1,0 +1,146 @@
+section.mail-compose form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 40px 40px 1fr 60px;
+  justify-items: start;
+  height: 100%;
+  width: 100%;
+
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.compose-form-section {
+  padding-block: 10px;
+  padding-inline: 1em;
+}
+
+.compose-form-section input,
+.compose-form-section textarea {
+  width: 35vw;
+  cursor: text;
+  border: none;
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+}
+
+.compose-form-section textarea {
+  resize: none;
+  background-size: auto;
+
+  min-height: 266px;
+  outline-color: rgb(34, 34, 34);
+  outline-style: none;
+  outline-width: 0px;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  text-indent: 0px;
+  unicode-bidi: isolate;
+  visibility: visible;
+  display: block;
+  font-size: 13px;
+}
+
+.compose-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #041e49;
+  background-color: #f2f6fc;
+}
+.compose-header .compose-header-title {
+  margin-inline-start: 1em;
+  padding-block: 10px;
+}
+
+.compose-form-section button.btn-send {
+  align-items: center;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(11, 87, 208);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-size: auto;
+  border-bottom-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-collapse: separate;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(255, 255, 255);
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-color: rgb(255, 255, 255);
+  border-right-style: none;
+  border-right-width: 0px;
+  border-top-color: rgb(255, 255, 255);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-top-style: none;
+  border-top-width: 0px;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  height: 36px;
+  justify-content: center;
+  letter-spacing: normal;
+  line-height: 18px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  max-width: 104px;
+  min-width: 72px;
+  outline-color: rgb(255, 255, 255);
+  outline-style: none;
+  outline-width: 0px;
+  padding-bottom: 0px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 0px;
+  position: relative;
+  text-align: center;
+  text-indent: 0px;
+  text-wrap-mode: nowrap;
+  unicode-bidi: isolate;
+  user-select: none;
+  vertical-align: middle;
+  visibility: visible;
+  white-space-collapse: collapse;
+
+  &:hover {
+    box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
+      0 1px 3px 1px rgba(26, 115, 232, 0.3);
+    background-color: #1b61d1;
+    outline: 1px solid transparent;
+    border: none;
+  }
+
+  &:active {
+    background-color: #0b57d0;
+    box-shadow: none;
+  }
+}
+
+.compose-form-section.compose-form-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-row: -1 / -2;
+}

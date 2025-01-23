@@ -8,10 +8,12 @@
  */
 
 const { useState, useEffect, Fragment } = React
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, useSearchParams, Outlet } = ReactRouterDOM
+const { useLocation } = ReactRouter
 
 // import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailList } from '../cmps/MailList.jsx'
+import { MailCompose } from '../cmps/MailCompose.jsx'
 import { MailDetails } from './MailDetails.jsx'
 import { SideBar } from '../cmps/SideBar.jsx'
 import { mailService } from '../services/mail.service.js'
@@ -23,6 +25,7 @@ import {
 import { getTruthyValues } from '../../../services/util.service.js'
 
 export function MailIndex() {
+  const location = useLocation()
   const [mails, setMails] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams()
   const [filterBy, setFilterBy] = useState(
@@ -37,6 +40,8 @@ export function MailIndex() {
   }, [filterBy])
 
   function loadMails() {
+    console.log('loadMails() activated')
+
     return mailService
       .query(filterBy)
       .then(setMails)
@@ -58,6 +63,38 @@ export function MailIndex() {
       })
   }
 
+  function onToggleReadMail(mailId) {
+    mailService
+      .get(mailId)
+      .then((mail) => {
+        mail.isRead = !mail.isRead
+      })
+      .then(() => {
+        setMails((mails) => mails)
+        showSuccessMsg(`Mail ${mailId} toggle read`)
+      })
+      .catch((err) => {
+        console.error('Problems toggle read mail:', err)
+        showErrorMsg(`Cannot toggle read Mail ${mailId}`)
+      })
+  }
+
+  function onToggleStarredMail(mailId) {
+    mailService
+      .get(mailId)
+      .then((mail) => {
+        mail.isStarred = !mail.isStarred
+      })
+      .then(() => {
+        setMails((mails) => mails)
+        showSuccessMsg(`Mail ${mailId} toggle starred`)
+      })
+      .catch((err) => {
+        console.error('Problems toggle starred mail:', err)
+        showErrorMsg(`Cannot toggle starred Mail ${mailId}`)
+      })
+  }
+
   // function handleSetFilter(filterByToEdit) {
   //   setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterByToEdit }))
   // }
@@ -71,6 +108,11 @@ export function MailIndex() {
   return (
     <section className='mail-index mail-page-layout'>
       <div className='mail-index-container'>
+        {/* <MailFilter
+            handleSetFilter={handleSetFilter}
+            filterBy={{ status, txt, isRead, isStarred, lables }}
+            
+          />*/}
         {selectedMailId ? (
           <MailDetails
             onBack={() => handleSetSelectMailId(null)}
@@ -78,19 +120,23 @@ export function MailIndex() {
           />
         ) : (
           <Fragment>
-            {/* <MailFilter
-            handleSetFilter={handleSetFilter}
-            filterBy={{ status, txt, isRead, isStarred, lables }}
-            
-          />*/}
-
             {!!mails.length && (
-              <MailList onRemoveMail={onRemoveMail} mails={mails} />
+              <MailList
+                onRemoveMail={onRemoveMail}
+                mails={mails}
+                onToggleStarredMail={onToggleStarredMail}
+                onToggleReadMail={onToggleReadMail}
+              />
             )}
           </Fragment>
         )}
       </div>
-      <SideBar mails={mails} />
+      {location.pathname.includes('/mail/compose') && (
+        <div className='outlet-container-compose'>
+          <Outlet />
+        </div>
+      )}
+      <SideBar />
     </section>
   )
 }

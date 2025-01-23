@@ -1,6 +1,8 @@
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: OpenSans-Regular, 'Google Sans', Roboto, RobotoDraft, Helvetica,
+    Arial, sans-serif;
 }
 
 h1,

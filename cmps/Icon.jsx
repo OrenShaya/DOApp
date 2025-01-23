@@ -11,6 +11,7 @@ const fileNames = {
   checkBoxOutline: 'check_box_outline_blank_000000_FILL0_wght400.svg',
   chevronLeft: 'chevron_left_000000_FILL0_wght400.svg',
   chevronRight: 'chevron_right_000000_FILL0_wght400.svg',
+  close: 'close_000000_FILL0_wght400.svg',
   delete: 'delete_000000_FILL0_wght400.svg',
   draft: 'draft_000000_FILL0_wght400.svg',
   edit: 'edit_000000_FILL0_wght400.svg',

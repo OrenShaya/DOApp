@@ -2,4 +2,22 @@
 
 section.mail-index {
   background-color: #ffffff;
+  position: relative;
+}
+
+section.mail-index .outlet-container-compose {
+  position: fixed;
+  background-color: #ffffff;
+  bottom: 0;
+  right: 20%;
+  height: 55vh;
+  width: 40vw;
+
+  border: 1px solid #ced1d6;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  z-index: 10;
+  overflow-y: auto;
 }

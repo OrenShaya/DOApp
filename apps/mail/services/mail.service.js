@@ -178,12 +178,12 @@ function getEmptyMail(
   isStarred = false,
   sentAt = null,
   removedAt = null,
-  from = '',
+  from = getUser(),
   to = ''
 ) {
   const mail = {
     subject,
-    createdAt: new Date.now(),
+    createdAt: Date.now(),
     updatedAt,
     body,
     isRead,
