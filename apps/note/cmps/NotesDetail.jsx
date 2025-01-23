@@ -7,10 +7,8 @@ export function NoteDetail() {
     const [ note, setNote ] = useState(null)
 
     useEffect(() => {
-        console.log('noteId:', noteId)
         noteService.get(noteId).then(fetchedNote => {
             setNote(fetchedNote)
-            console.log(fetchedNote)
         })
     }, [])
 

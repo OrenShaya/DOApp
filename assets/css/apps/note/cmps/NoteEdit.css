@@ -24,3 +24,15 @@ body {
     padding: 10px 10px;
     margin: 0;
 } 
+
+.note-type-buttons {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+
+.note-type-buttons button {
+    background-color: #00000000;
+    border: none;
+    color: var(--notes-color-dark);
+}
