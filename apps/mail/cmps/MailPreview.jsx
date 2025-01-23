@@ -7,8 +7,9 @@
  * [] Support hover state
  */
 
-import { LongTxt } from './LongTxt.jsx'
 const { useNavigate } = ReactRouter
+
+import Icon from '../cmps/Icon.jsx'
 
 export function MailPreview({ mail }) {
   const navigate = useNavigate()
@@ -45,22 +46,20 @@ export function MailPreview({ mail }) {
     to,
   } = mail
   return (
-    <article
-      className='mail-preview'
-      style={{ backgroundColor: isRead ? 'gray' : '' }}
-    >
+    <article className={`mail-preview ${isRead ? 'unread-mail' : ''}`}>
       <div className='mail-card-main-select'>
         <div className='mail-card-select-checkbox'>
           <input
-            // onChange={handleChange}
-            // checked={isOnSale}
+            // onChange={handleMarking}
             id={`mail-checked-${id}`}
             type='checkbox'
             name={`mail-checked-${id}`}
           />
         </div>
         <div className='mail-card-select-starred'>
-          <span className='mail-card-title'>{isStarred ? '⭐' : '★'}</span>
+          <span className='mail-card-title'>
+            {!isStarred ? <Icon name='star' /> : <Icon name='starYellow' />}
+          </span>
         </div>
         <div
           className='mail-card-select-sender'
@@ -84,9 +83,7 @@ export function MailPreview({ mail }) {
           <span className='mail-card-subject'>{subject}</span>
         </div>
         <div className='mail-card-select-body'>
-          <span className='mail-card-body'>
-            <LongTxt txt={body} length={40} />
-          </span>
+          <span className='mail-card-body'>{body}</span>
         </div>
       </div>
 

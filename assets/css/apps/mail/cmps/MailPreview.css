@@ -1,7 +1,11 @@
 .mail-preview {
   display: grid;
 
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.mail-preview.unread-mail {
+  background-color: #ffffff;
 }
 
 .mail-card-main-select {
@@ -9,7 +13,8 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-inline-start: 1.25em;
   gap: 0.5em;
 }
 
@@ -20,6 +25,27 @@
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+
+  overflow-x: hidden;
+}
+
+.mail-card-main .mail-card-select-subject {
+  font-feature-settings: 'liga' 0;
+  text-align: left;
+  font-size: 0.875rem;
+  letter-spacing: normal;
+}
+
+.mail-card-main .mail-card-select-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: left;
+  font-size: 0.875rem;
+  letter-spacing: normal;
 }
 
 .mail-card-details {
@@ -29,6 +55,13 @@
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+
+  font-size: 0.75rem;
+  letter-spacing: normal;
+  color: rgb(95, 99, 104);
+  line-height: 20px;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .mail-card-main-select,
