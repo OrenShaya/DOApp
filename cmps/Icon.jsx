@@ -1,4 +1,4 @@
-// cmps?Icon.jsx
+// cmps/Icon.jsx
 
 // mapping of icon names to their filepaths
 const fileNames = {
