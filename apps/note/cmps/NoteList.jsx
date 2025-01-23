@@ -9,7 +9,6 @@ export function NoteList() {
 
   useEffect(() => {
     noteService.query().then((fetchedNotes) => {
-      console.log(fetchedNotes) 
       setNotes(fetchedNotes)
     })
   }, [])
