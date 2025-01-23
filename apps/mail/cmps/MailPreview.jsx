@@ -95,7 +95,10 @@ export function MailPreview({
         }}
       >
         <div className='mail-card-select-subject'>
-          <span className='mail-card-subject'>{subject}</span>
+          <span className='mail-card-subject'>
+            {removedAt && <Icon name='delete' />}
+            {subject}
+          </span>
         </div>
         <div className='mail-card-select-body'>
           <span className='mail-card-body'>{body}</span>
