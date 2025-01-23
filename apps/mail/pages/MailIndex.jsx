@@ -71,7 +71,6 @@ export function MailIndex() {
   return (
     <section className='mail-index mail-page-layout'>
       <div className='mail-index-container'>
-        <h1 className='text-center'>DO Mail</h1>
         {selectedMailId ? (
           <MailDetails
             onBack={() => handleSetSelectMailId(null)}

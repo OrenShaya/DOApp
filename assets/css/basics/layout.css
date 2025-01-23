@@ -11,15 +11,20 @@ rest column 1 row 2 */
   width: 100%;
   height: 100%;
   grid-template-columns: 256px 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 100px 1fr;
 }
 
 .mail-page-layout > .sidebar {
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 1 / -1;
 }
 
 .mail-page-layout > *:not(.sidebar) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.mail-page-layout > .search-filter-page-header {
   grid-column: 2;
   grid-row: 1;
 }
