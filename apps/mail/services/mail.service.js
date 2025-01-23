@@ -128,9 +128,20 @@ function _setNextPrevMailId(mail) {
 
 function remove(mailId) {
   // return Promise.reject('DEBUG: Promise rejected')
-  return storageService.remove(MAIL_KEY, mailId).catch((err) => {
-    console.error('Mail not removed:', err)
-    throw new Error('Mail not removed', err)
+  return get(mailId).then((mail) => {
+    if (!mail) {
+      throw new Error('Mail not found')
+    }
+
+    if (mail.removedAt) {
+      return storageService.remove(MAIL_KEY, mailId).catch((err) => {
+        console.error('Mail not removed:', err)
+        throw new Error('Mail not removed', err)
+      })
+    }
+
+    mail.removedAt = Date.now()
+    return save(mail)
   })
 }
 
