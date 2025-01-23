@@ -26,6 +26,7 @@ export const mailService = {
 
   toggleIsRead,
   toggleIsStarred,
+  restoreMail,
   formatTimeDiff,
 }
 _createDemoMails()
@@ -200,6 +201,27 @@ export function toggleIsStarred(mailId) {
   })
 }
 
+export function restoreMail(mailId) {
+  return get(mailId).then((mail) => {
+    if (!mail) {
+      throw new Error('Mail not found')
+    }
+
+    // reset removedAt to null
+    mail.removedAt = null
+
+    if (mail.sentAt) {
+      mail.status = 'sent'
+    } else if (mail.from.email === getUser().email) {
+      mail.status = 'draft'
+    } else {
+      mail.status = 'inbox'
+    }
+
+    return save(mail)
+  })
+}
+
 /////////////////// private function///////////////////
 
 function _createDemoMails() {
@@ -210,31 +232,6 @@ function _createDemoMails() {
     _saveToStorage(MAIL_KEY, mails)
   }
 }
-
-// function _createMails() {
-//   const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
-//   const mails = []
-//   for (let i = 0; i < 20; i++) {
-//     const mail = {
-//       id: makeId(),
-//       title: makeLorem(2),
-//       subtitle: makeLorem(4),
-//       authors: [makeLorem(1)],
-//       publishedDate: getRandomIntInclusive(1950, 2024),
-//       description: makeLorem(20),
-//       pageCount: getRandomIntInclusive(20, 600),
-//       categories: [ctgs[getRandomIntInclusive(0, ctgs.length - 1)]],
-//       thumbnail: `http://coding-academy.org/mails-photos/${i + 1}.jpg`,
-//       language: 'en',
-//       listPrice: {
-//         amount: getRandomIntInclusive(80, 500),
-//         currencyCode: 'EUR',
-//         isOnSale: Math.random() > 0.7,
-//       },
-//     }
-//     mails.push(mail)
-//   }
-// }
 
 function _createMail(
   subject,
