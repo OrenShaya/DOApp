@@ -1,0 +1,7 @@
+.note-detail {
+    min-height: calc(100vh - (70px +  0.5em + 2px));
+    padding: 3em;
+    text-align: center;
+    color: var(--notes-color-dark);
+    background-color: var(--notes-bgc-dark);
+}
