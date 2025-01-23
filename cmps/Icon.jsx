@@ -33,6 +33,7 @@ const fileNames = {
   refresh: 'refresh_000000_FILL0_wght400.svg',
   reply: 'reply_000000_FILL0_wght400.svg',
   send: 'send_000000_FILL0_wght400.svg',
+  search: 'search_000000_FILL0_wght400.svg',
   star: 'star_000000_FILL0_wght400.svg',
   starYellow: 'star_F4B400_FILL1_wght400.svg',
   setting: 'settings_000000_FILL0_wght400.svg',
