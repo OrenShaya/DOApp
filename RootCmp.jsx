@@ -10,7 +10,10 @@ import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 import { MailIndex } from './apps/mail/pages/MailIndex.jsx'
 import { MailCompose } from './apps/mail/cmps/MailCompose.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
+
+import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 import { NoteDetail } from './apps/note/cmps/NotesDetail.jsx'
+import { NoteEdit } from './apps/note/cmps/NoteEdit.jsx'
 
 export function App() {
   return (
@@ -28,9 +31,9 @@ export function App() {
           <Route path='/mail/:mailId' element={<MailDetails />} />
           <Route path='/mail/compose/:mailId' element={<MailCompose />} />
 
-          <Route path='/note' element={<NoteIndex />}>
-            <Route path='/note/:noteId' element={<NoteDetail />} />
-          </Route>
+          <Route path='/note' element={<NoteIndex />} />
+          <Route path='/note/:noteId' element={<NoteDetail />} />
+          <Route path='/note/edit' element={<NoteEdit />} />
         </Routes>
       </section>
       <UserMsg />
