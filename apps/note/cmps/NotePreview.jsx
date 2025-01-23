@@ -1,4 +1,3 @@
-import { NoteDetail } from "./NotesDetail.jsx"
 
 const { useNavigate } = ReactRouterDOM
 

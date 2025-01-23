@@ -1,5 +1,5 @@
 import { mailService } from '../services/mail.service.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouterDOM

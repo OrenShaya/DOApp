@@ -1,0 +1,26 @@
+body {
+    background-color: var(--notes-bgc-dark);
+}
+
+.edit-note {
+    color: var(--notes-color-dark);
+}
+
+.note-form {
+    gap: 1em;
+    margin: 2em 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.note-title{
+    padding: 0.5em;
+}
+
+.note-txt {
+    min-height: 125px;
+    min-width: 300px;
+    padding: 10px 10px;
+    margin: 0;
+}

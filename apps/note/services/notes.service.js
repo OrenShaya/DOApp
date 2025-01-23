@@ -14,7 +14,6 @@ export const noteService = {
 }
 
 function query(filterBy) {
-  
     return storageService.query(NOTES_KEY)
     .then((notes) => {
       if (filterBy) {
@@ -37,10 +36,11 @@ function remove(noteId) {
 }
 
 function save(note) {
+  note.updatedAt = Date.now()
   if (note.id) {
     return storageService.put(NOTES_KEY, note)
   } else {
-    const newNote = _createNote()
+    const newNote = _createNote(note)
     return storageService.post(NOTES_KEY, newNote)
   }
 }
@@ -51,33 +51,24 @@ function getDefaultFilter() {
 
 function getEmptyNote() {
   return {
-    id: 'n101',
-    createdAt: 1111111,
-    updatedAt: 1111111,
+    id: '',
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
     type: 'NoteTxt',
     isPinned: false,
     style: {
         backgroundColor: '',
     },
     info: {
+        title: '',
         txt: ''
     }
   }
 }
 
-function _createNote() {
-  return {
-    id: 'n101',
-    createdAt: 1112222,
-    updatedAt: 1113333,
-    type: 'NoteTxt',
-    isPinned: false,
-    style: {
-        backgroundColor: 'red',
-    },
-    info: {
-        txt: 'Fullstack Me Baby!'
-    }
-  }
+function _createNote(note) {
+  let newNote = getEmptyNote()
+  newNote = { ...newNote, ...note, id: `n${utilService.makeId()}` }
+  return newNote
 }
 

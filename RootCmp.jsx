@@ -4,12 +4,14 @@ const Router = ReactRouterDOM.HashRouter
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
-import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 
 import { MailIndex } from './apps/mail/pages/MailIndex.jsx'
 import { MailCompose } from './apps/mail/pages/MailCompose.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
+
+import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 import { NoteDetail } from './apps/note/cmps/NotesDetail.jsx'
+import { NoteEdit } from './apps/note/cmps/NoteEdit.jsx'
 
 export function App() {
   return (
@@ -29,6 +31,7 @@ export function App() {
 
           <Route path='/note' element={<NoteIndex />} />
           <Route path='/note/:noteId' element={<NoteDetail />} />
+          <Route path='/note/edit' element={<NoteEdit />} />
           
         </Routes>
       </section>
