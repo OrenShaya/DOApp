@@ -12,13 +12,19 @@ export function NoteDetail() {
         })
     }, [])
 
+    function formatDate(date) {
+        const newDate = new Date(date)
+        const options = { year: 'numeric', month: 'short', day: 'numeric' }
+        return newDate.toLocaleDateString('en-IL', options)
+    }
+
 
     return (
         <section className="note-detail">
             {note && <section>
                 <h3>{note.info.title}</h3>
                 <pre className="note-txt">{note.info.txt}</pre>
-                <p className="updated-date">Edited at {note.updatedAt}</p>
+                <p className="updated-date">Edited at {formatDate(note.updatedAt)}</p>
             </section>}
         </section>
     )

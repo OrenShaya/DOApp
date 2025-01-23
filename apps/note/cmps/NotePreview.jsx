@@ -1,11 +1,12 @@
 import { noteService } from "../services/notes.service.js"
 const { useNavigate } = ReactRouterDOM
 
-export function NotePreview({ note }) {
+export function NotePreview({ note, changeCmp }) {
 
     const navigate = useNavigate()
 
     function handleClick(note) {
+        changeCmp('detail')
         navigate(`/note/${note.id}`)
     }
 
