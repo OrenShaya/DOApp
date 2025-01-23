@@ -9,27 +9,17 @@ export function SideBar({ filterBy, onSetFilter }) {
   const navigate = useNavigate()
   const [mails, setMails] = useState(null)
 
+  //folders
   const inboxSpanRef = useRef(null)
   const starredSpanRef = useRef(null)
   const sentSpanRef = useRef(null)
   const draftSpanRef = useRef(null)
   const trashSpanRef = useRef(null)
 
+  //labels
   const importantSpanRef = useRef(null)
   const todoSpanRef = useRef(null)
   const marketingSpanRef = useRef(null)
-
-  function handleFolderClick(statusValue) {
-    onSetFilter({
-      status: statusValue,
-      txt: '',
-      isRead: false,
-      isStarred: false,
-      labels: '',
-    })
-
-    navigate('/mail')
-  }
 
   useEffect(() => {
     loadMails().then((mails) => {
@@ -102,7 +92,59 @@ export function SideBar({ filterBy, onSetFilter }) {
       marketingSpanRef.current.textContent = marketingCount
   }
 
+  function handleFolderClick(statusValue) {
+    if (!onSetFilter) {
+      navigate('/mail')
+      return
+    }
+    onSetFilter({
+      status: statusValue,
+      txt: '',
+      isRead: false,
+      isStarred: false,
+      labels: '',
+    })
+
+    navigate('/mail')
+  }
+
+  function handleStarredClick() {
+    if (!onSetFilter) {
+      navigate('/mail')
+      return
+    }
+    onSetFilter({
+      isStarred: true,
+      status: '',
+      txt: '',
+      isRead: false,
+      labels: '',
+    })
+    navigate('/mail')
+  }
+
+  function handleLabelClick(labelValue) {
+    if (!onSetFilter) {
+      navigate('/mail')
+      return
+    }
+    onSetFilter({
+      labels: labelValue,
+      status: '',
+      txt: '',
+      isRead: false,
+      isStarred: '',
+    })
+    navigate('/mail')
+  }
+
+  useEffect(() => {
+    loadMails().then((mails) => loadReffs(mails))
+  }, [])
+
   function isFolderActive(folderName) {
+    if (!filterBy) return false
+
     switch (folderName) {
       case 'inbox':
         return filterBy.status === 'inbox'
@@ -120,6 +162,7 @@ export function SideBar({ filterBy, onSetFilter }) {
   }
 
   function isLabelActive(labelName) {
+    if (!filterBy) return false
     return filterBy.labels === labelName
   }
 
@@ -153,14 +196,7 @@ export function SideBar({ filterBy, onSetFilter }) {
               isFolderActive('starred') ? ' active' : ''
             }`}
             onClick={() => {
-              onSetFilter({
-                isStarred: true,
-                status: '',
-                txt: '',
-                isRead: false,
-                labels: '',
-              })
-              navigate('/mail')
+              handleStarredClick()
             }}
           >
             <Icon name='star' />
@@ -210,14 +246,7 @@ export function SideBar({ filterBy, onSetFilter }) {
                 isLabelActive('importent') ? ' active' : ''
               }`}
               onClick={() => {
-                onSetFilter({
-                  labels: 'important',
-                  status: '',
-                  txt: '',
-                  isRead: false,
-                  isStarred: '',
-                })
-                navigate('/mail')
+                handleLabelClick('importent')
               }}
             >
               <Icon name='labelImportant' />
@@ -229,14 +258,7 @@ export function SideBar({ filterBy, onSetFilter }) {
                 isLabelActive('todo') ? ' active' : ''
               }`}
               onClick={() => {
-                onSetFilter({
-                  labels: 'todo',
-                  status: '',
-                  txt: '',
-                  isRead: false,
-                  isStarred: '',
-                })
-                navigate('/mail')
+                handleLabelClick('todo')
               }}
             >
               <Icon name='label' className='label-yellow' />
@@ -248,14 +270,7 @@ export function SideBar({ filterBy, onSetFilter }) {
                 isLabelActive('marketing') ? ' active' : ''
               }`}
               onClick={() => {
-                onSetFilter({
-                  labels: 'marketing',
-                  status: '',
-                  txt: '',
-                  isRead: false,
-                  isStarred: '',
-                })
-                navigate('/mail')
+                handleLabelClick('marketing')
               }}
             >
               <Icon name='label' className='label-red' />
