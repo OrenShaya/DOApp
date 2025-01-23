@@ -5,7 +5,7 @@
  */
 
 const { Link, Navigion } = ReactRouterDOM
-import Icon from '../cmps/Icon.jsx'
+import Icon from '../../../cmps/Icon.jsx'
 
 import { MailPreview } from './MailPreview.jsx'
 

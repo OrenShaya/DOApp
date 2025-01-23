@@ -2,7 +2,7 @@
 const { useEffect, useState, useRef } = React
 const { useNavigate } = ReactRouter
 
-import Icon from '../cmps/Icon.jsx'
+import Icon from '../../../cmps/Icon.jsx'
 
 export function SideBar({ mails }) {
   const navigate = useNavigate()

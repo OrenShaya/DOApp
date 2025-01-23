@@ -1,4 +1,4 @@
-// src/apps/mail/cmps/Icon.jsx
+// cmps?Icon.jsx
 
 // mapping of icon names to their filepaths
 const fileNames = {
@@ -37,7 +37,7 @@ function Icon({ name, className = '', onClick, ...props }) {
     return null
   }
 
-  const svgPath = `../../../assets/icons/${fileName}`
+  const svgPath = `../assets/icons/${fileName}`
 
   return (
     <img
