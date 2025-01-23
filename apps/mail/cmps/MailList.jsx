@@ -32,14 +32,16 @@ export function MailList({
               <Icon
                 name='delete'
                 className='round-hover'
-                onClick={() => {
+                onClick={(event) => {
+                  event.stopPropagation()
                   onRemoveMail(mail.id)
                 }}
               />
               <Icon
                 name='markAsUnread'
                 className='round-hover'
-                onClick={() => {
+                onClick={(event) => {
+                  event.stopPropagation()
                   onToggleReadMail(mail.id)
                 }}
               />
