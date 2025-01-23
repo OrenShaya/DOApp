@@ -36,7 +36,7 @@ const loggedinUser = {
   fullname: 'Mahatma Appsus',
 }
 
-function getUser() {
+export function getUser() {
   return loggedinUser
 }
 
@@ -135,8 +135,11 @@ function remove(mailId) {
 }
 
 function save(mail) {
+  const now = Date.now()
+
   if (mail.id) {
-    return storageService.put(MAIL_KEY, mail)
+    const updatedMail = { ...mail, updatedAt: now }
+    return storageService.put(MAIL_KEY, updatedMail)
   } else {
     const {
       subject,
@@ -146,7 +149,7 @@ function save(mail) {
       isStarred,
       sentAt,
       removedAt,
-      updatedAt,
+      updatedAt = now,
     } = mail
     const newMail = _createMail(
       subject,

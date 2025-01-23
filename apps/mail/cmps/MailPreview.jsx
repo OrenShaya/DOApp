@@ -2,15 +2,15 @@
 
 /**
  * [] Present a mail preview
- * [] Renders the subject (with text size limit)
- * [] Gives visual indication for read/unread
- * [] Support hover state
+ * [V] Renders the subject (with text size limit)
+ * [V] Gives visual indication for read/unread
+ * [V] Support hover state
  */
 
 const { useNavigate } = ReactRouter
 
 import Icon from '../../../cmps/Icon.jsx'
-import { formatTimeDiff } from '../services/mail.service.js'
+import { formatTimeDiff, getUser } from '../services/mail.service.js'
 
 export function MailPreview({
   mail,
@@ -19,6 +19,19 @@ export function MailPreview({
   onToggleReadMail,
 }) {
   const navigate = useNavigate()
+
+  function handlePreviewClick(id, sentAt, removedAt, from) {
+    isMailDraft(removedAt, sentAt, from)
+      ? navigate(`/mail/compose/${id}`)
+      : navigate(`/mail/${id}`)
+  }
+
+  function isMailDraft(removedAt, sentAt, from) {
+    const user = getUser()
+    if (removedAt || sentAt) return false
+    else if (from.email === user.email) return true
+    else return false
+  }
 
   const {
     id,
@@ -50,14 +63,14 @@ export function MailPreview({
               <Icon
                 name='star'
                 onClick={() => {
-                  onToggleStarredMail(mail.id)
+                  onToggleStarredMail(id)
                 }}
               />
             ) : (
               <Icon
                 name='starYellow'
                 onClick={() => {
-                  onToggleStarredMail(mail.id)
+                  onToggleStarredMail(id)
                 }}
               />
             )}
@@ -65,8 +78,8 @@ export function MailPreview({
         </div>
         <div
           className='mail-card-select-sender'
-          onClick={() => {
-            navigate(`/mail/${mail.id}`)
+          onClick={(mail) => {
+            handlePreviewClick(id, sentAt, removedAt, from)
           }}
         >
           <span className='mail-card-title'>
@@ -77,8 +90,8 @@ export function MailPreview({
 
       <div
         className='mail-card-main'
-        onClick={() => {
-          navigate(`/mail/${mail.id}`)
+        onClick={(mail) => {
+          handlePreviewClick(id, sentAt, removedAt, from)
         }}
       >
         <div className='mail-card-select-subject'>
