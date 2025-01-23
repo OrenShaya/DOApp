@@ -145,7 +145,9 @@ export function MailDetails() {
             <span className='mail-details-body-info'>{from.email}</span>
           </div>
           <div className='mail-details-body-header'>
-            <span className='mail-details-body-date'>{createdAt}</span>
+            <span className='mail-details-body-date'>
+              {mailService.formatTimeDiff(sentAt ? sentAt : createdAt)}
+            </span>
             <span className='mail-details-body-info'>
               {!isStarred ? <Icon name='star' /> : <Icon name='starYellow' />}
             </span>
