@@ -23,6 +23,9 @@ export const mailService = {
   getFilterFromSearchParams,
   getTruthyValues,
   getUser,
+
+  toggleIsRead,
+  toggleIsStarred,
 }
 _createDemoMails()
 
@@ -130,6 +133,32 @@ function save(mail) {
   }
 }
 
+////////////////////crudl utils////////////////////
+
+export function toggleIsRead(mailId) {
+  return get(mailId).then((mail) => {
+    if (!mail) {
+      console.error('Mail not found:', mailId)
+      throw new Error('Mail not found')
+    }
+    mail.isRead = !mail.isRead
+    return save(mail)
+  })
+}
+
+export function toggleIsStarred(mailId) {
+  return get(mailId).then((mail) => {
+    if (!mail) {
+      console.error('Mail not found:', mailId)
+      throw new Error('Mail not found')
+    }
+    mail.isStarred = !mail.isStarred
+    return save(mail)
+  })
+}
+
+/////////////////// private function///////////////////
+
 function _createDemoMails() {
   let mails = _loadFromStorage(MAIL_KEY)
 
@@ -170,7 +199,7 @@ function _createMail(subject, body) {
   return mail
 }
 
-function getEmptyMail(
+export function getEmptyMail(
   subject = '',
   updatedAt = null,
   body = '',
@@ -195,16 +224,16 @@ function getEmptyMail(
   }
   return mail
 }
-function _saveToStorage(key, val) {
+export function _saveToStorage(key, val) {
   localStorage.setItem(key, JSON.stringify(val))
 }
 
-function _loadFromStorage(key) {
+export function _loadFromStorage(key) {
   var val = localStorage.getItem(key)
   return JSON.parse(val)
 }
 
-function getTruthyValues(obj) {
+export function getTruthyValues(obj) {
   const newObj = {}
   for (const key in obj) {
     const value = obj[key]
