@@ -1,12 +1,55 @@
 /* assets/css/apps/mail/cmps/icon-style.css */
 
 .icon-style {
-  width: 24px;
-  height: 24px;
-  /* fill: #4CAF50;  */
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-block;
+
   transition: fill 0.3s, transform 0.3s;
 }
 
 .icon-style:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
+  transform: scale(1.05);
+}
+
+.icon-style.label-red {
+  background-color: red;
+}
+.icon-style.label-yellow {
+  background-color: yellow;
+}
+
+.icon-style.round-hover {
+  border: none;
+  border-radius: 50%;
+  transition: box-shadow 0.1s linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eaebef;
+    box-shadow: 0 0 0px 12px #eaebef;
+  }
+}
+
+.icon-label {
+  position: relative;
+}
+
+.icon-label::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% -50%;
+  background-color: transparent;
+  color: black;
+  border: 1px solid lightgray;
+  padding: 0.5em 0.2em;
+  border-radius: 6.25em;
+  text-transform: uppercase;
+  display: none;
+}
+
+.icon-label:hover .icon-label::before {
+  display: block;
 }
