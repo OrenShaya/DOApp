@@ -63,12 +63,13 @@ export function MailIndex() {
 
   function onToggleReadMail(mailId) {
     mailService
-      .get(mailId)
-      .then((mail) => {
-        mail.isRead = !mail.isRead
-      })
-      .then(() => {
-        setMails((mails) => mails)
+      .toggleIsRead(mailId)
+      .then((updatedMail) => {
+        setMails((prevMails) =>
+          prevMails.map((mail) =>
+            mail.id === updatedMail.id ? updatedMail : mail
+          )
+        )
         showSuccessMsg(`Mail ${mailId} toggle read`)
       })
       .catch((err) => {
@@ -79,12 +80,13 @@ export function MailIndex() {
 
   function onToggleStarredMail(mailId) {
     mailService
-      .get(mailId)
-      .then((mail) => {
-        mail.isStarred = !mail.isStarred
-      })
-      .then(() => {
-        setMails((mails) => mails)
+      .toggleIsStarred(mailId)
+      .then((updatedMail) => {
+        setMails((prevMails) =>
+          prevMails.map((mail) =>
+            mail.id === updatedMail.id ? updatedMail : mail
+          )
+        )
         showSuccessMsg(`Mail ${mailId} toggle starred`)
       })
       .catch((err) => {
