@@ -1,6 +1,6 @@
 // apps/mail/services/mail.service.js
 import { mailService } from '../services/mail.service.js'
-import { LongTxt } from '../cmps/LongTxt.jsx'
+import Icon from '../../../cmps/Icon.jsx'
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -41,6 +41,8 @@ export function MailDetails() {
     from,
     to,
     labels,
+    prevMailId,
+    nextMailId,
   } = mail
 
   return (
@@ -71,16 +73,26 @@ export function MailDetails() {
                 className='btn btn-arrow-nav'
                 onClick={() => console.log('> was pressed')}
               >
-                {'>'}
-                {/* <Link to={`/mail/${prevMailId}`}>Previous Mail</Link> */}
+                <Icon
+                  name='chevronLeft'
+                  data-label={'Navigate previous mail'}
+                  onClick={() => {
+                    navigate(`/mail/${mail.prevMailId}`)
+                  }}
+                />
               </button>
               <button
                 type='button'
                 className='btn btn-arrow-nav'
                 onClick={() => console.log('< was pressed')}
               >
-                {'<'}
-                {/* <Link to={`/mail/${nextMailId}`}>Next Mail</Link> */}
+                <Icon
+                  name='chevronRight'
+                  data-label={'Navigate next mail'}
+                  onClick={() => {
+                    navigate(`/mail/${mail.nextMailId}`)
+                  }}
+                />
               </button>
             </div>
           </div>
@@ -115,7 +127,7 @@ export function MailDetails() {
           <div className='mail-details-body-header'>
             <span className='mail-details-body-date'>{createdAt}</span>
             <span className='mail-details-body-info'>
-              {isStarred ? '⭐' : '★'}
+              {!isStarred ? <Icon name='star' /> : <Icon name='starYellow' />}
             </span>
           </div>
           <button

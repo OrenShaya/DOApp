@@ -11,7 +11,7 @@ const { useNavigate } = ReactRouter
 
 import Icon from '../../../cmps/Icon.jsx'
 
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, onRemoveMail, onToggleStarredMail }) {
   const navigate = useNavigate()
 
   function formatTimeDiff(date) {
@@ -59,7 +59,21 @@ export function MailPreview({ mail }) {
         </div>
         <div className='mail-card-select-starred'>
           <span className='mail-card-title'>
-            {!isStarred ? <Icon name='star' /> : <Icon name='starYellow' />}
+            {!isStarred ? (
+              <Icon
+                name='star'
+                onClick={() => {
+                  onToggleStarredMail(mail.id)
+                }}
+              />
+            ) : (
+              <Icon
+                name='starYellow'
+                onClick={() => {
+                  onToggleStarredMail(mail.id)
+                }}
+              />
+            )}
           </span>
         </div>
         <div

@@ -3,9 +3,11 @@ const { useEffect, useState, useRef } = React
 const { useNavigate } = ReactRouter
 
 import Icon from '../../../cmps/Icon.jsx'
+import { mailService } from '../services/mail.service.js'
 
-export function SideBar({ mails }) {
+export function SideBar() {
   const navigate = useNavigate()
+  const [mails, setMails] = useState(null)
 
   const inboxSpanRef = useRef(null)
   const starredSpanRef = useRef(null)
@@ -16,6 +18,21 @@ export function SideBar({ mails }) {
   const importantSpanRef = useRef(null)
   const todoSpanRef = useRef(null)
   const marketingSpanRef = useRef(null)
+
+  useEffect(() => {
+    loadMails().then((mails) => {
+      loadReffs(mails)
+    })
+  }, [])
+
+  function loadMails() {
+    return mailService
+      .query()
+      .then(setMails)
+      .catch((err) => {
+        console.error('Problem getting mails:', err)
+      })
+  }
 
   useEffect(() => {
     loadReffs(mails)
@@ -33,6 +50,8 @@ export function SideBar({ mails }) {
     let marketingCount = 0
 
     // Iterate through mails to calculate counts
+    if (!mails) return
+
     mails.forEach((mail) => {
       if (mail.removedAt) {
         trashCount += 1
@@ -77,7 +96,7 @@ export function SideBar({ mails }) {
         <button
           type='button'
           className='btn btn-compose'
-          onClick={() => navigate(`/mail/edit`)}
+          onClick={() => navigate(`/mail/compose/`)}
         >
           <Icon name='edit' />
           Compose

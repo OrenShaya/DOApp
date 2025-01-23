@@ -9,17 +9,37 @@ import Icon from '../../../cmps/Icon.jsx'
 
 import { MailPreview } from './MailPreview.jsx'
 
-export function MailList({ mails, onRemoveMail }) {
+export function MailList({
+  mails,
+  onRemoveMail,
+  onToggleStarredMail,
+  onToggleReadMail,
+}) {
   return (
     <section className='mails-list'>
       <ul className='mail-list'>
         {mails.map((mail) => (
           <li key={mail.id}>
-            <MailPreview mail={mail} />
+            <MailPreview
+              mail={mail}
+              onRemoveMail={onRemoveMail}
+              onToggleStarredMail={onToggleStarredMail}
+            />
             <div className='on-hover-actions'>
-              <Icon name='delete' className='round-hover' />
-              <Icon name='markAsRead' className='round-hover' />
-              <Icon name='edit' className='round-hover' />
+              <Icon
+                name='delete'
+                className='round-hover'
+                onClick={() => {
+                  onRemoveMail(mail.id)
+                }}
+              />
+              <Icon
+                name='markAsRead'
+                className='round-hover'
+                onClick={() => {
+                  onToggleReadMail(mail.id)
+                }}
+              />
             </div>
           </li>
         ))}
