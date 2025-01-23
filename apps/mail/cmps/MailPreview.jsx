@@ -10,28 +10,15 @@
 const { useNavigate } = ReactRouter
 
 import Icon from '../../../cmps/Icon.jsx'
+import { formatTimeDiff } from '../services/mail.service.js'
 
-export function MailPreview({ mail, onRemoveMail, onToggleStarredMail }) {
+export function MailPreview({
+  mail,
+  onRemoveMail,
+  onToggleStarredMail,
+  onToggleReadMail,
+}) {
   const navigate = useNavigate()
-
-  function formatTimeDiff(date) {
-    const now = new Date()
-    const diffInMs = now - new Date(date)
-    const diffInMinutes = Math.floor(diffInMs / (1000 * 60))
-    const diffInHours = Math.floor(diffInMinutes / 60)
-    const diffInDays = Math.floor(diffInHours / 24)
-    const dateThan = new Date(date).toLocaleDateString()
-
-    if (diffInMinutes < 60) {
-      return `${diffInMinutes} minutes ago`
-    } else if (diffInHours < 24) {
-      return `(${dateThan}) ${diffInHours} hours ago`
-    } else if (diffInDays < 7) {
-      return `(${dateThan}) ${diffInDays} days ago`
-    } else {
-      return dateThan
-    }
-  }
 
   const {
     id,

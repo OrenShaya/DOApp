@@ -21,3 +21,10 @@ section.mail-index .outlet-container-compose {
   z-index: 10;
   overflow-y: auto;
 }
+
+.mail-index .main-filter-container {
+  grid-column: 2;
+  grid-row: 1;
+
+  width: 100%;
+}

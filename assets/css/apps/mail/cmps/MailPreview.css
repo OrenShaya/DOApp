@@ -4,10 +4,6 @@
   grid-template-columns: 1fr 2fr 1fr;
 }
 
-.mail-preview.unread-mail {
-  background-color: #ffffff;
-}
-
 .mail-card-main-select {
   grid-column: 1;
 
@@ -53,7 +49,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 0.5em;
 
   font-size: 0.75rem;
@@ -62,10 +58,15 @@
   line-height: 20px;
   text-align: right;
   white-space: nowrap;
+  margin-inline-end: 1em;
 }
 
 .mail-card-main-select,
 .mail-card-main,
 .mail-card-details {
   padding-block: 0.2em;
+}
+
+.mail-preview.unread-mail {
+  background-color: #ffffff !important;
 }

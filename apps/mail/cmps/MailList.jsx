@@ -18,11 +18,15 @@ export function MailList({
     <section className='mails-list'>
       <ul className='mail-list'>
         {mails.map((mail) => (
-          <li key={mail.id}>
+          <li
+            key={mail.id}
+            className={`mail-list-item ${mail.isRead ? 'unread-mail' : ''}`}
+          >
             <MailPreview
               mail={mail}
               onRemoveMail={onRemoveMail}
               onToggleStarredMail={onToggleStarredMail}
+              onToggleReadMail={onToggleReadMail}
             />
             <div className='on-hover-actions'>
               <Icon
@@ -33,7 +37,7 @@ export function MailList({
                 }}
               />
               <Icon
-                name='markAsRead'
+                name='markAsUnread'
                 className='round-hover'
                 onClick={() => {
                   onToggleReadMail(mail.id)
