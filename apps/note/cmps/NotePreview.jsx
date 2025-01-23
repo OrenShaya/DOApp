@@ -1,4 +1,4 @@
-
+import { noteService } from "../services/notes.service.js"
 const { useNavigate } = ReactRouterDOM
 
 export function NotePreview({ note }) {
@@ -7,6 +7,12 @@ export function NotePreview({ note }) {
 
     function handleClick(note) {
         navigate(`/note/${note.id}`)
+    }
+
+    function onDeleteNote(ev) {
+        ev.stopPropagation()
+        console.log(`deleting ${note.id}`)
+        noteService.remove(note.id)
     }
 
     return (
@@ -18,6 +24,7 @@ export function NotePreview({ note }) {
             <pre className='note-txt'>
                 {note.info.txt}
             </pre>
+            <img onClick={onDeleteNote} className="delete-icon" src="../../../assets/img/delete.svg"/>
         </section>
     )
 }

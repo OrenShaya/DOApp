@@ -11,7 +11,7 @@ export function NoteList() {
     noteService.query().then((fetchedNotes) => {
       setNotes(fetchedNotes)
     })
-  }, [])
+  }, [notes])
 
   return (
     <section className='notes'>
