@@ -2,6 +2,8 @@
 const { useEffect, useState, useRef } = React
 const { useNavigate } = ReactRouter
 
+import Icon from '../cmps/Icon.jsx'
+
 export function SideBar({ mails }) {
   const navigate = useNavigate()
 
@@ -77,42 +79,60 @@ export function SideBar({ mails }) {
           className='btn btn-compose'
           onClick={() => navigate(`/mail/edit`)}
         >
+          <Icon name='edit' />
           Compose
         </button>
       </div>
 
       <div className='side-bar-folders-container'>
         <ul className='side-bar-folders-list'>
-          <li className='folder folder-inbox'>
-            <span>Inbox</span> <span ref={inboxSpanRef}></span>
+          <li className='folder folder-inbox active'>
+            <Icon name='inbox' />
+            <span>Inbox</span>{' '}
+            <span className='folder-count' ref={inboxSpanRef}></span>
           </li>
           <li className='folder folder-starred'>
-            <span>Starred</span> <span ref={starredSpanRef}></span>
+            <Icon name='star' />
+            <span>Starred</span>{' '}
+            <span className='folder-count' ref={starredSpanRef}></span>
           </li>
           <li className='folder folder-sent'>
-            <span>Sent</span> <span ref={sentSpanRef}></span>
+            <Icon name='send' />
+            <span>Sent</span>{' '}
+            <span className='folder-count' ref={sentSpanRef}></span>
           </li>
           <li className='folder folder-draft'>
-            <span>Drafts</span> <span ref={draftSpanRef}></span>
+            <Icon name='draft' />
+            <span>Drafts</span>{' '}
+            <span className='folder-count' ref={draftSpanRef}></span>
           </li>
           <li className='folder folder-trash'>
-            <span>Trash</span> <span ref={trashSpanRef}></span>
+            <Icon name='delete' />
+            <span>Trash</span>{' '}
+            <span className='folder-count' ref={trashSpanRef}></span>
           </li>
         </ul>
 
         <div className='side-bar-labels-container'>
           <div className='side-bar-labels-header'>
             <span>Labels</span>
+            <Icon name='add' className='round-hover' />
           </div>
           <ul className='side-bar-labels-list'>
             <li className='label label-importent'>
-              <span>Important</span> <span ref={importantSpanRef}></span>
+              <Icon name='labelImportant' />
+              <span>Important</span>{' '}
+              <span className='label-count' ref={importantSpanRef}></span>
             </li>
             <li className='label label-todo'>
-              <span>Todo</span> <span ref={todoSpanRef}></span>
+              <Icon name='label' className='label-yellow' />
+              <span>Todo</span>{' '}
+              <span className='label-count' ref={todoSpanRef}></span>
             </li>
             <li className='label label-marketing'>
-              <span>Marketing</span> <span ref={marketingSpanRef}></span>
+              <Icon name='label' className='label-red' />
+              <span>Marketing</span>{' '}
+              <span className='label-count' ref={marketingSpanRef}></span>
             </li>
           </ul>
         </div>

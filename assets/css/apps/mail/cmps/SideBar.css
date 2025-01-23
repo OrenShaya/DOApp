@@ -1,10 +1,14 @@
 section.side-bar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 56px 1fr;
+  grid-template-rows: 80px 1fr;
   width: 100%;
 
   overflow-x: hidden;
+  font-family: OpenSans-Regular, 'Open Sans', Roboto, Ubuntu, 'Open Sans',
+    sans-serif;
+
+  background-color: #f6f8fc;
 }
 
 section.side-bar .side-bar-folders-container {
@@ -12,7 +16,7 @@ section.side-bar .side-bar-folders-container {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
 
-  padding: 0 12px 0 26px;
+  padding: 0 0 0;
 
   overflow-x: hidden;
 }
@@ -20,16 +24,16 @@ section.side-bar .side-bar-folders-container {
 .side-bar .side-bar-btn-container {
   display: flex;
   justify-content: start;
-  align-items: stretch;
-  margin-inline-start: 0.1em;
+  align-items: center;
 }
 
 .side-bar .side-bar-btn-container .btn-compose {
   background-color: #c2e7ff;
   border-radius: 1rem;
 
-  padding: 0 24px 0 0;
+  padding: 0 1.5em 0 0 0;
   min-width: 96px;
+  min-height: 54px;
   width: 118px;
   cursor: pointer;
 
@@ -59,21 +63,20 @@ section.side-bar .side-bar-folders-container {
   box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px 0px, rgba(0, 0, 0, 0) 0px 1px 3px 1px;
   color: rgb(0, 29, 53);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
 
   letter-spacing: normal;
   line-height: 2em;
   margin-right: 0px;
+  margin-left: 0.5em;
   outline-color: rgb(0, 29, 53);
   outline-style: none;
   outline-width: 0px;
   overflow-x: hidden;
   overflow-y: hidden;
-  padding: 0px 1.5em 0px 0px;
+  padding: 0px 1.5em 0px 1em;
 
   text-align: center;
   text-shadow: none;
@@ -87,6 +90,11 @@ section.side-bar .side-bar-folders-container {
   unicode-bidi: isolate;
   user-select: none;
   white-space-collapse: collapse;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 
   &:hover,
   &:focus {
@@ -103,23 +111,25 @@ section.side-bar .side-bar-folders-container {
 }
 
 .side-bar .side-bar-folders-list,
-.side-bar-labels-container {
+.side-bar-labels-container,
+.side-bar-labels-list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 
   font-size: 14px;
+  width: 100%;
 }
 
 .side-bar li {
   padding: 0 12px 0 26px;
-  align-items: center;
   color: rgb(32, 33, 36);
-  display: flex;
+
   font-size: 14px;
   height: 32px;
-  margin-left: 0px;
+  margin-inline-start: 0px;
+
   border-top-right-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
 
@@ -134,17 +144,14 @@ section.side-bar .side-bar-folders-container {
   unicode-bidi: isolate;
   user-select: none;
   white-space-collapse: collapse;
-  width: 202px;
+  width: 90%;
+  align-items: center;
+  display: flex;
+  gap: 1em;
+  cursor: pointer;
 
   &:hover {
     background-color: #e9ebef;
-  }
-}
-
-.side-bar li.active {
-  background-color: #d3e3fd;
-  &:hover {
-    background-color: #d3e3fd;
   }
 }
 
@@ -152,6 +159,9 @@ section.side-bar .side-bar-folders-container {
   display: flex;
   align-content: center;
   justify-content: space-between;
+  padding: 0.5em 0.5em 0 2em;
+  margin: 0 0 0.75em;
+  font-size: 16px;
 }
 
 .side-bar .side-bar-labels-header span {
@@ -165,4 +175,17 @@ section.side-bar .side-bar-folders-container {
   text-transform: none;
   user-select: none;
   width: 186px;
+}
+
+.label-count,
+.folder-count {
+  justify-self: flex-end;
+}
+
+.side-bar li.folder.active {
+  background-color: #d3e3fd;
+  color: #001d35;
+  &:hover {
+    background-color: #d3e3ff;
+  }
 }
