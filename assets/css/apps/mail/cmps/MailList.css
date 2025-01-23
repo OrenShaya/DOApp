@@ -14,17 +14,61 @@ section.mails-list ul.mail-list {
   grid-template-columns: 1fr;
   grid-auto-rows: auto-fit;
 
-  background-color: rgb(232, 227, 227);
+  background-color: #f6f8fc;
 }
 
 section.mails-list ul.mail-list li {
+  font-size: 14px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-size: auto;
+  border-bottom-color: rgb(128, 128, 128);
+  border-collapse: collapse;
+  border-left-color: rgb(128, 128, 128);
+  border-right-color: rgb(128, 128, 128);
+  border-top-color: rgb(128, 128, 128);
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  color: rgb(32, 33, 36);
+  cursor: pointer;
+
+  font-family: OpenSans-Regular, 'Google Sans', Roboto, RobotoDraft, Helvetica,
+    Arial, sans-serif;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: relative;
+  text-indent: 0px;
+  unicode-bidi: isolate;
+  user-select: none;
+  vertical-align: middle;
   background-color: #f2f6fc;
 
   &:hover {
-    background-color: rgb(159, 159, 159);
+    background-color: #f6f8fc;
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
+      0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    z-index: 2;
   }
 }
 
-section.mails-list ul.mail-list li.unread {
-  background-color: #ffffff;
+section.mails-list ul.mail-list li .on-hover-actions {
+  position: absolute;
+
+  top: 20%;
+  right: 0;
+  display: none;
+}
+section.mails-list ul.mail-list li:hover .on-hover-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 1.5em;
+  padding: 0.5em;
+  gap: 1.5em;
+  background-color: inherit;
 }
