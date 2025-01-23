@@ -1,1 +1,7 @@
 /* search-filter-page-header */
+
+section.mail-filter form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

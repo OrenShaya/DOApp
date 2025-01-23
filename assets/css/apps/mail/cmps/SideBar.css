@@ -182,7 +182,8 @@ section.side-bar .side-bar-folders-container {
   justify-self: flex-end;
 }
 
-.side-bar li.folder.active {
+.side-bar li.folder.active,
+.side-bar li.label.active {
   background-color: #d3e3fd;
   color: #001d35;
   &:hover {

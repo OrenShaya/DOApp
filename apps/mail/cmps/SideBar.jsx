@@ -5,7 +5,7 @@ const { useNavigate } = ReactRouter
 import Icon from '../../../cmps/Icon.jsx'
 import { mailService } from '../services/mail.service.js'
 
-export function SideBar() {
+export function SideBar({ filterBy, onSetFilter }) {
   const navigate = useNavigate()
   const [mails, setMails] = useState(null)
 
@@ -18,6 +18,18 @@ export function SideBar() {
   const importantSpanRef = useRef(null)
   const todoSpanRef = useRef(null)
   const marketingSpanRef = useRef(null)
+
+  function handleFolderClick(statusValue) {
+    onSetFilter({
+      status: statusValue,
+      txt: '',
+      isRead: false,
+      isStarred: false,
+      labels: '',
+    })
+
+    navigate('/mail')
+  }
 
   useEffect(() => {
     loadMails().then((mails) => {
@@ -90,6 +102,27 @@ export function SideBar() {
       marketingSpanRef.current.textContent = marketingCount
   }
 
+  function isFolderActive(folderName) {
+    switch (folderName) {
+      case 'inbox':
+        return filterBy.status === 'inbox'
+      case 'starred':
+        return filterBy.isStarred === true && filterBy.status === ''
+      case 'sent':
+        return filterBy.status === 'sent'
+      case 'draft':
+        return filterBy.status === 'draft'
+      case 'trash':
+        return filterBy.status === 'trash'
+      default:
+        return false
+    }
+  }
+
+  function isLabelActive(labelName) {
+    return filterBy.labels === labelName
+  }
+
   return (
     <section className='side-bar sidebar'>
       <div className='side-bar-btn-container'>
@@ -105,27 +138,61 @@ export function SideBar() {
 
       <div className='side-bar-folders-container'>
         <ul className='side-bar-folders-list'>
-          <li className='folder folder-inbox active'>
+          <li
+            className={`folder folder-inbox${
+              isFolderActive('inbox') ? ' active' : ''
+            }`}
+            onClick={() => handleFolderClick('inbox')}
+          >
             <Icon name='inbox' />
             <span>Inbox</span>{' '}
             <span className='folder-count' ref={inboxSpanRef}></span>
           </li>
-          <li className='folder folder-starred'>
+          <li
+            className={`folder folder-starred${
+              isFolderActive('starred') ? ' active' : ''
+            }`}
+            onClick={() => {
+              onSetFilter({
+                isStarred: true,
+                status: '',
+                txt: '',
+                isRead: false,
+                labels: '',
+              })
+              navigate('/mail')
+            }}
+          >
             <Icon name='star' />
             <span>Starred</span>{' '}
             <span className='folder-count' ref={starredSpanRef}></span>
           </li>
-          <li className='folder folder-sent'>
+          <li
+            className={`folder folder-sent${
+              isFolderActive('sent') ? ' active' : ''
+            }`}
+            onClick={() => handleFolderClick('sent')}
+          >
             <Icon name='send' />
             <span>Sent</span>{' '}
             <span className='folder-count' ref={sentSpanRef}></span>
           </li>
-          <li className='folder folder-draft'>
+          <li
+            className={`folder folder-draft${
+              isFolderActive('draft') ? ' active' : ''
+            }`}
+            onClick={() => handleFolderClick('draft')}
+          >
             <Icon name='draft' />
             <span>Drafts</span>{' '}
             <span className='folder-count' ref={draftSpanRef}></span>
           </li>
-          <li className='folder folder-trash'>
+          <li
+            className={`folder folder-trash${
+              isFolderActive('trash') ? ' active' : ''
+            }`}
+            onClick={() => handleFolderClick('trash')}
+          >
             <Icon name='delete' />
             <span>Trash</span>{' '}
             <span className='folder-count' ref={trashSpanRef}></span>
@@ -138,17 +205,59 @@ export function SideBar() {
             <Icon name='add' className='round-hover' />
           </div>
           <ul className='side-bar-labels-list'>
-            <li className='label label-importent'>
+            <li
+              className={`label label-importent${
+                isLabelActive('importent') ? ' active' : ''
+              }`}
+              onClick={() => {
+                onSetFilter({
+                  labels: 'important',
+                  status: '',
+                  txt: '',
+                  isRead: false,
+                  isStarred: '',
+                })
+                navigate('/mail')
+              }}
+            >
               <Icon name='labelImportant' />
               <span>Important</span>{' '}
               <span className='label-count' ref={importantSpanRef}></span>
             </li>
-            <li className='label label-todo'>
+            <li
+              className={`label label-todo${
+                isLabelActive('todo') ? ' active' : ''
+              }`}
+              onClick={() => {
+                onSetFilter({
+                  labels: 'todo',
+                  status: '',
+                  txt: '',
+                  isRead: false,
+                  isStarred: '',
+                })
+                navigate('/mail')
+              }}
+            >
               <Icon name='label' className='label-yellow' />
               <span>Todo</span>{' '}
               <span className='label-count' ref={todoSpanRef}></span>
             </li>
-            <li className='label label-marketing'>
+            <li
+              className={`label label-marketing${
+                isLabelActive('marketing') ? ' active' : ''
+              }`}
+              onClick={() => {
+                onSetFilter({
+                  labels: 'marketing',
+                  status: '',
+                  txt: '',
+                  isRead: false,
+                  isStarred: '',
+                })
+                navigate('/mail')
+              }}
+            >
               <Icon name='label' className='label-red' />
               <span>Marketing</span>{' '}
               <span className='label-count' ref={marketingSpanRef}></span>

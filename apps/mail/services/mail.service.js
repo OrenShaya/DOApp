@@ -26,6 +26,7 @@ export const mailService = {
 
   toggleIsRead,
   toggleIsStarred,
+  formatTimeDiff,
 }
 _createDemoMails()
 
@@ -42,6 +43,14 @@ function getUser() {
 /////////////////////////////////////// CRUDL//////////////////////////////////////////
 function query(filterBy = {}) {
   return storageService.query(MAIL_KEY).then((mails) => {
+    mails = mails.map((mail) => {
+      if (mail.removedAt) mail.status = 'trash'
+      else if (mail.sentAt) mail.status = 'sent'
+      else if (mail.from.email === loggedinUser.email) mail.status = 'draft'
+      else mail.status = 'inbox'
+      return mail
+    })
+
     if (filterBy.status) {
       const regExp = new RegExp(filterBy.status, 'i')
       mails = mails.filter((mail) => regExp.test(mail.status))
@@ -62,11 +71,12 @@ function query(filterBy = {}) {
       mails = mails.filter((mail) => mail.isStarred === true)
     }
 
-    if (filterBy.lables) {
-      const regExp = new RegExp(filterBy.lables, 'i')
+    if (filterBy.labels) {
+      const regExp = new RegExp(filterBy.labels, 'i')
       mails = mails.filter((mail) => {
-        if (mail.lables.length === 1) return regExp.test(mail.lables)
-        return mail.lables.some((label) => regExp.test(label))
+        if (mail.labels && mail.labels.length === 1)
+          return regExp.test(mail.labels)
+        return mail.labels.some((label) => regExp.test(label))
       })
     }
 
@@ -75,7 +85,7 @@ function query(filterBy = {}) {
 }
 
 function getDefaultFilter() {
-  return { status: '', txt: '', isRead: '', isStarred: '', lables: '' }
+  return { status: 'inbox', txt: '', isRead: '', isStarred: '', labels: '' }
 }
 
 export function getFilterFromSearchParams(searchParams) {
@@ -83,13 +93,13 @@ export function getFilterFromSearchParams(searchParams) {
   const txt = searchParams.get('txt') || ''
   const isRead = searchParams.get('isRead') || ''
   const isStarred = searchParams.get('isStarred') || ''
-  const lables = searchParams.get('lables') || ''
+  const labels = searchParams.get('labels') || ''
   return {
     status,
     txt,
     isRead,
     isStarred,
-    lables,
+    labels,
   }
 }
 
@@ -128,7 +138,26 @@ function save(mail) {
   if (mail.id) {
     return storageService.put(MAIL_KEY, mail)
   } else {
-    const newMail = _createMail(mail.subject, mail.body)
+    const {
+      subject,
+      body,
+      to,
+      isRead,
+      isStarred,
+      sentAt,
+      removedAt,
+      updatedAt,
+    } = mail
+    const newMail = _createMail(
+      subject,
+      body,
+      to,
+      isRead,
+      isStarred,
+      sentAt,
+      removedAt,
+      updatedAt
+    )
     return storageService.post(MAIL_KEY, newMail)
   }
 }
@@ -193,22 +222,40 @@ function _createDemoMails() {
 //   }
 // }
 
-function _createMail(subject, body) {
-  const mail = getEmptyMail(subject, body)
-  if (!mail.id) mail.id = makeId(10)
+function _createMail(
+  subject,
+  body,
+  to,
+  isRead,
+  isStarred,
+  sentAt,
+  removedAt,
+  updatedAt
+) {
+  const mail = getEmptyMail(
+    subject,
+    body,
+    to,
+    isRead,
+    isStarred,
+    sentAt,
+    removedAt,
+    updatedAt
+  )
+  if (!mail.id) mail.id = _makeId(10)
   return mail
 }
 
 export function getEmptyMail(
   subject = '',
-  updatedAt = null,
   body = '',
+  to = '',
   isRead = false,
   isStarred = false,
   sentAt = null,
   removedAt = null,
-  from = getUser(),
-  to = ''
+  updatedAt = null,
+  fromCreate = null
 ) {
   const mail = {
     subject,
@@ -219,7 +266,8 @@ export function getEmptyMail(
     isStarred,
     sentAt,
     removedAt,
-    from,
+    from: fromCreate || getUser(),
+    labels: [],
     to,
   }
   return mail
@@ -242,4 +290,35 @@ export function getTruthyValues(obj) {
     }
   }
   return newObj
+}
+
+function _makeId(length = 6) {
+  var txt = ''
+  var possible =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
+  for (var i = 0; i < length; i++) {
+    txt += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+
+  return txt
+}
+
+export function formatTimeDiff(date) {
+  const now = new Date()
+  const diffInMs = now - new Date(date)
+  const diffInMinutes = Math.floor(diffInMs / (1000 * 60))
+  const diffInHours = Math.floor(diffInMinutes / 60)
+  const diffInDays = Math.floor(diffInHours / 24)
+  const dateThan = new Date(date).toLocaleDateString()
+
+  if (diffInMinutes < 60) {
+    return `${diffInMinutes} minutes ago`
+  } else if (diffInHours < 24) {
+    return `${diffInHours} hours ago`
+  } else if (diffInDays < 7) {
+    return `(${dateThan}) ${diffInDays} days ago`
+  } else {
+    return dateThan
+  }
 }

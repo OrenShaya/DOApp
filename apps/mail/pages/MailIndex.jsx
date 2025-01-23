@@ -11,7 +11,7 @@ const { useState, useEffect, Fragment } = React
 const { Link, useSearchParams, Outlet } = ReactRouterDOM
 const { useLocation } = ReactRouter
 
-// import { MailFilter } from '../cmps/MailFilter.jsx'
+import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
 import { MailDetails } from './MailDetails.jsx'
@@ -40,8 +40,6 @@ export function MailIndex() {
   }, [filterBy])
 
   function loadMails() {
-    console.log('loadMails() activated')
-
     return mailService
       .query(filterBy)
       .then(setMails)
@@ -95,48 +93,42 @@ export function MailIndex() {
       })
   }
 
-  // function handleSetFilter(filterByToEdit) {
-  //   setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterByToEdit }))
-  // }
+  function handleSetFilter(filterByToEdit) {
+    setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterByToEdit }))
+  }
 
   function handleSetSelectMailId(mailId) {
     setSelectedMailId(mailId)
   }
 
   if (!mails) return <div>Loading...</div>
-  const { status, txt, isRead, isStarred, lables } = filterBy
+  const { status, txt, isRead, isStarred, labels } = filterBy
   return (
     <section className='mail-index mail-page-layout'>
+      <div className='main-filter-container'>
+        <MailFilter
+          handleSetFilter={handleSetFilter}
+          filterBy={{ status, txt, isRead, isStarred, labels }}
+        />
+      </div>
       <div className='mail-index-container'>
-        {/* <MailFilter
-            handleSetFilter={handleSetFilter}
-            filterBy={{ status, txt, isRead, isStarred, lables }}
-            
-          />*/}
-        {selectedMailId ? (
-          <MailDetails
-            onBack={() => handleSetSelectMailId(null)}
-            mailId={selectedMailId}
-          />
-        ) : (
-          <Fragment>
-            {!!mails.length && (
-              <MailList
-                onRemoveMail={onRemoveMail}
-                mails={mails}
-                onToggleStarredMail={onToggleStarredMail}
-                onToggleReadMail={onToggleReadMail}
-              />
-            )}
-          </Fragment>
-        )}
+        <Fragment>
+          {!!mails.length && (
+            <MailList
+              onRemoveMail={onRemoveMail}
+              mails={mails}
+              onToggleStarredMail={onToggleStarredMail}
+              onToggleReadMail={onToggleReadMail}
+            />
+          )}
+        </Fragment>
       </div>
       {location.pathname.includes('/mail/compose') && (
         <div className='outlet-container-compose'>
           <Outlet />
         </div>
       )}
-      <SideBar />
+      <SideBar onSetFilter={handleSetFilter} filterBy={filterBy} />
     </section>
   )
 }
