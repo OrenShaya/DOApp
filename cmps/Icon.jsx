@@ -41,7 +41,13 @@ const fileNames = {
   print: 'print_000000_FILL0_wght400.svg',
 }
 
-function Icon({ name, className = '', onClick, ...props }) {
+function Icon({
+  name,
+  className = '',
+  onClick = () => {},
+  dataLabel = '',
+  ...props
+}) {
   const fileName = fileNames[name]
   if (!fileName) {
     console.warn(`Icon: name "${name}" does not exist in fileNames mapping`)
@@ -51,13 +57,14 @@ function Icon({ name, className = '', onClick, ...props }) {
   const svgPath = `../assets/icons/${fileName}`
 
   return (
-    <img
-      src={svgPath}
-      alt={name}
-      className={`icon-style ${className}`}
+    <div
+      className='icon-label'
       onClick={onClick}
+      data-label={dataLabel}
       {...props}
-    />
+    >
+      <img src={svgPath} alt={name} className={`icon-style ${className}`} />
+    </div>
   )
 }
 

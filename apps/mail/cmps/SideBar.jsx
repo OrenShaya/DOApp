@@ -174,7 +174,7 @@ export function SideBar({ filterBy, onSetFilter }) {
           className='btn btn-compose'
           onClick={() => navigate(`/mail/compose/`)}
         >
-          <Icon name='edit' />
+          <Icon name='edit' className='large' />
           Compose
         </button>
       </div>
@@ -187,7 +187,7 @@ export function SideBar({ filterBy, onSetFilter }) {
             }`}
             onClick={() => handleFolderClick('inbox')}
           >
-            <Icon name='inbox' />
+            <Icon name='inbox' dataLabel={'inbox'} />
             <span>Inbox</span>{' '}
             <span className='folder-count' ref={inboxSpanRef}></span>
           </li>
@@ -199,7 +199,7 @@ export function SideBar({ filterBy, onSetFilter }) {
               handleStarredClick()
             }}
           >
-            <Icon name='star' />
+            <Icon name='star' dataLabel={'starred'} />
             <span>Starred</span>{' '}
             <span className='folder-count' ref={starredSpanRef}></span>
           </li>
@@ -209,7 +209,7 @@ export function SideBar({ filterBy, onSetFilter }) {
             }`}
             onClick={() => handleFolderClick('sent')}
           >
-            <Icon name='send' />
+            <Icon name='send' dataLabel={'sent'} />
             <span>Sent</span>{' '}
             <span className='folder-count' ref={sentSpanRef}></span>
           </li>
@@ -219,7 +219,7 @@ export function SideBar({ filterBy, onSetFilter }) {
             }`}
             onClick={() => handleFolderClick('draft')}
           >
-            <Icon name='draft' />
+            <Icon name='draft' dataLabel={'draft'} />
             <span>Drafts</span>{' '}
             <span className='folder-count' ref={draftSpanRef}></span>
           </li>
@@ -229,7 +229,7 @@ export function SideBar({ filterBy, onSetFilter }) {
             }`}
             onClick={() => handleFolderClick('trash')}
           >
-            <Icon name='delete' />
+            <Icon name='delete' dataLabel={'delete'} />
             <span>Trash</span>{' '}
             <span className='folder-count' ref={trashSpanRef}></span>
           </li>
@@ -238,7 +238,7 @@ export function SideBar({ filterBy, onSetFilter }) {
         <div className='side-bar-labels-container'>
           <div className='side-bar-labels-header'>
             <span>Labels</span>
-            <Icon name='add' className='round-hover' />
+            <Icon name='add' className='round-hover' dataLabel={'add label'} />
           </div>
           <ul className='side-bar-labels-list'>
             <li
@@ -249,7 +249,7 @@ export function SideBar({ filterBy, onSetFilter }) {
                 handleLabelClick('importent')
               }}
             >
-              <Icon name='labelImportant' />
+              <Icon name='labelImportant' dataLabel={'label important'} />
               <span>Important</span>{' '}
               <span className='label-count' ref={importantSpanRef}></span>
             </li>
@@ -261,7 +261,11 @@ export function SideBar({ filterBy, onSetFilter }) {
                 handleLabelClick('todo')
               }}
             >
-              <Icon name='label' className='label-yellow' />
+              <Icon
+                name='label'
+                className='label-yellow'
+                dataLabel={'label todo'}
+              />
               <span>Todo</span>{' '}
               <span className='label-count' ref={todoSpanRef}></span>
             </li>
@@ -273,7 +277,11 @@ export function SideBar({ filterBy, onSetFilter }) {
                 handleLabelClick('marketing')
               }}
             >
-              <Icon name='label' className='label-red' />
+              <Icon
+                name='label'
+                className='label-red'
+                dataLabel={'label marketing'}
+              />
               <span>Marketing</span>{' '}
               <span className='label-count' ref={marketingSpanRef}></span>
             </li>

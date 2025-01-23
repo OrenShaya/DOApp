@@ -50,7 +50,9 @@ export function MailFilter({ filterBy, handleSetFilter }) {
       {/* <h2 className='filter-header'>Filter Our Mails</h2> */}
       <form className='mails-filter' onSubmit={onSubmit}>
         <div className='filter-section'>
-          <label htmlFor='txt'>{<Icon name='search' />}</label>
+          <label htmlFor='txt'>
+            {<Icon name='search' dataLabel={'search'} />}
+          </label>
           <input
             id='txt'
             name='txt'

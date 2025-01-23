@@ -5,7 +5,7 @@
   height: 1.2rem;
   display: inline-block;
 
-  transition: fill 0.3s, transform 0.3s;
+  transition: transform 0.3s;
 }
 
 .icon-style:hover {
@@ -38,29 +38,46 @@
 
   &:hover {
     background-color: #eaebef;
-    box-shadow: 0 0 0px 12px #eaebef;
+    box-shadow: 0 0 0px 10px #eaebef;
   }
 }
 
 .icon-label {
   position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-label::before {
   content: attr(data-label);
   position: absolute;
-  top: 0;
+  top: 110%;
   left: 50%;
-  translate: -50% -50%;
-  background-color: transparent;
-  color: black;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #f1f1f1;
   border: 1px solid lightgray;
-  padding: 0.5em 0.2em;
-  border-radius: 6.25em;
-  text-transform: uppercase;
-  display: none;
+  padding: 0.2em 0.4em;
+  border-radius: 0.5em;
+  text-transform: capitalize;
+  pointer-events: none;
+  font-size: 0.6rem;
+  z-index: 20;
+  opacity: 0;
+
+  transition: opacity 0.2s ease, transform 50ms ease-in-out;
 }
 
-.icon-label:hover .icon-label::before {
-  display: block;
+.icon-label:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(5px);
+}
+
+li.folder:hover .icon-label::before,
+li.label:hover .icon-label::before {
+  opacity: 1;
+  transform: translateX(150px) translateY(-100%);
 }

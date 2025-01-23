@@ -147,7 +147,7 @@ export function MailCompose() {
             <span>{mailId ? 'Mail Edit' : 'New Message'}</span>
           </div>
           <div className='compose-header-actions-btns'>
-            <Icon name='close' onClick={onDraftMail} />
+            <Icon name='close' onClick={onDraftMail} dataLabel={'close'} />
           </div>
         </div>
 

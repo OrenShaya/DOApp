@@ -33,6 +33,7 @@ export function MailList({
               <Icon
                 name='delete'
                 className='round-hover'
+                dataLabel={'delete'}
                 onClick={(event) => {
                   event.stopPropagation()
                   onRemoveMail(mail.id)
@@ -40,6 +41,7 @@ export function MailList({
               />
               <Icon
                 name='markAsUnread'
+                dataLabel={'mark unread'}
                 className='round-hover'
                 onClick={(event) => {
                   event.stopPropagation()
@@ -49,6 +51,7 @@ export function MailList({
               {mail.removedAt && (
                 <Icon
                   name='forwardToInbox'
+                  dataLabel={'restore'}
                   className='round-hover'
                   onClick={() => onRestoreMail(mail.id)}
                 />

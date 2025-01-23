@@ -65,6 +65,7 @@ export function MailPreview({
                 onClick={() => {
                   onToggleStarredMail(id)
                 }}
+                dataLabel={'not starred'}
               />
             ) : (
               <Icon
@@ -72,11 +73,12 @@ export function MailPreview({
                 onClick={() => {
                   onToggleStarredMail(id)
                 }}
+                dataLabel={'starred'}
               />
             )}
           </span>
         </div>
-        {removedAt && <Icon name='deleteForever' />}
+        {removedAt && <Icon name='deleteForever' dataLabel={'in trash'} />}
         <div
           className='mail-card-select-sender'
           onClick={(mail) => {

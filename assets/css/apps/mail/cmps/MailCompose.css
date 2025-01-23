@@ -56,6 +56,10 @@ section.mail-compose form {
   margin-inline-start: 1em;
   padding-block: 10px;
 }
+.compose-header .compose-header-action-btns {
+  margin-inline-end: 2em;
+  padding-block: 10px;
+}
 
 .compose-form-section button.btn-send {
   align-items: center;
