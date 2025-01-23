@@ -31,7 +31,6 @@ export function MailIndex() {
   const [filterBy, setFilterBy] = useState(
     mailService.getFilterFromSearchParams(searchParams)
   )
-  const [selectedMailId, setSelectedMailId] = useState(null)
 
   useEffect(() => {
     setSearchParams(getTruthyValues(filterBy))
@@ -53,6 +52,7 @@ export function MailIndex() {
       .remove(mailId)
       .then(() => {
         setMails((mails) => mails.filter((mail) => mail.id !== mailId))
+        //setMails((prevMails) => {prevMails.filter((mail) => mail.id !== mailId || mail.removedAt)})
         showSuccessMsg(`Mail ${mailId} Removed`)
       })
       .catch((err) => {
@@ -97,10 +97,6 @@ export function MailIndex() {
 
   function handleSetFilter(filterByToEdit) {
     setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterByToEdit }))
-  }
-
-  function handleSetSelectMailId(mailId) {
-    setSelectedMailId(mailId)
   }
 
   if (!mails) return <div>Loading...</div>
