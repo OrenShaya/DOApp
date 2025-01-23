@@ -1,6 +1,7 @@
 // apps/mail/services/mail.service.js
 import { mailService } from '../services/mail.service.js'
 import Icon from '../../../cmps/Icon.jsx'
+import { SideBar } from '../cmps/SideBar.jsx'
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -47,54 +48,74 @@ export function MailDetails() {
 
   return (
     <section className='mail-details mail-page-layout'>
+      <div className='mail-details-header-row'>
+        <div className='mail-details-actions'>
+          <div className='mail-details-actions-btns'>
+            <Icon
+              name='archive'
+              data-label={'Move to archive'}
+              onClick={() => console.log('Move to archive was pressed')}
+              className='btn-archive round-hover'
+            />
+            <Icon
+              name='delete'
+              data-label={'Delete mail'}
+              onClick={() => console.log('Delete email was pressed')}
+              className='btn-delete round-hover'
+            />
+            <Icon
+              name='markEmailUnread'
+              data-label={'Mark unread'}
+              onClick={() => console.log('Mark unread was pressed')}
+              className='btn-mark-unread round-hover'
+            />
+
+            {' | '}
+            <Icon
+              name='moreVert'
+              data-label={'More options'}
+              onClick={() => console.log('Dot was pressed')}
+              className='btn-more-vertical round-hover'
+            />
+          </div>
+
+          <div className='mail-details-actions-nav'>
+            <Icon
+              name='chevronLeft'
+              className='btn-arrow-nav round-hover'
+              data-label={'Navigate previous mail'}
+              onClick={() => {
+                navigate(`/mail/${mail.prevMailId}`)
+              }}
+            />
+
+            <Icon
+              name='chevronRight'
+              className='btn-arrow-nav round-hover'
+              data-label={'Navigate next mail'}
+              onClick={() => {
+                navigate(`/mail/${mail.nextMailId}`)
+              }}
+            />
+          </div>
+        </div>
+      </div>
       <div className='mail-details-grid'>
-        <div className='mail-details-row'>
-          <div className='mail-details-actions'>
-            <div className='mail-details-actions-btns'>
-              <button className='btn btn-back' onClick={onBack}>
-                ⬅
-              </button>
-              <button
-                className='btn btn-delete'
-                onClick={() => console.log('Delete email was pressed')}
-              >
-                Delete mail
-              </button>
-              <button
-                className='btn btn-unread'
-                onClick={() => console.log('Mark unread was pressed')}
-              >
-                Mark unread
-              </button>
-            </div>
-            <div className='mail-details-actions-nav'>
-              <button
-                type='button'
-                className='btn btn-arrow-nav'
-                onClick={() => console.log('> was pressed')}
-              >
-                <Icon
-                  name='chevronLeft'
-                  data-label={'Navigate previous mail'}
-                  onClick={() => {
-                    navigate(`/mail/${mail.prevMailId}`)
-                  }}
-                />
-              </button>
-              <button
-                type='button'
-                className='btn btn-arrow-nav'
-                onClick={() => console.log('< was pressed')}
-              >
-                <Icon
-                  name='chevronRight'
-                  data-label={'Navigate next mail'}
-                  onClick={() => {
-                    navigate(`/mail/${mail.nextMailId}`)
-                  }}
-                />
-              </button>
-            </div>
+        <div className='side-action-items aside'>
+          <div className='back-btn-container '>
+            <Icon
+              name='arrowLeft'
+              data-label={'Back to index'}
+              onClick={onBack}
+              className='btn-back round-hover'
+            />
+          </div>
+          <div className='user-img-container '>
+            <Icon
+              name='accountCircle'
+              data-label={'Profile image default'}
+              className='larger'
+            />
           </div>
         </div>
 
@@ -109,13 +130,12 @@ export function MailDetails() {
               ))}
           </div>
           <div className='mail-detail-print'>
-            <button
-              type='button'
-              className='btn btn-print'
+            <Icon
+              name='print'
+              data-label={'Print mail'}
               onClick={() => console.log('print was pressed')}
-            >
-              Print
-            </button>
+              className='btn-print cursor-pointer'
+            />
           </div>
         </div>
 
@@ -130,13 +150,13 @@ export function MailDetails() {
               {!isStarred ? <Icon name='star' /> : <Icon name='starYellow' />}
             </span>
           </div>
-          <button
-            type='button'
-            className='btn btn-respond'
+
+          <Icon
+            name='reply'
+            className='btn-reply cursor-pointer'
+            data-label={'Reply to mail'}
             onClick={() => console.log('Respond was pressed')}
-          >
-            Respond
-          </button>
+          />
         </div>
 
         <div className='mail-details-row'>
@@ -144,14 +164,20 @@ export function MailDetails() {
             <pre>{body}</pre>
           </div>
         </div>
+
         <div className='mail-details-row'>
           <div className='mail-details-footer'>
             <button
               type='button'
-              className='btn btn-respond-foo'
+              className='btn btn-reply-foo'
               onClick={() => console.log('Respond was pressed')}
             >
-              Respond
+              <Icon
+                name='reply'
+                className='btn-reply'
+                data-label={'Reply to mail'}
+              />
+              Reply
             </button>
             <button
               type='button'
@@ -159,10 +185,16 @@ export function MailDetails() {
               onClick={() => console.log('Forward was pressed')}
             >
               Forward
+              <Icon
+                name='forward'
+                className='btn-forward'
+                data-label={'Forward mail'}
+              />
             </button>
           </div>
         </div>
       </div>
+      <SideBar />
     </section>
   )
 }

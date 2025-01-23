@@ -1,0 +1,54 @@
+section.mail-details {
+  background-color: #ffffff;
+  position: relative;
+  min-height: 91vh;
+}
+
+section.mail-details .mail-details-header-row {
+  grid-row: 1;
+  grid-column: 2;
+}
+section.mail-details .mail-details-header-row .mail-details-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mail-details-grid {
+  display: grid;
+  grid-template-rows: 48px 76px 60px 1fr 72px;
+  grid-template-columns: 68px 1fr;
+}
+
+.mail-details-grid > .aside {
+  grid-column: 1;
+  grid-row: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+}
+
+.mail-details-grid > *:not(.aside) {
+  grid-column: 2;
+}
+
+.mail-details-actions-btns,
+.mail-details-actions-nav {
+  gap: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 2em;
+  margin-block: 1em;
+}
+
+.mail-details-row .mail-details-body pre {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+}
