@@ -30,3 +30,9 @@ body {
     gap: 1em;
     justify-content: center;
 }
+
+.note-type-buttons button {
+    background-color: #00000000;
+    border: none;
+    color: var(--notes-color-dark);
+}

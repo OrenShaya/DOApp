@@ -52,8 +52,10 @@ export function NoteEdit() {
           .finally(() => navigate('/note'))
     }
 
-    function onChangeNoteType({ target}) {
-        setNoteType(target.value)
+    function onChangeNoteType(ev) {
+        ev.stopPropagation()
+        console.log(ev.target.value)       
+        setNoteType(ev.target.value)
     }
 
     return (
@@ -65,10 +67,16 @@ export function NoteEdit() {
                 <button>Save</button>
             </form>
             <div className="note-type-buttons">
-                <button onClick={onChangeNoteType} value={'text'}>text note</button>
-                <button onClick={onChangeNoteType} value={'todo'}>to-do note</button>
-                <button onClick={onChangeNoteType} value={'img'}>image note</button>
-                <button onClick={onChangeNoteType} value={'video'}>video</button>
+                <button onClick={onChangeNoteType}>
+                    <img onClick={(ev) => {
+                        ev.target.value = 'text'
+                        onChangeNoteType(ev, 'text')
+                    }} 
+                    src="../../../assets/img/text icon.svg"></img>
+                </button>
+                <button onClick={(ev) => onChangeNoteType(ev, 'todo')}>To-Do Note</button>
+                <button onClick={(ev) => onChangeNoteType(ev, 'img')}>Image Note</button>
+                <button onClick={(ev) => onChangeNoteType(ev, 'video')}>Video</button>
             </div>
         </section>
     )
