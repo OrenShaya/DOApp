@@ -8,6 +8,7 @@ export function NoteEdit() {
 
     const navigate = useNavigate()
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
+    const [noteType, setNoteType] = useState('todo')
 
     function handleChange({ target }) {
         const field = target.name
@@ -49,16 +50,26 @@ export function NoteEdit() {
             showErrorMsg('Cannot save note')
           })
           .finally(() => navigate('/note'))
-      }
+    }
+
+    function onChangeNoteType({ target}) {
+        setNoteType(target.value)
+    }
 
     return (
         <section className="edit-note">
             <h2>Edit Note</h2>
             <form className="note-form" onSubmit={onSaveNote}>
                 <input onChange={handleChange} name="title" className="note-title" type="text" placeholder="Title" />
-                <textarea onChange={handleChange} name="txt" className="note-txt" placeholder="Note"></textarea>
+                {noteType === 'text' && <textarea onChange={handleChange} name="txt" className="note-txt" placeholder="Note"></textarea>}
                 <button>Save</button>
             </form>
+            <div className="note-type-buttons">
+                <button onClick={onChangeNoteType} value={'text'}>text note</button>
+                <button onClick={onChangeNoteType} value={'todo'}>to-do note</button>
+                <button onClick={onChangeNoteType} value={'img'}>image note</button>
+                <button onClick={onChangeNoteType} value={'video'}>video</button>
+            </div>
         </section>
     )
 }

@@ -24,3 +24,9 @@ body {
     padding: 10px 10px;
     margin: 0;
 } 
+
+.note-type-buttons {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
