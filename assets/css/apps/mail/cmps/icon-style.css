@@ -19,6 +19,17 @@
   background-color: yellow;
 }
 
+.icon-style.cursor-pointer {
+  cursor: pointer;
+}
+
+.icon-style.larger {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
 .icon-style.round-hover {
   border: none;
   border-radius: 50%;
