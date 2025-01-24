@@ -1,21 +1,27 @@
 import { noteService } from "../services/notes.service.js"
 const { useEffect, useState } = React
-const { useParams } = ReactRouterDOM
+const { useParams, useNavigate } = ReactRouterDOM
 
 export function NoteDetail() {
     const { noteId } = useParams()
     const [ note, setNote ] = useState(null)
+    const navigate = useNavigate()
 
+    
     useEffect(() => {
         noteService.get(noteId).then(fetchedNote => {
             setNote(fetchedNote)
         })
     }, [])
-
+    
     function formatDate(date) {
         const newDate = new Date(date)
         const options = { year: 'numeric', month: 'short', day: 'numeric' }
         return newDate.toLocaleDateString('en-IL', options)
+    }
+    
+    function onCloseClick() {
+        navigate('/note')        
     }
 
 
@@ -26,6 +32,7 @@ export function NoteDetail() {
                 <pre className="detail-note-txt">{note.info.txt}</pre>
                 <p className="updated-date">Edited at {formatDate(note.updatedAt)}</p>
             </section>}
+            <button className="note-close-button" onClick={onCloseClick}>close</button>
         </section>
     )
 }

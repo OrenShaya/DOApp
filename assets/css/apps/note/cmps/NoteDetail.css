@@ -9,3 +9,19 @@
 .detail-note-txt {
     padding: 1em;
 }
+
+.note-close-button {
+    border: none;
+    font-size: inherit;
+    margin-top: 2em;
+    padding: 0.7em;
+    background-color: rgba(0, 0, 0, 0);
+    color: inherit;
+}
+
+.note-close-button:hover {
+    cursor: pointer;
+    filter: brightness(150%);
+    border-radius: 5px;
+    background-color: rgba(105, 105, 105, 0.2);
+}
