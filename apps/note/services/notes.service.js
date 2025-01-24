@@ -19,7 +19,7 @@ function query(filterBy) {
       if (filterBy) {
         noop
       }      
-      if (!notes.length) {
+      if (!notes.length) {  
         utilService.saveToStorage(NOTES_KEY, noteDemoData.notes)
         return noteDemoData.notes
       }      

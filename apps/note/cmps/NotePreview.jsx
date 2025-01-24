@@ -20,12 +20,13 @@ export function NotePreview({ note, changeCmp }) {
     }
 
     useEffect(() => {}, [isColorPickerVisible])
-    useEffect(() => {}, [noteStyle])
+    useEffect(() => {
+    }, [noteStyle])
 
     function changeNoteColor(color) {
-        setNoteStyle({'backgroundColor': color})
-        note.backgroundColor = color
+        note.style = {'backgroundColor': color}
         noteService.save(note)
+        setNoteStyle(note.style)
     }
 
     function toggleColorPicker(ev) {
