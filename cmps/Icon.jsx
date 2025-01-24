@@ -31,6 +31,7 @@ const fileNames = {
   markEmailUnread: 'mark_email_unread_000000_FILL0_wght400.svg',
   moreVert: 'more_vert_000000_FILL0_wght400.svg',
   moveToInbox: 'move_to_inbox_000000_FILL0_wght400.svg',
+  print: 'print_000000_FILL0_wght400.svg',
   refresh: 'refresh_000000_FILL0_wght400.svg',
   reply: 'reply_000000_FILL0_wght400.svg',
   send: 'send_000000_FILL0_wght400.svg',
@@ -38,7 +39,7 @@ const fileNames = {
   star: 'star_000000_FILL0_wght400.svg',
   starYellow: 'star_F4B400_FILL1_wght400.svg',
   setting: 'settings_000000_FILL0_wght400.svg',
-  print: 'print_000000_FILL0_wght400.svg',
+  tune: 'tune_000000_FILL0_wght400.svg',
 }
 
 function Icon({
