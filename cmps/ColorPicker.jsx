@@ -1,7 +1,7 @@
 
 const { useState, useEffect } = React
 
-export function ColorPicker() {
+export function ColorPicker({ changeNoteColorFunc }) {
     
     const colors = {
         none: '',
@@ -24,8 +24,10 @@ export function ColorPicker() {
 
     }, [selectedColor])
 
-    function handleColorClick(color) {
+    function handleColorClick(ev, color) {
+        ev.stopPropagation()
         setSelectedColor(color)
+        changeNoteColorFunc(color)
     }
 
     return (
@@ -35,7 +37,7 @@ export function ColorPicker() {
                     key={colorName}
                     className={`color ${(selectedColor === colors[colorName]) ? 'selected' : ''} ${(colorName === 'none') ? 'none' : ''}`}
                     style={{backgroundColor: colors[colorName]}}
-                    onClick={() => handleColorClick(colors[colorName])}
+                    onClick={(ev) => handleColorClick(ev, colors[colorName])}
                     title={colorName}>
                 </div>
             ))}

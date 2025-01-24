@@ -20,6 +20,11 @@ export function NotePreview({ note, changeCmp }) {
     }
 
     useEffect(() => {}, [isColorPickerVisible])
+    useEffect(() => {}, [noteStyle])
+
+    function changeNoteColor(color) {
+        setNoteStyle({'backgroundColor': color})
+    }
 
     function toggleColorPicker(ev) {
         ev.stopPropagation()
@@ -40,7 +45,7 @@ export function NotePreview({ note, changeCmp }) {
                 <img onClick={toggleColorPicker} className="color-picker-button hover-buttons" src="../../../assets/img/palette.svg"/>
                 <img onClick={onDeleteNote} className="delete-icon hover-buttons" src="../../../assets/img/delete.svg"/>
             </div>
-            <div className="color-picker"> {isColorPickerVisible && <ColorPicker />} </div>
+            {isColorPickerVisible && <div className="color-picker"> <ColorPicker changeNoteColorFunc={changeNoteColor} /> </div>} 
         </section>
     )
 }
