@@ -1,7 +1,153 @@
 /* search-filter-page-header */
 
-section.mail-filter form {
+section.mail-filter,
+.main-filter-container {
+  background-color: #f6f8fc;
+  border: none;
+  padding: 0px;
+  height: auto;
+  width: 100%;
+
+  margin: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  position: relative;
 }
+section.mail-filter form {
+  background-color: #eaf1fb;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 720px;
+  min-width: 324px;
+  border-radius: 1em;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.\.btns-container {
+  align-self: flex-end;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  background-color: rgba(0, 0, 0, 0);
+}
+/* section.mail-filter .filter-container-menu {
+  display: grid;
+  grid-template-rows: 1.5em 1fr;
+  width: 100%;
+  
+  transition: grid-template-rows 0.8s ease-in-out;
+  align-items: end;
+  align-content: end;
+  min-width: 0vw;
+  } */
+
+.filter-section-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 3em;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 1.6875em;
+  font-weight: 400;
+  padding: 0 1em;
+  text-wrap-mode: nowrap;
+
+  &:active,
+  &:focus,
+  &:focus-within {
+    border-radius: 1em;
+    background-color: rgb(241, 243, 244);
+    color: #1f1f1f;
+    box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+  }
+}
+.filter-section-header-input {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 2.875;
+
+  font-weight: 400;
+  text-wrap-mode: nowrap;
+}
+
+.filter-section-header label {
+  z-index: 30;
+  padding: 0 0.3125em;
+  height: 2.875;
+  width: 3.5em;
+  outline-style: none;
+  margin: 0;
+  white-space-collapse: collapse;
+  border-radius: 50%;
+}
+.filter-section-header .search-options-menu {
+  padding: 0.375em;
+  height: 1.5em;
+  width: 1.5em;
+  outline-style: none;
+  margin-block-end: 10px;
+  white-space-collapse: collapse;
+  border-radius: 50%;
+}
+
+.filter-section-header input {
+  height: 3em;
+  margin: 0 6em 0 2.75em;
+  border: none;
+  outline: none;
+  padding: 0px;
+  margin-block-end: 2px;
+  height: auto;
+  width: 100%;
+  background-color: transparent;
+  appearance: auto;
+  color: rgb(0, 0, 0);
+  cursor: text;
+
+  text-align: start;
+  font-size: 1rem;
+
+  overflow-x: auto;
+
+  &:focus {
+    border: none;
+  }
+}
+
+/* .filter-container-menu.open {
+  grid-template-rows: 1.5em 1fr;
+  overflow: auto;
+  z-index: 10;
+  max-width: 100vw;
+}
+
+.hidden-overflow {
+  overflow: hidden;
+} */

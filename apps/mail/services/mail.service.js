@@ -59,9 +59,38 @@ function query(filterBy = {}) {
 
     if (filterBy.txt) {
       const regExp = new RegExp(filterBy.txt, 'i')
-      mails = mails.filter(
-        (mail) => regExp.test(mail.subject) || regExp.test(mail.body)
-      )
+      const searchIn = filterBy.searchIn || 'all'
+
+      switch (searchIn) {
+        case 'subject':
+          mails = mails.filter((mail) => regExp.test(mail.subject))
+          break
+
+        case 'body':
+          mails = mails.filter((mail) => regExp.test(mail.body))
+          break
+        case 'nobody':
+          mails = mails.filter((mail) => !regExp.test(mail.body))
+          break
+
+        case 'from':
+          mails = mails.filter((mail) => regExp.test(mail.from.fullname))
+          break
+
+        case 'to':
+          mails = mails.filter((mail) => regExp.test(mail.to.fullname))
+          break
+        case 'all':
+        default:
+          mails = mails.filter(
+            (mail) =>
+              regExp.test(mail.subject) ||
+              regExp.test(mail.body) ||
+              regExp.test(mail.from.fullname) ||
+              regExp.test(mail.to.fullname)
+          )
+          break
+      }
     }
 
     if (filterBy.isRead) {
@@ -86,7 +115,14 @@ function query(filterBy = {}) {
 }
 
 function getDefaultFilter() {
-  return { status: 'inbox', txt: '', isRead: '', isStarred: '', labels: '' }
+  return {
+    status: 'inbox',
+    txt: '',
+    isRead: '',
+    isStarred: '',
+    labels: '',
+    searchIn: 'all',
+  }
 }
 
 export function getFilterFromSearchParams(searchParams) {
@@ -95,12 +131,14 @@ export function getFilterFromSearchParams(searchParams) {
   const isRead = searchParams.get('isRead') || ''
   const isStarred = searchParams.get('isStarred') || ''
   const labels = searchParams.get('labels') || ''
+  const searchIn = searchParams.get('searchIn') || 'all'
   return {
     status,
     txt,
     isRead,
     isStarred,
     labels,
+    searchIn,
   }
 }
 
