@@ -22,9 +22,9 @@ export function NotePreview({ note, changeCmp }) {
             <h3 className='note-title'>
                 {note.info.title}
             </h3>
-            <pre className='note-txt'>
+            <p className='note-txt'>
                 {note.info.txt}
-            </pre>
+            </p>
             <img onClick={onDeleteNote} className="delete-icon" src="../../../assets/img/delete.svg"/>
         </section>
     )

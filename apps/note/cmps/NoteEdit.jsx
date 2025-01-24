@@ -8,7 +8,7 @@ export function NoteEdit() {
 
     const navigate = useNavigate()
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
-    const [noteType, setNoteType] = useState('todo')
+    const [noteType, setNoteType] = useState('text')
 
     function handleChange({ target }) {
         const field = target.name
@@ -63,7 +63,7 @@ export function NoteEdit() {
             <h2>Edit Note</h2>
             <form className="note-form" onSubmit={onSaveNote}>
                 <input onChange={handleChange} name="title" className="note-title" type="text" placeholder="Title" />
-                {noteType === 'text' && <textarea onChange={handleChange} name="txt" className="note-txt" placeholder="Note"></textarea>}
+                {noteType === 'text' && <textarea onChange={handleChange} name="txt" className="edit-note-txt" placeholder="Note"></textarea>}
                 <button>Save</button>
             </form>
             <div className="note-type-buttons">

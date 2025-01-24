@@ -1,12 +1,20 @@
 .note-preview {
+    break-inside: avoid;
     border: 1px solid var(--notes-color-dark);
     border-radius: 8px;
-    margin: 1em;
-    padding: 1em;
+    white-space: pre-line;
+    padding-right: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.note-preview:first-child {
+    margin-top: 0;
 }
 
 .note-txt {
-    margin: 0.5em;
+    text-align: start;
+    margin-left: 1em;
 }
 
 .delete-icon {

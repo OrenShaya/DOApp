@@ -5,3 +5,7 @@
     color: var(--notes-color-dark);
     background-color: var(--notes-bgc-dark);
 }
+
+.detail-note-txt {
+    padding: 1em;
+}

@@ -23,7 +23,7 @@ export function NoteDetail() {
         <section className="note-detail">
             {note && <section>
                 <h3>{note.info.title}</h3>
-                <pre className="note-txt">{note.info.txt}</pre>
+                <pre className="detail-note-txt">{note.info.txt}</pre>
                 <p className="updated-date">Edited at {formatDate(note.updatedAt)}</p>
             </section>}
         </section>
