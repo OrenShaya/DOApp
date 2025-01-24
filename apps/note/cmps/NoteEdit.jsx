@@ -46,7 +46,6 @@ export function NoteEdit({ incomingNote }) {
         noteService
           .save(newNote)
           .then(() => {
-            console.log(newNote)                     
             showSuccessMsg('Note saved successfuly')
           })
           .catch((err) => {

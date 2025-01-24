@@ -12,6 +12,14 @@
     margin-top: 0;
 }
 
+.note-preview:hover {
+    cursor: pointer;
+}
+
+.note-preview:hover .delete-icon {
+    opacity: 1;
+}
+
 .note-txt {
     text-align: start;
     margin-left: 1em;
@@ -20,4 +28,6 @@
 .delete-icon {
     width:  18px;
     height: 18px;
+    opacity: 0;
+    transition: opacity;
 }
