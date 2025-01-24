@@ -1,9 +1,19 @@
-.note-detail {
-    min-height: calc(100vh - (70px +  0.5em + 2px));
+.note-detail-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
     padding: 3em;
+    min-height: calc(100vh - (70px +  0.5em + 2px));
+}
+
+.note-detail {
     text-align: center;
     color: var(--notes-color-dark);
     background-color: var(--notes-bgc-dark);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 8px;
 }
 
 .detail-note-txt {
@@ -11,12 +21,13 @@
 }
 
 .note-close-button {
+    align-self: center;
     border: none;
     font-size: inherit;
     margin-top: 2em;
     padding: 0.7em;
     background-color: rgba(0, 0, 0, 0);
-    color: inherit;
+    color: var(--notes-color-dark);
 }
 
 .note-close-button:hover {

@@ -1,14 +1,18 @@
 import { noteService } from "../services/notes.service.js"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
-const { useState } = React
+const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
 
-export function NoteEdit() {
+export function NoteEdit({ incomingNote }) {
 
     const navigate = useNavigate()
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('text')
+
+    useEffect(() => {
+        if (incomingNote) setNewNote(incomingNote)
+      }, [])
 
     function handleChange({ target }) {
         const field = target.name
@@ -62,8 +66,21 @@ export function NoteEdit() {
         <section className="edit-note">
             <h2>Edit Note</h2>
             <form className="note-form" onSubmit={onSaveNote}>
-                <input onChange={handleChange} name="title" className="note-title" type="text" placeholder="Title" />
-                {noteType === 'text' && <textarea onChange={handleChange} name="txt" className="edit-note-txt" placeholder="Note"></textarea>}
+                <input 
+                    onChange={handleChange} 
+                    name="title" 
+                    className="note-title" 
+                    type="text" 
+                    placeholder="Title"
+                    value={(newNote) ? newNote.info.title : ''}
+                />
+                {noteType === 'text' && 
+                <textarea onChange={handleChange} 
+                    name="txt" 
+                    className="edit-note-txt" 
+                    placeholder="Note"
+                    value={(newNote) ? newNote.info.txt : ''}>
+                </textarea>}
                 <button>Save</button>
             </form>
             <div className="note-type-buttons">
