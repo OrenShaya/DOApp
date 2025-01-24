@@ -24,6 +24,8 @@ export function NotePreview({ note, changeCmp }) {
 
     function changeNoteColor(color) {
         setNoteStyle({'backgroundColor': color})
+        note.backgroundColor = color
+        noteService.save(note)
     }
 
     function toggleColorPicker(ev) {
