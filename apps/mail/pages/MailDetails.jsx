@@ -2,6 +2,10 @@
 import { mailService } from '../services/mail.service.js'
 import Icon from '../../../cmps/Icon.jsx'
 import { SideBar } from '../cmps/SideBar.jsx'
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -26,6 +30,32 @@ export function MailDetails() {
 
   function onBack() {
     navigate('/mail')
+  }
+
+  function onToggleReadMailDetails(mailId) {
+    mailService
+      .toggleIsRead(mailId)
+      .then((updatedMail) => {
+        setMail(updatedMail)
+        showSuccessMsg(`Mail ${mailId} toggled`)
+      })
+      .catch((err) => {
+        console.error('cannot toggle read mail details:', err)
+        showErrorMsg(`cannot toggle read Mail ${mailId}`)
+      })
+  }
+
+  function onRemoveMailDetails(mailId) {
+    mailService
+      .remove(mailId)
+      .then(() => {
+        onBack()
+        showSuccessMsg(`Mail ${mailId} removed`)
+      })
+      .catch((err) => {
+        console.error('cannot remove mail details:', err)
+        showErrorMsg(`cannot Remove Mail ${mailId}`)
+      })
   }
 
   if (!mail) return <div>Loading...</div>
@@ -54,19 +84,23 @@ export function MailDetails() {
             <Icon
               name='archive'
               dataLabel='move to archive'
-              onClick={() => console.log('Move to archive was pressed')}
+              onClick={() =>
+                console.log(
+                  'Feature Archive was pressed, development in progress'
+                )
+              }
               className='btn-archive round-hover'
             />
             <Icon
               name='delete'
               dataLabel='delete email'
-              onClick={() => console.log('Delete email was pressed')}
+              onClick={() => onRemoveMailDetails(id)}
               className='btn-delete round-hover'
             />
             <Icon
-              name='markEmailUnread'
-              dataLabel='mark unread'
-              onClick={() => console.log('Mark unread was pressed')}
+              name={isRead ? 'markEmailUnread' : 'markEmailread'}
+              dataLabel={`mark ${isRead ? 'unread' : 'read'}`}
+              onClick={() => onToggleReadMailDetails(id)}
               className='btn-mark-unread round-hover'
             />
 
@@ -85,7 +119,7 @@ export function MailDetails() {
               className='btn-arrow-nav round-hover'
               dataLabel={'Navigate previous mail'}
               onClick={() => {
-                navigate(`/mail/${mail.prevMailId}`)
+                navigate(`/mail/${prevMailId}`)
               }}
             />
 
@@ -94,7 +128,7 @@ export function MailDetails() {
               className='btn-arrow-nav round-hover'
               dataLabel={'Navigate next mail'}
               onClick={() => {
-                navigate(`/mail/${mail.nextMailId}`)
+                navigate(`/mail/${nextMailId}`)
               }}
             />
           </div>
@@ -133,7 +167,11 @@ export function MailDetails() {
             <Icon
               name='print'
               dataLabel={'print mail'}
-              onClick={() => console.log('print was pressed')}
+              onClick={() =>
+                console.log(
+                  'Feature Print was pressed, development in progress'
+                )
+              }
               className='btn-print cursor-pointer'
             />
           </div>
@@ -161,7 +199,9 @@ export function MailDetails() {
             name='reply'
             className='btn-reply cursor-pointer'
             dataLabel={'Reply'}
-            onClick={() => console.log('Respond was pressed')}
+            onClick={() =>
+              console.log('Feature Reply was pressed, development in progress')
+            }
           />
         </div>
 
@@ -176,7 +216,11 @@ export function MailDetails() {
             <button
               type='button'
               className='btn btn-reply-foo'
-              onClick={() => console.log('Respond was pressed')}
+              onClick={() =>
+                console.log(
+                  'Feature Reply was pressed, development in progress'
+                )
+              }
             >
               <Icon name='reply' className='btn-reply' dataLabel={'Reply'} />
               Reply
@@ -184,7 +228,11 @@ export function MailDetails() {
             <button
               type='button'
               className='btn btn-forward-foo'
-              onClick={() => console.log('Forward was pressed')}
+              onClick={() =>
+                console.log(
+                  'Feature Forward was pressed, development in progress'
+                )
+              }
             >
               Forward
               <Icon
