@@ -1,0 +1,33 @@
+.color-picker {
+    display: flex;
+}
+
+.color {
+    position: relative;
+    width:   30px ;
+    height:  30px ;
+    margin:  5px ;
+    cursor:  pointer ;
+    border-radius: 50px;
+}
+
+.color.selected {
+    border: 1px solid white;
+}
+
+.color.selected::after {
+    border: 1px solid white;
+    position: absolute;
+    top:   -10px;
+    right: -10px;
+    content: '✓';
+    border-radius: 50%;
+    padding: 0px 3px;
+    font-size: 12px;
+    color: black; 
+    background-color: white;
+}
+
+.none {
+    border: 1px solid grey;
+}

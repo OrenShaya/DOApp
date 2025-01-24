@@ -31,7 +31,7 @@
 @import './apps/mail/cmps/modal.css';
 
 /* Cmps */
-
+@import './cmps/ColorPicker.css';
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
 

@@ -1,11 +1,15 @@
+import { ColorPicker } from "../../../cmps/ColorPicker.jsx"
 import { noteService } from "../services/notes.service.js"
+const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
 
-export function NotePreview({ note }) {
-
+export function NotePreview({ note, changeCmp }) {
+    const [noteStyle, setNoteStyle] = useState((note) ? note.style : {'backgroundColor': ''})
+    const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
     const navigate = useNavigate()
 
     function handleClick(note) {
+        changeCmp('detail')
         navigate(`/note/${note.id}`)
     }
 
@@ -15,16 +19,36 @@ export function NotePreview({ note }) {
         noteService.remove(note.id)
     }
 
+    useEffect(() => {}, [isColorPickerVisible])
+    useEffect(() => {
+    }, [noteStyle])
+
+    function changeNoteColor(color) {
+        note.style = {'backgroundColor': color}
+        noteService.save(note)
+        setNoteStyle(note.style)
+    }
+
+    function toggleColorPicker(ev) {
+        ev.stopPropagation()
+        setIsColorPickerVisible(!isColorPickerVisible)
+    }
+
     return (
         <section className='note-preview'
-        onClick={() => handleClick(note)}>
+        onClick={() => handleClick(note)}
+        style={noteStyle}>
             <h3 className='note-title'>
                 {note.info.title}
             </h3>
-            <pre className='note-txt'>
+            <p className='note-txt'>
                 {note.info.txt}
-            </pre>
-            <img onClick={onDeleteNote} className="delete-icon" src="../../../assets/img/delete.svg"/>
+            </p>
+            <div className="invisable-buttons">
+                <img onClick={toggleColorPicker} className="color-picker-button hover-buttons" src="../../../assets/img/palette.svg"/>
+                <img onClick={onDeleteNote} className="delete-icon hover-buttons" src="../../../assets/img/delete.svg"/>
+            </div>
+            {isColorPickerVisible && <div className="color-picker"> <ColorPicker changeNoteColorFunc={changeNoteColor} /> </div>} 
         </section>
     )
 }
