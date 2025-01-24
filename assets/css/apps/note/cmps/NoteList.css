@@ -1,7 +1,4 @@
 .notes {
-    /* display: flex; */
-    /* flex-wrap: wrap;
-    justify-content: center; */
     columns: 15em;
     gap: 1em;
     padding: 1em;

@@ -16,8 +16,9 @@
     cursor: pointer;
 }
 
-.note-preview:hover .delete-icon {
+.note-preview:hover .hover-buttons {
     opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 .note-txt {
@@ -25,9 +26,26 @@
     margin-left: 1em;
 }
 
-.delete-icon {
+.invisable-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.hover-buttons {
     width:  18px;
     height: 18px;
+    margin-left: 5px;
     opacity: 0;
     transition: opacity;
+}
+
+.color-picker-button {
+    position: relative;
+}
+
+.color-picker {
+    position: relative;
+    background-color: var(--notes-bgc-dark);
+    border-radius: 12px;
+    border: 1px white solid;
 }
