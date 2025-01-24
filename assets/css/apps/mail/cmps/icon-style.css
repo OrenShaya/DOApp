@@ -8,8 +8,11 @@
   transition: transform 0.3s;
 }
 
-.icon-style:hover {
-  transform: scale(1.05);
+.icon-style.scale-up:hover {
+  transform: scale(1.1);
+}
+.icon-style.scale-down:hover {
+  transform: scale(0.9);
 }
 
 .icon-style.label-red {
