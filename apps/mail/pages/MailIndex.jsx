@@ -1,10 +1,10 @@
 // apps/mail/services/mail.service.js
 
 /**
- * [] Gets mails to show from service
- * [] Renders the list
- * [] Renders filter components (both top filter with search)
- * [] Renders side filter for different folders
+ * [V] Gets mails to show from service
+ * [V] Renders the list
+ * [V] Renders filter components (both top filter with search)
+ * [V] Renders side filter for different folders
  */
 
 const { useState, useEffect, Fragment } = React
@@ -52,7 +52,6 @@ export function MailIndex() {
       .remove(mailId)
       .then(() => {
         setMails((mails) => mails.filter((mail) => mail.id !== mailId))
-        //setMails((prevMails) => {prevMails.filter((mail) => mail.id !== mailId || mail.removedAt)})
         showSuccessMsg(`Mail ${mailId} Removed`)
       })
       .catch((err) => {

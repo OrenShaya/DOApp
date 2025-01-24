@@ -1,8 +1,11 @@
 /* mail index  */
 
-section.mail-index {
-  background-color: #ffffff;
+section.mail-index.mail-page-layout {
+  background-color: #f6f8fc;
   position: relative;
+  height: clamp(400px, 92vh, 100vh) !important;
+
+  margin-top: -1px;
 }
 
 section.mail-index .outlet-container-compose {

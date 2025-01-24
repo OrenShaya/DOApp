@@ -1,0 +1,45 @@
+.modal-backdrop-filter {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5px);
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+
+.modal-content-filter {
+  position: absolute;
+  font-size: 0.875rem;
+  top: 100%;
+  width: 70vw;
+  max-width: 720px;
+  height: fit-content;
+  padding: 1.5em;
+  background-color: white;
+  color: rgb(32, 33, 36);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-radius: 0;
+  border: none;
+  justify-items: center;
+  gap: 1em;
+  margin: auto;
+  z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 16px;
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    color: black;
+  }
+
+  p {
+    text-align: center;
+    margin: 15px;
+  }
+}
