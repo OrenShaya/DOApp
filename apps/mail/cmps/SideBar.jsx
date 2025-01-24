@@ -38,6 +38,9 @@ export function SideBar({ filterBy, onSetFilter }) {
 
   useEffect(() => {
     loadReffs(mails)
+    return () => {
+      loadReffs(mails)
+    }
   }, [mails])
 
   function loadReffs(mails) {
@@ -97,6 +100,7 @@ export function SideBar({ filterBy, onSetFilter }) {
       navigate('/mail')
       return
     }
+
     onSetFilter({
       status: statusValue,
       txt: '',

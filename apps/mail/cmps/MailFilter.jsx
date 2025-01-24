@@ -11,6 +11,7 @@ export function MailFilter({ filterBy, handleSetFilter }) {
   function onModalOpen() {
     setIsOpen((isOpen) => true)
   }
+
   function onModalClose() {
     setIsOpen((isOpen) => false)
   }
@@ -54,20 +55,31 @@ export function MailFilter({ filterBy, handleSetFilter }) {
     setFilterByToEdit(initialFilterBy.current)
   }
 
-  const { status, txt, isRead, isStarred, labels } = filterByToEdit
+  const {
+    status,
+    isRead,
+    isStarred,
+    labels,
+    txtAll,
+    txtSubject,
+    txtBody,
+    txtNoBody,
+    txtFrom,
+    txtTo,
+  } = filterByToEdit
   return (
     <section className='mail-filter'>
       <form className='mails-filter' onSubmit={onSubmit}>
         <div className='filter-section filter-section-header'>
           <div className='filter-section-header-input'>
-            <label htmlFor='txt'>
+            <label htmlFor='txtAll'>
               {<Icon name='search' dataLabel={'search'} />}
             </label>
             <input
-              id='txt'
-              name='txt'
+              id='txtAll'
+              name='txtAll'
               onChange={handleChange}
-              value={txt}
+              value={txtAll}
               type='text'
               placeholder='Search mail'
               className='input-search'
@@ -90,10 +102,65 @@ export function MailFilter({ filterBy, handleSetFilter }) {
           onClose={() => onModalClose()}
           isCloseBtn={false}
         >
+          <div className='filter-section filter-section-search'>
+            <label htmlFor='txtFrom'>From</label>
+            <input
+              id='txtFrom'
+              name='txtFrom'
+              onChange={handleChange}
+              value={txtFrom}
+              type='text'
+              className='input-search'
+            />
+          </div>
+          <div className='filter-section filter-section-search'>
+            <label htmlFor='txtTo'>To</label>
+            <input
+              id='txtTo'
+              name='txtTo'
+              onChange={handleChange}
+              value={txtTo}
+              type='text'
+              className='input-search'
+            />
+          </div>
+          <div className='filter-section filter-section-search'>
+            <label htmlFor='txtSubject'>Subject</label>
+            <input
+              id='txtSubject'
+              name='txtSubject'
+              onChange={handleChange}
+              value={txtSubject}
+              type='text'
+              className='input-search'
+            />
+          </div>
+          <div className='filter-section filter-section-search'>
+            <label htmlFor='txtBody'>Has the Words</label>
+            <input
+              id='txtBody'
+              name='txtBody'
+              onChange={handleChange}
+              value={txtBody}
+              type='text'
+              className='input-search'
+            />
+          </div>
+          <div className='filter-section filter-section-search'>
+            <label htmlFor='txtNoBody'>Dosen't have</label>
+            <input
+              id='txtNoBody'
+              name='txtNoBody'
+              onChange={handleChange}
+              value={txtNoBody}
+              type='text'
+              placeholder='Search mail'
+              className='input-search'
+            />
+          </div>
+
           <div className='filter-section'>
-            <label htmlFor='status'>
-              <Search></Search>
-            </label>
+            <label htmlFor='status'>Search</label>
             <select
               id='status'
               name='status'
@@ -106,6 +173,18 @@ export function MailFilter({ filterBy, handleSetFilter }) {
               <option value='draft'>Drafts</option>
               <option value='trash'>Trash</option>
             </select>
+          </div>
+
+          <div className='filter-section'>
+            <label htmlFor='categories'>Labels:</label>
+            <input
+              id='labels'
+              name='labels'
+              type='text'
+              placeholder='Search label'
+              value={labels}
+              onChange={handleChange}
+            />
           </div>
 
           <div className='filter-section'>
@@ -127,18 +206,6 @@ export function MailFilter({ filterBy, handleSetFilter }) {
               name='isStarred'
               type='checkbox'
               checked={!!isStarred}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className='filter-section'>
-            <label htmlFor='categories'>Labels:</label>
-            <input
-              id='labels'
-              name='labels'
-              type='text'
-              placeholder='Search label'
-              value={labels}
               onChange={handleChange}
             />
           </div>

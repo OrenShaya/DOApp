@@ -57,40 +57,40 @@ function query(filterBy = {}) {
       mails = mails.filter((mail) => regExp.test(mail.status))
     }
 
-    if (filterBy.txt) {
+    if (filterBy.txtAll) {
       const regExp = new RegExp(filterBy.txt, 'i')
-      const searchIn = filterBy.searchIn || 'all'
+      mails = mails.filter(
+        (mail) =>
+          regExp.test(mail.subject) ||
+          regExp.test(mail.body) ||
+          regExp.test(mail.from.fullname) ||
+          regExp.test(mail.to.fullname)
+      )
+    }
 
-      switch (searchIn) {
-        case 'subject':
-          mails = mails.filter((mail) => regExp.test(mail.subject))
-          break
+    if (filterBy.txtSubject) {
+      const regExp = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter((mail) => regExp.test(mail.subject))
+    }
 
-        case 'body':
-          mails = mails.filter((mail) => regExp.test(mail.body))
-          break
-        case 'nobody':
-          mails = mails.filter((mail) => !regExp.test(mail.body))
-          break
+    if (filterBy.txtBody) {
+      const regExp = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter((mail) => regExp.test(mail.body))
+    }
 
-        case 'from':
-          mails = mails.filter((mail) => regExp.test(mail.from.fullname))
-          break
+    if (filterBy.txtNoBody) {
+      const regExp = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter((mail) => !regExp.test(mail.body))
+    }
 
-        case 'to':
-          mails = mails.filter((mail) => regExp.test(mail.to.fullname))
-          break
-        case 'all':
-        default:
-          mails = mails.filter(
-            (mail) =>
-              regExp.test(mail.subject) ||
-              regExp.test(mail.body) ||
-              regExp.test(mail.from.fullname) ||
-              regExp.test(mail.to.fullname)
-          )
-          break
-      }
+    if (filterBy.txtFrom) {
+      const regExp = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter((mail) => regExp.test(mail.from.fullname))
+    }
+
+    if (filterBy.txtTo) {
+      const regExp = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter((mail) => regExp.test(mail.to.fullname))
     }
 
     if (filterBy.isRead) {
@@ -117,28 +117,41 @@ function query(filterBy = {}) {
 function getDefaultFilter() {
   return {
     status: 'inbox',
-    txt: '',
     isRead: '',
     isStarred: '',
     labels: '',
-    searchIn: 'all',
+    txtAll: searchParams.get('txtAll') || '',
+    txtSubject: '',
+    txtBody: '',
+    txtNoBody: '',
+    txtFrom: '',
+    txtTo: '',
   }
 }
 
 export function getFilterFromSearchParams(searchParams) {
   const status = searchParams.get('status') || ''
-  const txt = searchParams.get('txt') || ''
   const isRead = searchParams.get('isRead') || ''
   const isStarred = searchParams.get('isStarred') || ''
   const labels = searchParams.get('labels') || ''
-  const searchIn = searchParams.get('searchIn') || 'all'
+
+  const txtAll = searchParams.get('txtAll') || ''
+  const txtSubject = searchParams.get('txtSubject') || ''
+  const txtBody = searchParams.get('txtBody') || ''
+  const txtNoBody = searchParams.get('txtNoBody') || ''
+  const txtFrom = searchParams.get('txtFrom') || ''
+  const txtTo = searchParams.get('txtFrom') || ''
   return {
     status,
-    txt,
     isRead,
     isStarred,
     labels,
-    searchIn,
+    txtAll,
+    txtSubject,
+    txtBody,
+    txtNoBody,
+    txtFrom,
+    txtTo,
   }
 }
 
