@@ -38,6 +38,7 @@ export function SideBar({ filterBy, onSetFilter }) {
 
   useEffect(() => {
     loadReffs(mails)
+
     return () => {
       loadReffs(mails)
     }
@@ -246,7 +247,7 @@ export function SideBar({ filterBy, onSetFilter }) {
           </div>
           <ul className='side-bar-labels-list'>
             <li
-              className={`label label-importent${
+              className={`label label-important${
                 isLabelActive('importent') ? ' active' : ''
               }`}
               onClick={() => {

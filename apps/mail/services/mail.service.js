@@ -58,7 +58,7 @@ function query(filterBy = {}) {
     }
 
     if (filterBy.txtAll) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+      const regExp = new RegExp(filterBy.txtAll, 'i')
       mails = mails.filter(
         (mail) =>
           regExp.test(mail.subject) ||
@@ -69,27 +69,27 @@ function query(filterBy = {}) {
     }
 
     if (filterBy.txtSubject) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+      const regExp = new RegExp(filterBy.txtSubject, 'i')
       mails = mails.filter((mail) => regExp.test(mail.subject))
     }
 
     if (filterBy.txtBody) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+      const regExp = new RegExp(filterBy.txtBody, 'i')
       mails = mails.filter((mail) => regExp.test(mail.body))
     }
 
     if (filterBy.txtNoBody) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+      const regExp = new RegExp(filterBy.txtNoBody, 'i')
       mails = mails.filter((mail) => !regExp.test(mail.body))
     }
 
     if (filterBy.txtFrom) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+      const regExp = new RegExp(filterBy.txtFrom, 'i')
       mails = mails.filter((mail) => regExp.test(mail.from.fullname))
     }
 
     if (filterBy.txtTo) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+      const regExp = new RegExp(filterBy.txtTo, 'i')
       mails = mails.filter((mail) => regExp.test(mail.to.fullname))
     }
 
@@ -120,7 +120,7 @@ function getDefaultFilter() {
     isRead: '',
     isStarred: '',
     labels: '',
-    txtAll: searchParams.get('txtAll') || '',
+    txtAll: '',
     txtSubject: '',
     txtBody: '',
     txtNoBody: '',
@@ -158,8 +158,8 @@ export function getFilterFromSearchParams(searchParams) {
 function get(mailId) {
   return storageService.get(MAIL_KEY, mailId).then((mail) => {
     if (!mail) {
-      console.error('Mail not found:', mailId)
-      throw new Error('Mail not found')
+      console.error('mail not found:', mailId)
+      throw new Error('mail not found')
     }
     return _setNextPrevMailId(mail)
   })
@@ -182,13 +182,13 @@ function remove(mailId) {
   // return Promise.reject('DEBUG: Promise rejected')
   return get(mailId).then((mail) => {
     if (!mail) {
-      throw new Error('Mail not found')
+      throw new Error('mail not found')
     }
 
     if (mail.removedAt) {
       return storageService.remove(MAIL_KEY, mailId).catch((err) => {
-        console.error('Mail not removed:', err)
-        throw new Error('Mail not removed', err)
+        console.error('mail not removed:', err)
+        throw new Error('mail not removed', err)
       })
     }
 
@@ -233,8 +233,8 @@ function save(mail) {
 export function toggleIsRead(mailId) {
   return get(mailId).then((mail) => {
     if (!mail) {
-      console.error('Mail not found:', mailId)
-      throw new Error('Mail not found')
+      console.error('toggleIsRead mail not found:', mailId)
+      throw new Error('mail not found')
     }
     mail.isRead = !mail.isRead
     return save(mail)
@@ -244,8 +244,8 @@ export function toggleIsRead(mailId) {
 export function toggleIsStarred(mailId) {
   return get(mailId).then((mail) => {
     if (!mail) {
-      console.error('Mail not found:', mailId)
-      throw new Error('Mail not found')
+      console.error(' toggleIsStarred mail not found:', mailId)
+      throw new Error('mail not found')
     }
     mail.isStarred = !mail.isStarred
     return save(mail)
@@ -311,7 +311,7 @@ function _createMail(
 export function getEmptyMail(
   subject = '',
   body = '',
-  to = '',
+  to = { email: '', fullname: '' },
   isRead = false,
   isStarred = false,
   sentAt = null,
@@ -321,16 +321,16 @@ export function getEmptyMail(
 ) {
   const mail = {
     subject,
-    createdAt: Date.now(),
-    updatedAt,
     body,
+    to,
     isRead,
     isStarred,
     sentAt,
     removedAt,
+    updatedAt,
     from: fromCreate || getUser(),
     labels: [],
-    to,
+    createdAt: Date.now(),
   }
   return mail
 }

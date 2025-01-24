@@ -69,7 +69,9 @@ export function MailIndex() {
             mail.id === updatedMail.id ? updatedMail : mail
           )
         )
-        showSuccessMsg(`Mail ${mailId} toggle read`)
+        showSuccessMsg(
+          `Mail ${mailId} toggle ${updatedMail.isRead ? 'read' : 'unread'}`
+        )
       })
       .catch((err) => {
         console.error('cannot toggle read mail:', err)
@@ -116,14 +118,11 @@ export function MailIndex() {
   }
 
   if (!mails) return <div>Loading...</div>
-  const { status, txt, isRead, isStarred, labels } = filterBy
+
   return (
     <section className='mail-index mail-page-layout'>
       <div className='main-filter-container'>
-        <MailFilter
-          handleSetFilter={handleSetFilter}
-          filterBy={{ status, txt, isRead, isStarred, labels }}
-        />
+        <MailFilter handleSetFilter={handleSetFilter} filterBy={filterBy} />
       </div>
       <div className='mail-index-container'>
         <Fragment>

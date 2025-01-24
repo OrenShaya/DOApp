@@ -4,8 +4,6 @@ import Icon from '../../../cmps/Icon.jsx'
 import { ModalFilter } from './ModalFilter.jsx'
 
 export function MailFilter({ filterBy, handleSetFilter }) {
-  const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-
   const [isOpen, setIsOpen] = useState(false)
 
   function onModalOpen() {
@@ -16,19 +14,9 @@ export function MailFilter({ filterBy, handleSetFilter }) {
     setIsOpen((isOpen) => false)
   }
 
-  const initialFilterBy = useRef({ ...filterBy })
-
-  const onSetFilterDebounce = useRef(
-    utilService.debounce(handleSetFilter, 500)
-  ).current
-
-  useEffect(() => {
-    onSetFilterDebounce(filterByToEdit)
-  }, [filterByToEdit])
-
   function onSubmit(ev) {
     ev.preventDefault()
-    handleSetFilter(filterByToEdit)
+    onModalClose()
   }
 
   function handleChange({ target }) {
@@ -48,11 +36,22 @@ export function MailFilter({ filterBy, handleSetFilter }) {
       default:
         break
     }
-    setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }))
+    handleSetFilter({ [field]: value })
   }
 
-  function reset() {
-    setFilterByToEdit(initialFilterBy.current)
+  function onReset() {
+    handleSetFilter({
+      status: '',
+      isRead: '',
+      isStarred: '',
+      labels: '',
+      txtAll: '',
+      txtSubject: '',
+      txtBody: '',
+      txtNoBody: '',
+      txtFrom: '',
+      txtTo: '',
+    })
   }
 
   const {
@@ -66,7 +65,7 @@ export function MailFilter({ filterBy, handleSetFilter }) {
     txtNoBody,
     txtFrom,
     txtTo,
-  } = filterByToEdit
+  } = filterBy
   return (
     <section className='mail-filter'>
       <form className='mails-filter' onSubmit={onSubmit}>
@@ -211,7 +210,9 @@ export function MailFilter({ filterBy, handleSetFilter }) {
           </div>
 
           <div className='.btns-container'>
-            <button onClick={reset}>Clear filter</button>
+            <button type='reset' onClick={onReset}>
+              Clear filter
+            </button>
             <button type='submit'>Search</button>
           </div>
         </ModalFilter>
