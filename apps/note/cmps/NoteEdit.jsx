@@ -64,18 +64,19 @@ export function NoteEdit({ incomingNote }) {
           default:
             break
         }
-        if (['title', 'text', 'url'].includes(field)) {
+        if (['title', 'txt', 'url'].includes(field)) {            
             const newInfo = { ...newNote.info, [field]: value}           
             setNewNote({ ...newNote, ['info']: newInfo, })
         }
         else if (field === 'todo') {
             const index = target.getAttribute('data-index')
-            setTodoList(todoList.map((item, i) => {
-                if (i === +index) return {'txt': value, 'doneAt': item.doneAt}
+            const updatedTodoList = todoList.map((item, i) => {
+                if (i === +index) return { 'txt': value, 'doneAt': item.doneAt }
                 return item
-            }))
-            const newInfo = { ...newNote.info, ['todos']: todoList}    
-            setNewNote({ ...newNote, ['info']: newInfo, })
+            })
+            setTodoList(updatedTodoList)
+            const newInfo = { ...newNote.info, todos: updatedTodoList }
+            setNewNote({ ...newNote, info: newInfo })
         }
         else setNewNote(() => {
             return {...newNote, [field]: value, } 
@@ -175,7 +176,6 @@ export function NoteEdit({ incomingNote }) {
                                 ref={index === todoList.length - 1 ? newInputRef : null}
                                 onChange={handleChange} 
                                 type="text"
-                                // value={todoList[index]?.txt || ''}
                                 value={todoList[index] ? todoList[index].txt : ''}
                                 data-index={index} 
                                 className={`todoItem${index} to-do-item`} 
