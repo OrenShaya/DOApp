@@ -2,6 +2,7 @@ const { useState, useEffect, useRef } = React
 import { utilService } from '../../../services/util.service.js'
 import Icon from '../../../cmps/Icon.jsx'
 import { ModalFilter } from './ModalFilter.jsx'
+import { MailSort } from './MailSort.jsx'
 
 export function MailFilter({ filterBy, handleSetFilter }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -51,6 +52,8 @@ export function MailFilter({ filterBy, handleSetFilter }) {
       txtNoBody: '',
       txtFrom: '',
       txtTo: '',
+      sortBy: '',
+      orderBy: '',
     })
   }
 
@@ -65,6 +68,8 @@ export function MailFilter({ filterBy, handleSetFilter }) {
     txtNoBody,
     txtFrom,
     txtTo,
+    sortBy,
+    orderBy,
   } = filterBy
   return (
     <section className='mail-filter'>
@@ -209,6 +214,8 @@ export function MailFilter({ filterBy, handleSetFilter }) {
               />
             </div>
           </div>
+
+          <MailSort handleSetFilter={handleSetFilter} filterBy={filterBy} />
 
           <div className='.btns-container'>
             <button type='reset' className='btn-clear-filter' onClick={onReset}>
