@@ -24,7 +24,7 @@ section.mail-compose form {
   width: 35vw;
   cursor: text;
   border: none;
-  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  box-shadow: var(--box-shadow-tertiary2);
 }
 
 .compose-form-section textarea {
@@ -32,7 +32,7 @@ section.mail-compose form {
   background-size: auto;
 
   min-height: 266px;
-  outline-color: rgb(34, 34, 34);
+  outline-color: var(--clr-secondary-gray9);
   outline-style: none;
   outline-width: 0px;
   overflow-wrap: break-word;
@@ -51,8 +51,8 @@ section.mail-compose form {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  color: #041e49;
-  background-color: #f2f6fc;
+  color: var(--clr-secondary-blue3);
+  background-color: var(--bg-clr-secondary2);
 }
 .compose-header .compose-header-title {
   margin-inline-start: 1em;
@@ -67,14 +67,14 @@ section.mail-compose form {
   align-items: center;
   background-attachment: scroll;
   background-clip: border-box;
-  background-color: rgb(11, 87, 208);
+  background-color: var(--bg-clr-primary-blue1);
   background-image: none;
   background-origin: padding-box;
   background-position-x: 0%;
   background-position-y: 0%;
   background-repeat: repeat;
   background-size: auto;
-  border-bottom-color: rgb(255, 255, 255);
+  border-color: var(--bg-clr-primary1);
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
   border-bottom-style: none;
@@ -85,20 +85,17 @@ section.mail-compose form {
   border-image-slice: 100%;
   border-image-source: none;
   border-image-width: 1;
-  border-left-color: rgb(255, 255, 255);
   border-left-style: none;
   border-left-width: 0px;
-  border-right-color: rgb(255, 255, 255);
   border-right-style: none;
   border-right-width: 0px;
-  border-top-color: rgb(255, 255, 255);
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   border-top-style: none;
   border-top-width: 0px;
   box-shadow: none;
   box-sizing: border-box;
-  color: rgb(255, 255, 255);
+  color: var(--clr-primary-white1);
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -113,7 +110,7 @@ section.mail-compose form {
   margin-top: 0px;
   max-width: 104px;
   min-width: 72px;
-  outline-color: rgb(255, 255, 255);
+  outline-color: var(--clr-primary-white1);
   outline-style: none;
   outline-width: 0px;
   padding-bottom: 0px;
@@ -131,15 +128,14 @@ section.mail-compose form {
   white-space-collapse: collapse;
 
   &:hover {
-    box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
-      0 1px 3px 1px rgba(26, 115, 232, 0.3);
-    background-color: #1b61d1;
+    box-shadow: var(--box-shadow-tertiary8);
+    background-color: var(--bg-clr-primary-blue-1);
     outline: 1px solid transparent;
     border: none;
   }
 
   &:active {
-    background-color: #0b57d0;
+    background-color: var(--bg-clr-primary-blue1);
     box-shadow: none;
   }
 }

@@ -21,10 +21,10 @@ section.mail-sort .mail-sort-container {
     border: none;
     outline: none;
     text-align: center;
-    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    box-shadow: var(--box-shadow-tertiary2);
 
     &:focus {
-      box-shadow: rgb(66, 133, 244) 0px -1px 0px 0px inset;
+      box-shadow: var(--box-shadow-tertiary3);
     }
   }
 }

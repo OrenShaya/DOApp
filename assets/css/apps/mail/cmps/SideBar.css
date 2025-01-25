@@ -10,7 +10,7 @@ section.side-bar {
   font-family: OpenSans-Regular, 'Open Sans', Roboto, Ubuntu, 'Open Sans',
     sans-serif;
 
-  background-color: #f6f8fc;
+  background-color: var(--bg-clr-secondary1);
 }
 
 section.side-bar .side-bar-folders-container {
@@ -30,7 +30,7 @@ section.side-bar .side-bar-folders-container {
 }
 
 .side-bar .side-bar-btn-container .btn-compose {
-  background-color: #c2e7ff;
+  background-color: var(--bg-clr-secondary3);
   border-radius: 1rem;
 
   padding: 0 1.5em 0 0 0;
@@ -39,7 +39,7 @@ section.side-bar .side-bar-folders-container {
   width: 118px;
   cursor: pointer;
 
-  border-bottom-color: rgb(0, 29, 53);
+  border-bottom-color: var(--clr-secondary-blue1);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   border-bottom-style: none;
@@ -50,20 +50,20 @@ section.side-bar .side-bar-folders-container {
   border-image-repeat: stretch;
   border-image-slice: 100%;
   border-image-source: none;
-  border-image-width: 1;
-  border-left-color: rgb(0, 29, 53);
+
+  border-left-color: var(--border-clr-secondary-blue-2);
   border-left-style: none;
   border-left-width: 0px;
-  border-right-color: rgb(0, 29, 53);
+  border-right-color: var(--border-clr-secondary-blue-2);
   border-right-style: none;
   border-right-width: 0px;
-  border-top-color: rgb(0, 29, 53);
+  border-top-color: var(--border-clr-secondary-blue-2);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   border-top-style: none;
   border-top-width: 0px;
-  box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px 0px, rgba(0, 0, 0, 0) 0px 1px 3px 1px;
-  color: rgb(0, 29, 53);
+  box-shadow: var(--box-shadow-primary1);
+  color: var(--clr-secondary-blue1);
   cursor: pointer;
 
   font-size: 0.875rem;
@@ -73,7 +73,7 @@ section.side-bar .side-bar-folders-container {
   line-height: 2em;
   margin-right: 0px;
   margin-left: 0.5em;
-  outline-color: rgb(0, 29, 53);
+  outline-color: var(--border-clr-secondary-blue-2);
   outline-style: none;
   outline-width: 0px;
   overflow-x: hidden;
@@ -100,15 +100,13 @@ section.side-bar .side-bar-folders-container {
 
   &:hover,
   &:focus {
-    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
-      0 4px 8px 3px rgba(60, 64, 67, 0.15);
-    background-color: #c2e7ff;
+    box-shadow: var(--box-shadow-secondary1);
+    background-color: var(--bg-clr-secondary3);
   }
 
   &:active {
-    background-color: rgb(241, 243, 244);
-    box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
-      0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-clr-secondary8);
+    box-shadow: var(--box-shadow-secondary2);
   }
 
   img {
@@ -130,7 +128,7 @@ section.side-bar .side-bar-folders-container {
 
 .side-bar li {
   padding: 0 12px 0 26px;
-  color: rgb(32, 33, 36);
+  color: var(--clr-secondary-gray3);
 
   font-size: 14px;
   height: 32px;
@@ -157,7 +155,7 @@ section.side-bar .side-bar-folders-container {
   cursor: pointer;
 
   &:hover {
-    background-color: #e9ebef;
+    background-color: var(--bg-clr-secondary5);
   }
 }
 
@@ -171,7 +169,7 @@ section.side-bar .side-bar-folders-container {
 }
 
 .side-bar .side-bar-labels-header span {
-  color: #1f1f1f;
+  color: var(--clr-secondary-gray8);
   display: block;
   flex-grow: 1;
   font-size: 16px;
@@ -190,9 +188,9 @@ section.side-bar .side-bar-folders-container {
 
 .side-bar li.folder.active,
 .side-bar li.label.active {
-  background-color: #d3e3fd;
+  background-color: var(--bg-clr-secondary6);
   color: #001d35;
   &:hover {
-    background-color: #d3e3ff;
+    background-color: var(--bg-clr-secondary7);
   }
 }

@@ -2,8 +2,8 @@
 
 .modal-backdrop-filter {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.5px);
+  background-color: var(--bg-clr-tertiary2);
+  backdrop-filter: blur(0.2px);
   inset: 0;
   height: 100vh;
   width: 100vw;
@@ -18,8 +18,8 @@
   max-width: 720px;
   height: fit-content;
   padding: 1.5em;
-  background-color: white;
-  color: rgb(32, 33, 36);
+  background-color: var(--bg-clr-primary1);
+  color: var(--clr-secondary-gray3);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -30,14 +30,14 @@
   gap: 1em;
   margin: auto;
   z-index: 100;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 16px;
+  box-shadow: var(--box-shadow-tertiary1);
 
   .close-btn {
     position: absolute;
     top: 5px;
     right: 5px;
     background-color: transparent;
-    color: black;
+    color: var(--clr-secondary-black1);
   }
 
   p {

@@ -56,7 +56,7 @@
 
   font-size: 0.75rem;
   letter-spacing: normal;
-  color: rgb(95, 99, 104);
+  color: var(--clr-secondary-gray4);
   line-height: 20px;
   text-align: right;
   white-space: nowrap;
@@ -70,5 +70,5 @@
 }
 
 .mail-preview.unread-mail {
-  background-color: #ffffff !important;
+  background-color: var(--bg-clr-primary1) !important;
 }

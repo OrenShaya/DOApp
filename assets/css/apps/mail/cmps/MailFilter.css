@@ -2,7 +2,7 @@
 
 section.mail-filter,
 .main-filter-container {
-  background-color: #f6f8fc;
+  background-color: var(--bg-clr-secondary1);
   border: none;
   padding: 0px;
   height: auto;
@@ -15,7 +15,7 @@ section.mail-filter,
   position: relative;
 }
 section.mail-filter form {
-  background-color: #eaf1fb;
+  background-color: var(--bg-clr-secondary4);
   border: none;
   padding: 0px;
   margin: 0px;
@@ -38,7 +38,7 @@ section.mail-filter form {
   align-items: center;
   justify-content: flex-start;
   gap: 1em;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .\.btns-container {
@@ -48,7 +48,7 @@ section.mail-filter form {
   align-items: center;
   justify-content: center;
   gap: 1em;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .filter-section-header {
@@ -70,10 +70,9 @@ section.mail-filter form {
   &:focus,
   &:focus-within {
     border-radius: 1em;
-    background-color: rgb(241, 243, 244);
-    color: #1f1f1f;
-    box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
-      0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-clr-secondary8);
+    color: var(--clr-secondary-gray8);
+    box-shadow: var(--box-shadow-secondary2);
   }
 }
 .filter-section-header-input {
@@ -120,7 +119,7 @@ section.mail-filter form {
   width: 100%;
   background-color: transparent;
   appearance: auto;
-  color: rgb(0, 0, 0);
+  color: var(--clr-secondary-black1);
   cursor: text;
 
   text-align: start;
@@ -156,10 +155,10 @@ section.mail-filter form {
 .modal-content-filter .filter-section select {
   border: none;
   outline: none;
-  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  box-shadow: var(--box-shadow-tertiary2);
 
   &:focus {
-    box-shadow: rgb(66, 133, 244) 0px -1px 0px 0px inset;
+    box-shadow: var(--box-shadow-tertiary3);
   }
 }
 .\.btns-container.btn-submit-filter,
@@ -172,8 +171,8 @@ section.mail-filter form {
   border: none;
 }
 .\.btns-container .btn-clear-filter {
-  color: rgba(60, 64, 67, 0.38);
-  background-color: rgba(0, 0, 0, 0);
+  color: var(--clr-secondary-gray5);
+  background-color: transparent;
   font-weight: 500;
   min-height: 36px;
   min-width: 80px;
@@ -184,25 +183,23 @@ section.mail-filter form {
 
   &:active {
     cursor: default;
-    color: #444746;
+    color: var(--clr-secondary-gray6);
   }
 }
 .\.btns-container .btn-submit-filter {
-  background-color: rgb(26, 115, 232);
-  color: #fff;
+  background-color: var(--clr-secondary-blue4);
+  color: var(--clr-primary-white1);
   padding: 0 1rem;
 
   &:hover {
-    box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
-      0 1px 3px 1px rgba(26, 115, 232, 0.3);
+    box-shadow: var(--box-shadow-tertiary8);
     background-color: #297be6;
     outline: 1px solid transparent;
     border: none;
   }
   &:active {
-    box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
-      0 2px 6px 2px rgba(26, 115, 232, 0.3);
-    background-color: rgb(26, 115, 232);
+    box-shadow: var(--box-shadow-tertiary8);
+    background-color: var(--clr-secondary-blue4);
     border: none;
   }
 }

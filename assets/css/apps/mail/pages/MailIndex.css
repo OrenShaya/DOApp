@@ -1,7 +1,7 @@
 /* assets/css/apps/mail/pages/MailIndex.css */
 
 section.mail-index.mail-page-layout {
-  background-color: #f6f8fc;
+  background-color: var(--bg-clr-secondary1);
   position: relative;
   height: clamp(400px, 92vh, 100vh) !important;
 
@@ -10,13 +10,13 @@ section.mail-index.mail-page-layout {
 
 section.mail-index .outlet-container-compose {
   position: fixed;
-  background-color: #ffffff;
+  background-color: var(--bg-clr-primary1);
   bottom: 0;
   right: 20%;
   height: 55vh;
   width: 40vw;
 
-  border: 1px solid #ced1d6;
+  border: 1px solid var(--border-clr-primary-blue-1);
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border-top-left-radius: 8px;

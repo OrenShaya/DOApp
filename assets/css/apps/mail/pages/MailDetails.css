@@ -1,7 +1,7 @@
 /* assets/css/apps/mail/pages/MailDetails.css */
 
 section.mail-details {
-  background-color: #ffffff;
+  background-color: var(--bg-clr-primary1);
   position: relative;
   min-height: 92vh;
   overflow-x: hidden;
@@ -90,7 +90,7 @@ section.mail-details .mail-details-header-row .mail-details-actions {
   left: -20%;
   height: 75%;
   width: 1px;
-  background-color: rgb(0, 0, 0, 0.2);
+  background-color: var(--bg-clr-tertiary4);
   content: '';
   display: inline-block;
 }
@@ -155,18 +155,18 @@ section.mail-details .mail-details-header-row .mail-details-actions {
   align-items: flex-start;
 
   .mail-details-body-info-name {
-    color: #1f1f1f;
+    color: var(--clr-secondary-gray8);
     font-size: 0.875rem;
   }
 
   .mail-details-body-info-email {
-    color: #5e5e5e;
+    color: var(--clr-secondary-gray7);
     font-size: 0.75rem;
   }
 }
 
 .mail-details-body-header-date span {
-  color: #5e5e5e;
+  color: var(--clr-secondary-gray7);
   font-size: 0.75rem;
   padding-inline-end: 1.5em;
 }
@@ -210,9 +210,9 @@ section.mail-details .mail-details-header-row .mail-details-actions {
   line-height: 1.25rem;
   padding-inline-start: 0.75em;
   padding-inline-end: 1em;
-  color: rgb(68, 71, 70);
+  color: var(--clr-secondary-gray6);
   background-color: transparent;
-  border: 1px solid rgb(116, 119, 117);
+  border: 1px solid var(--border-clr-primary-gary-1);
   height: 2.25em;
 
   display: flex;
