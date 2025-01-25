@@ -7,7 +7,7 @@ export function About() {
         <article className='team-profile'>
           <div className='profile-image-container'>
             <img
-              src='../assets/img/profile/dor-profile-pic.jpeg'
+              src='/assets/img/profile/dor-profile-pic.jpeg'
               alt='dor-profile-pic'
             />
           </div>
@@ -26,7 +26,7 @@ export function About() {
         <article className='team-profile'>
           <div className='profile-image-container'>
             <img
-              src='../assets/img/profile/oren-profile-pic.jpeg'
+              src='/assets/img/profile/oren-profile-pic.jpeg'
               alt='oren-profile-pic'
             />
           </div>
