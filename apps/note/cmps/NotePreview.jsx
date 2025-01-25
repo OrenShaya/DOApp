@@ -21,10 +21,6 @@ export function NotePreview({ note, changeCmp }) {
 
     useEffect(() => {}, [isColorPickerVisible])
     useEffect(() => {}, [noteStyle])
-    useEffect(() => {
-        console.log(note.type)
-        if (note.type === 'NoteImg') console.log(note.info.url)        
-    }, [])
 
     function changeNoteColor(color) {
         note.style = {'backgroundColor': color}
