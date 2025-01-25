@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .note-title, .image-src{
@@ -26,6 +27,12 @@ body {
     margin: 0;
     border-radius: 8px;
 } 
+
+.to-do-item {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 5px;
+}
 
 .save-button {
     border-radius: 8px;

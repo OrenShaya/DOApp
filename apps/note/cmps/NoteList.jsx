@@ -17,11 +17,15 @@ export function NoteList() {
     setCmp(cmpMode)
   }
 
+  function updateNote(note) {
+    noteService.save(note)
+  }
+
   return (
     <section className='notes'>
       {cmp === 'notes' && notes.map(note => 
         <div key={note.id}>
-          <NotePreview note={note} changeCmp={changeCmp}/>
+          <NotePreview note={note} changeCmp={changeCmp} updateNoteFunc={updateNote}/>
         </div>)
       }
       {cmp === 'detail' && <NotePreview/>}

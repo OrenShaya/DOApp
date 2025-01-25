@@ -3,10 +3,11 @@ import { noteService } from "../services/notes.service.js"
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
 
-export function NotePreview({ note, changeCmp }) {
+export function NotePreview({ note, changeCmp, updateNoteFunc }) {
     const [noteStyle, setNoteStyle] = useState((note) ? note.style : {'backgroundColor': ''})
     const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
-    const navigate = useNavigate()
+    const [checkedTodos, setCheckedTodos] = useState(note.info.todos.map((item) => item.doneAt))
+    const navigate = useNavigate()    
 
     function handleClick(note) {
         changeCmp('detail')
@@ -21,6 +22,12 @@ export function NotePreview({ note, changeCmp }) {
 
     useEffect(() => {}, [isColorPickerVisible])
     useEffect(() => {}, [noteStyle])
+    useEffect(() => {
+        note.info.todos.forEach((object, index) => {
+            note.info.todos[index] = {'txt': object.txt, 'doneAt': checkedTodos[index]}
+        })
+        updateNoteFunc(note)
+    }, [checkedTodos])
 
     function changeNoteColor(color) {
         note.style = {'backgroundColor': color}
@@ -33,9 +40,18 @@ export function NotePreview({ note, changeCmp }) {
         setIsColorPickerVisible(!isColorPickerVisible)
     }
 
+    function onCheckedTodo(ev, index) {
+        ev.stopPropagation()
+        checkedTodos[index] = !checkedTodos[index]
+        setCheckedTodos([...checkedTodos])
+    }
+
     return (
         <section className='note-preview'
-        onClick={() => handleClick(note)}
+        onClick={(ev) => {
+            ev.stopPropagation()
+            handleClick(note)
+        }}
         style={noteStyle}>
             <h3 className='note-title'>
                 {note.info.title}
@@ -48,6 +64,22 @@ export function NotePreview({ note, changeCmp }) {
             <img className='note-img'
             src={note.info.url}>
             </img>}
+            {note.type === 'NoteTodos' &&
+            <div className="todo-container">
+            {note.info.todos.map((item, index) => {
+                return (
+                <div key={index} className="todo-item-container"> 
+                    <input className={`todo-check ${index}`} 
+                        checked={checkedTodos[index] ? checkedTodos[index] : false}
+                        type="checkbox" 
+                        onChange={(ev) => {
+                            onCheckedTodo(ev, +index)
+                        }}
+                        onClick={(ev) => ev.stopPropagation()}></input>
+                    <p className={`todo-item ${index} ${checkedTodos[index] ? 'strikethrough' : ''}`}>{item.txt}</p>
+                </div>)
+            })}
+            </div>}
             <div className="invisable-buttons">
                 <img onClick={toggleColorPicker} className="color-picker-button hover-buttons" src="../../../assets/img/palette.svg"/>
                 <img onClick={onDeleteNote} className="delete-icon hover-buttons" src="../../../assets/img/delete.svg"/>

@@ -12,8 +12,8 @@ export function NoteIndex() {
 
   return <section className="main">
     <h2 className='notes-main-title'>Your Notes</h2>
+    <button className="add-note" onClick={handleClick}>Add Note</button>
     <section className="notes-list">
-      <button className="add-note" onClick={handleClick}>Add Note</button>
       <NoteList/>
     </section>
   </section>
