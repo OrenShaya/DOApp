@@ -31,7 +31,7 @@ export function NoteEdit({ incomingNote }) {
           default:
             break
         }
-        if (Object.keys(newNote.info).includes(field)) {
+        if (['title', 'text', 'url', 'todos'].includes(field)) {
             const newInfo = { ...newNote.info, [field]: value}           
             setNewNote({ ...newNote, ['info']: newInfo, })
         }
@@ -57,8 +57,21 @@ export function NoteEdit({ incomingNote }) {
 
     function onChangeNoteType(ev) {
         ev.stopPropagation()
-        console.log(ev.target.value)       
-        setNoteType(ev.target.value)
+        const incomingType = ev.target.value
+        let newType
+        setNoteType(incomingType)
+        switch (incomingType) {
+            case 'text':
+                newType = 'NoteTxt'
+                break
+            case 'img':
+                newType = 'NoteImg'
+                break
+            case 'todo':
+                newType = 'NoteTodos'
+                break
+        }
+        setNewNote({ ...newNote, ['type']: newType} )
     }
 
     return (
@@ -80,7 +93,16 @@ export function NoteEdit({ incomingNote }) {
                     placeholder="Note"
                     value={(newNote) ? newNote.info.txt : ''}>
                 </textarea>}
-                <button>Save</button>
+                {noteType === 'img' &&
+                <input 
+                    className="image-src"
+                    name="url"
+                    type="text" 
+                    placeholder="Enter an image URL..."
+                    onChange={handleChange}
+                    value={(newNote) ? newNote.info.url : ''}>
+                </input>}
+                <button className='save-button'>Save</button>
             </form>
             <div className="note-type-buttons">
                 <button onClick={onChangeNoteType}>
@@ -91,7 +113,13 @@ export function NoteEdit({ incomingNote }) {
                     src="../../../assets/img/text icon.svg"></img>
                 </button>
                 <button onClick={(ev) => onChangeNoteType(ev, 'todo')}>To-Do Note</button>
-                <button onClick={(ev) => onChangeNoteType(ev, 'img')}>Image Note</button>
+                <button onClick={onChangeNoteType}>
+                    <img onClick={(ev) => {
+                        ev.target.value = 'img'
+                        onChangeNoteType(ev, 'img')
+                    }} 
+                    src="../../../assets/img/image.svg"></img>
+                </button>
                 <button onClick={(ev) => onChangeNoteType(ev, 'video')}>Video</button>
             </div>
         </section>
