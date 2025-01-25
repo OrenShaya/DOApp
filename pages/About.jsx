@@ -44,6 +44,16 @@ export function About() {
           </div>
         </article>
       </div>
+      <div className='do-books-shop'>
+        <h4>You are welcome to check out our Book Shop</h4>
+        <a
+          href='https://dor-j.github.io/dors-miss-books-store/#/home'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Do Books Shop
+        </a>
+      </div>
     </section>
   )
 }
