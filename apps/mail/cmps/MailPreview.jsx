@@ -59,23 +59,13 @@ export function MailPreview({
         </div>
         <div className='mail-card-select-starred'>
           <span className='mail-card-title'>
-            {!isStarred ? (
-              <Icon
-                name='star'
-                onClick={() => {
-                  onToggleStarredMail(id)
-                }}
-                dataLabel={'not starred'}
-              />
-            ) : (
-              <Icon
-                name='starYellow'
-                onClick={() => {
-                  onToggleStarredMail(id)
-                }}
-                dataLabel={'starred'}
-              />
-            )}
+            <Icon
+              name={`${!isStarred ? 'star' : 'starYellow'}`}
+              onClick={() => {
+                onToggleStarredMail(id)
+              }}
+              dataLabel={`${!isStarred ? 'not' : ''} starred`}
+            />
           </span>
         </div>
         {removedAt && <Icon name='deleteForever' dataLabel={'in trash'} />}
