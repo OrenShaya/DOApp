@@ -31,6 +31,7 @@ const fileNames = {
   markEmailUnread: 'mark_email_unread_000000_FILL0_wght400.svg',
   moreVert: 'more_vert_000000_FILL0_wght400.svg',
   moveToInbox: 'move_to_inbox_000000_FILL0_wght400.svg',
+  openInNew: 'open_in_new_000000_FILL0_wght400.svg',
   print: 'print_000000_FILL0_wght400.svg',
   refresh: 'refresh_000000_FILL0_wght400.svg',
   reply: 'reply_000000_FILL0_wght400.svg',
