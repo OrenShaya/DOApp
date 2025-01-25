@@ -8,9 +8,17 @@ section.about {
     font-size: 1.8rem;
   }
 }
-section.about .about-container {
+
+.about-section-header {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: 2em;
+}
+section.about .about-container {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 3em;
@@ -25,6 +33,7 @@ section.about .about-container {
   aspect-ratio: 1;
   border-radius: 50%;
   border: 5px solid rgba(0, 0, 0, 0.2);
+  padding: 0.2em;
 
   display: block;
   width: 100%;
@@ -45,6 +54,17 @@ section.about .about-container {
   }
 }
 
+.profile-about-me {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5em;
+  border-radius: 1em;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+
+  p {
+    max-width: 300px;
+  }
+}
+
 article.team-profile {
   position: relative;
   padding: 1em;
@@ -55,32 +75,25 @@ article.team-profile {
   gap: 2em;
   width: min(700px, 100%);
   z-index: 3 !important;
-
-  p {
-    max-width: 300px;
-  }
-}
-
-.profile-about-me {
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 0.5em;
+  background-color: black;
+  overflow: hidden;
   border-radius: 1em;
-  border: 5px solid rgba(0, 0, 0, 0.2);
+  margin-inline: 1em;
 }
 
-article.team-profile::before,
-article.team-profile::after {
+article.team-profile::before {
   position: absolute;
   content: '';
-  height: 100%;
-  width: 100%;
+  height: calc(100% + 10px);
+  width: calc(100% + 10px);
   top: 50%;
   right: -50%;
   translate: -50% -50%;
   z-index: -1;
-  padding: 10px;
-  border-radius: 10px;
+
+  border-radius: 1em;
   animation: 3s spin linear infinite;
+  mask: radial-gradient(circle, transparent 20%, black 90%);
 
   background-image: conic-gradient(
     from var(--angle),
@@ -92,7 +105,20 @@ article.team-profile::after {
   );
 }
 
-article.team-profile::before {
+/* article.team-profile::before {
   filter: blur(1rem);
   opacity: 0.5;
+} */
+
+article.team-profile::after {
+  content: '';
+  position: absolute;
+  height: 95%;
+  width: 97%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 1em;
+  background-color: black;
 }

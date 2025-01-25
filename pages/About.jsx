@@ -1,13 +1,15 @@
 export function About() {
   return (
     <section className='about'>
-      <div className='about-container'>
+      <div className='about-section-header'>
         <h1>About Page</h1>
         <h2>Our Team</h2>
+      </div>
+      <div className='about-container'>
         <article className='team-profile'>
           <div className='profile-image-container'>
             <img
-              src='/assets/img/profile/dor-profile-pic.jpeg'
+              src='./assets/img/profile/dor-profile-pic.jpeg'
               alt='dor-profile-pic'
             />
           </div>
@@ -26,7 +28,7 @@ export function About() {
         <article className='team-profile'>
           <div className='profile-image-container'>
             <img
-              src='/assets/img/profile/oren-profile-pic.jpeg'
+              src='./assets/img/profile/oren-profile-pic.jpeg'
               alt='oren-profile-pic'
             />
           </div>
