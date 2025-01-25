@@ -29,7 +29,7 @@
 @import './apps/mail/cmps/MailSort.css';
 @import './apps/mail/cmps/icon-style.css';
 @import './apps/mail/cmps/SideBar.css';
-@import './apps/mail/cmps/modal.css';
+@import './apps/mail/cmps/ModalFilter.css';
 
 /* Cmps */
 @import './cmps/ColorPicker.css';

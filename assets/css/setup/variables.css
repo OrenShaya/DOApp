@@ -1,13 +1,22 @@
 :root {
-  --main-bg-color: lightblue;
-  
+  /* Note */
   /* ---- Primary Colors ---- */
+
+  /* ---- Secondary Colors ---- */
   --notes-color-dark: #e8eaed;
+
+  /* ---- Background Colors ---- */
+  --main-bg-color: lightblue;
+  --notes-bgc-dark: #202124;
+
+  /* ---- Box Shadows ---- */
+
+  /* Mail */
+  /* ---- Primary Colors ---- */
 
   /* ---- Secondary Colors ---- */
 
   /* ---- Background Colors ---- */
-  --notes-bgc-dark: #202124;
 
   /* ---- Box Shadows ---- */
 }
