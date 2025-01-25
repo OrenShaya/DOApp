@@ -20,8 +20,11 @@ export function NotePreview({ note, changeCmp }) {
     }
 
     useEffect(() => {}, [isColorPickerVisible])
+    useEffect(() => {}, [noteStyle])
     useEffect(() => {
-    }, [noteStyle])
+        console.log(note.type)
+        if (note.type === 'NoteImg') console.log(note.info.url)        
+    }, [])
 
     function changeNoteColor(color) {
         note.style = {'backgroundColor': color}
@@ -41,9 +44,14 @@ export function NotePreview({ note, changeCmp }) {
             <h3 className='note-title'>
                 {note.info.title}
             </h3>
+            {note.type === 'NoteTxt' &&
             <p className='note-txt'>
                 {note.info.txt}
-            </p>
+            </p>}
+            {note.type === 'NoteImg' &&
+            <img className='note-img'
+            src={note.info.url}>
+            </img>}
             <div className="invisable-buttons">
                 <img onClick={toggleColorPicker} className="color-picker-button hover-buttons" src="../../../assets/img/palette.svg"/>
                 <img onClick={onDeleteNote} className="delete-icon hover-buttons" src="../../../assets/img/delete.svg"/>
