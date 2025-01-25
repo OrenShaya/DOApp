@@ -10,6 +10,7 @@ export function NoteEdit({ incomingNote }) {
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('text')
     const [todoList, setTodoList] = useState([''])
+    const [isNewTodo, setIsNewTodo] = useState(false)
     
     const [focusedElement, setFocusedElement] = useState(null);
 
@@ -21,7 +22,10 @@ export function NoteEdit({ incomingNote }) {
 
     useEffect(() => {
         if (incomingNote) setNewNote(incomingNote)
-        if (newInputRef.current) newInputRef.current.focus()
+        if (isNewTodo && newInputRef.current) {
+            newInputRef.current.focus()
+            setIsNewTodo(false)
+        }
       }, [todoList])
 
     function handleChange({ target }) {
@@ -58,9 +62,11 @@ export function NoteEdit({ incomingNote }) {
     }
 
     function onSaveNote(ev) {
-        ev.preventDefault() 
-        if (noteType === 'todo' && focusedElement !== document.querySelector('.note-title')) {
-            return onAddTodoItem(ev)}
+        ev.preventDefault()
+        let isFromClick = (ev.clientX === 0) ? false : true
+        if (noteType === 'todo' && focusedElement !== document.querySelector('.note-title') && !isFromClick) {
+            return onAddTodoItem(ev)
+        }
 
         noteService
           .save(newNote)
@@ -105,18 +111,17 @@ export function NoteEdit({ incomingNote }) {
 
         const newTodoList = todoList.map((item, index) => {
             const element = document.querySelector(`.todoItem${index}`)
-            console.log(element)
             return element.value
         })
         newTodoList.push('')
         setTodoList(newTodoList)
-     
+        setIsNewTodo(true)
     }
 
     return (
         <section className="edit-note">
             <h2>Edit Note</h2>
-            <form className="note-form" onSubmit={onSaveNote} onFocus={handleFocus}>
+            <form className="note-form" onSubmit={(ev) => onSaveNote(ev, false)} onFocus={handleFocus}>
                 <input 
                     onChange={handleChange} 
                     name="title" 
@@ -158,7 +163,7 @@ export function NoteEdit({ incomingNote }) {
                     })}
                 </div>
                 }
-                <button className='save-button'>Save</button>
+                <button className='save-button' onClick={(ev) => onSaveNote(ev)}>Save</button>
             </form>
             <div className="note-type-buttons">
                 <button onClick={onChangeNoteType}>
