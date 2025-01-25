@@ -9,7 +9,7 @@ export function NoteEdit({ incomingNote }) {
     const navigate = useNavigate()
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('text')
-    const [todoList, setTodoList] = useState([''])
+    const [todoList, setTodoList] = useState([{'txt': '', 'doneAt': false}])
     const [isNewTodo, setIsNewTodo] = useState(false)
     
     const [focusedElement, setFocusedElement] = useState(null);
@@ -21,7 +21,26 @@ export function NoteEdit({ incomingNote }) {
     const newInputRef = useRef(null)
 
     useEffect(() => {
-        if (incomingNote) setNewNote(incomingNote)
+        if (incomingNote) {
+            setNewNote(incomingNote)
+            setTodoList(incomingNote.info.todos)
+            let newType
+            switch (incomingNote.type) {
+                case 'NoteTxt':
+                    newType = 'text'
+                    break
+                case 'NoteImg':
+                    newType = 'img'
+                    break
+                case 'NoteTodos':
+                    newType = 'todo'
+                    break
+            }
+            setNoteType(newType)
+        }
+    }, [])
+
+    useEffect(() => {
         if (isNewTodo && newInputRef.current) {
             newInputRef.current.focus()
             setIsNewTodo(false)
@@ -52,9 +71,11 @@ export function NoteEdit({ incomingNote }) {
         else if (field === 'todo') {
             const index = target.getAttribute('data-index')
             setTodoList(todoList.map((item, i) => {
-                if (i === +index) return value
+                if (i === +index) return {'txt': value, 'doneAt': item.doneAt}
                 return item
             }))
+            const newInfo = { ...newNote.info, ['todos']: todoList}    
+            setNewNote({ ...newNote, ['info']: newInfo, })
         }
         else setNewNote(() => {
             return {...newNote, [field]: value, } 
@@ -70,7 +91,7 @@ export function NoteEdit({ incomingNote }) {
 
         noteService
           .save(newNote)
-          .then(() => {
+          .then(() => {           
             showSuccessMsg('Note saved successfuly')
           })
           .catch((err) => {
@@ -111,9 +132,9 @@ export function NoteEdit({ incomingNote }) {
 
         const newTodoList = todoList.map((item, index) => {
             const element = document.querySelector(`.todoItem${index}`)
-            return element.value
+            return {'txt': element.value, 'doneAt': item.doneAt ? item.doneAt : false}
         })
-        newTodoList.push('')
+        newTodoList.push({'txt': '', 'doneAt': false})
         setTodoList(newTodoList)
         setIsNewTodo(true)
     }
@@ -147,14 +168,15 @@ export function NoteEdit({ incomingNote }) {
                     value={(newNote) ? newNote.info.url : ''}>
                 </input>}
                 {noteType === 'todo' && 
-                <div className="todo-item-container">
+                <div className="todo-item-container-edit">
                     {todoList.map((item, index) => {
                         return <div key={index} className="todo-item">
                             {index + 1}.  <input 
                                 ref={index === todoList.length - 1 ? newInputRef : null}
                                 onChange={handleChange} 
                                 type="text"
-                                value={todoList[index] ? todoList[index] : ''}
+                                // value={todoList[index]?.txt || ''}
+                                value={todoList[index] ? todoList[index].txt : ''}
                                 data-index={index} 
                                 className={`todoItem${index} to-do-item`} 
                                 name="todo" 
@@ -190,7 +212,6 @@ export function NoteEdit({ incomingNote }) {
                     title="Image note"
                     src="../../../assets/img/image.svg"></img>
                 </button>
-                <button onClick={(ev) => onChangeNoteType(ev, 'video')}>Video</button>
             </div>
         </section>
     )
