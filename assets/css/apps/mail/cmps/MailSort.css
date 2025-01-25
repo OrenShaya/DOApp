@@ -1,0 +1,28 @@
+section.mail-sort {
+  width: 100%;
+}
+
+section.mail-sort .mail-sort-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.mail-sort-container .sort-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+  select {
+    width: 70%;
+    border: none;
+    outline: none;
+    text-align: center;
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+
+    &:focus {
+      box-shadow: rgb(66, 133, 244) 0px -1px 0px 0px inset;
+    }
+  }
+}
