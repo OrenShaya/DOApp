@@ -1,7 +1,7 @@
 import { noteService } from "../services/notes.service.js"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 const { useNavigate } = ReactRouterDOM
 
 export function NoteEdit({ incomingNote }) {
@@ -10,9 +10,18 @@ export function NoteEdit({ incomingNote }) {
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('text')
     const [todoList, setTodoList] = useState([''])
+    
+    const [focusedElement, setFocusedElement] = useState(null);
+
+    function handleFocus() {
+        setFocusedElement(document.activeElement)
+    }
+    
+    const newInputRef = useRef(null)
 
     useEffect(() => {
         if (incomingNote) setNewNote(incomingNote)
+        if (newInputRef.current) newInputRef.current.focus()
       }, [todoList])
 
     function handleChange({ target }) {
@@ -32,9 +41,16 @@ export function NoteEdit({ incomingNote }) {
           default:
             break
         }
-        if (['title', 'text', 'url', 'todos'].includes(field)) {
+        if (['title', 'text', 'url'].includes(field)) {
             const newInfo = { ...newNote.info, [field]: value}           
             setNewNote({ ...newNote, ['info']: newInfo, })
+        }
+        else if (field === 'todo') {
+            const index = target.getAttribute('data-index')
+            setTodoList(todoList.map((item, i) => {
+                if (i === +index) return value
+                return item
+            }))
         }
         else setNewNote(() => {
             return {...newNote, [field]: value, } 
@@ -43,7 +59,8 @@ export function NoteEdit({ incomingNote }) {
 
     function onSaveNote(ev) {
         ev.preventDefault() 
-        if (noteType === 'todo') return onAddTodoItem(ev)
+        if (noteType === 'todo' && focusedElement !== document.querySelector('.note-title')) {
+            return onAddTodoItem(ev)}
 
         noteService
           .save(newNote)
@@ -77,13 +94,29 @@ export function NoteEdit({ incomingNote }) {
     }
 
     function onAddTodoItem(ev) {
-        console.log(todoItem0)
+        ev.preventDefault()
+        ev.stopPropagation()
+
+        const focusedIndex = +focusedElement.getAttribute('data-index')
+        if (focusedIndex !== todoList.length - 1 ) {
+            setFocusedElement(document.querySelector(`.todoItem${focusedIndex + 1}`))
+            return
+        }
+
+        const newTodoList = todoList.map((item, index) => {
+            const element = document.querySelector(`.todoItem${index}`)
+            console.log(element)
+            return element.value
+        })
+        newTodoList.push('')
+        setTodoList(newTodoList)
+     
     }
 
     return (
         <section className="edit-note">
             <h2>Edit Note</h2>
-            <form className="note-form" onSubmit={onSaveNote}>
+            <form className="note-form" onSubmit={onSaveNote} onFocus={handleFocus}>
                 <input 
                     onChange={handleChange} 
                     name="title" 
@@ -109,17 +142,20 @@ export function NoteEdit({ incomingNote }) {
                     value={(newNote) ? newNote.info.url : ''}>
                 </input>}
                 {noteType === 'todo' && 
-                <div className="todo-item">
-                    0.  <input 
-                        onChange={handleChange} 
-                        type="text"
-                        data-index="0" 
-                        id="todoItem0" 
-                        name="todo" 
-                        placeholder="Enter a new item to do..."/>
-                        {todoList.map((item, index) => {
-                            
-                        })}
+                <div className="todo-item-container">
+                    {todoList.map((item, index) => {
+                        return <div key={index} className="todo-item">
+                            {index + 1}.  <input 
+                                ref={index === todoList.length - 1 ? newInputRef : null}
+                                onChange={handleChange} 
+                                type="text"
+                                value={todoList[index] ? todoList[index] : ''}
+                                data-index={index} 
+                                className={`todoItem${index} to-do-item`} 
+                                name="todo" 
+                                placeholder="Enter a new item to do..."/>
+                        </div>
+                    })}
                 </div>
                 }
                 <button className='save-button'>Save</button>
