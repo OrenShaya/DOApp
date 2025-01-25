@@ -32,6 +32,28 @@ export function MailDetails() {
     navigate('/mail')
   }
 
+  function formatDateDetails(dateInput) {
+    const daysAgo = (date) => {
+      const now = new Date()
+      const diffInMs = now - date
+      const diffDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24))
+      return diffDays === 0
+        ? 'Today'
+        : diffDays === 1
+        ? 'Yesterday'
+        : `${diffDays} days ago`
+    }
+
+    const date = new Date(dateInput)
+    const opts = { weekday: 'short', month: 'short', day: 'numeric' }
+    const timeOpts = { hour: 'numeric', minute: 'numeric', hour12: true }
+
+    const formatDate = date.toLocaleDateString('en-US', opts) // Thu, Jan 23
+    const formatTime = date.toLocaleTimeString('en-US', timeOpts) // 8:01 PM
+
+    return `${formatDate}, ${formatTime} (${daysAgo(date)})`
+  }
+
   function onToggleReadMailDetails(mailId) {
     mailService
       .toggleIsRead(mailId)
@@ -225,10 +247,7 @@ export function MailDetails() {
             </div>
             <div className='mail-details-body-header-date'>
               <span className='mail-details-body-date'>
-                {'('}
-                {new Date(createdAt).toLocaleDateString()}
-                {') '}
-                {mailService.formatTimeDiff(sentAt ? sentAt : createdAt)}
+                {formatDateDetails(sentAt ? sentAt : createdAt)}
               </span>
             </div>
           </div>

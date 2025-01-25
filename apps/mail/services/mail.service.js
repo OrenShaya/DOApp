@@ -110,6 +110,37 @@ function query(filterBy = {}) {
       })
     }
 
+    if (filterBy.sortBy) {
+      const sortByValue = filterBy.sortBy
+      const sortOrder = filterBy.orderBy === 'asc' ? 1 : -1
+
+      switch (sortByValue) {
+        case 'subject':
+          mails.sort((a, b) => {
+            const subjectA = a.subject.toLowerCase()
+            const subjectB = b.subject.toLowerCase()
+
+            if (subjectA < subjectB) return -1 * sortOrder
+            if (subjectA > subjectB) return 1 * sortOrder
+
+            return 0
+          })
+
+          break
+
+        case 'dates':
+          mails.sort((a, b) => {
+            const dateA = a.sentAt ? new Date(a.sentAt) : new Date(a.createdAt)
+            const dateB = b.sentAt ? new Date(b.sentAt) : new Date(b.createdAt)
+            return (dateA - dateB) * sortOrder
+          })
+          break
+
+        default:
+          break
+      }
+    }
+
     return mails
   })
 }
@@ -126,6 +157,8 @@ function getDefaultFilter() {
     txtNoBody: '',
     txtFrom: '',
     txtTo: '',
+    sortBy: '',
+    orderBy: '',
   }
 }
 
@@ -141,6 +174,9 @@ export function getFilterFromSearchParams(searchParams) {
   const txtNoBody = searchParams.get('txtNoBody') || ''
   const txtFrom = searchParams.get('txtFrom') || ''
   const txtTo = searchParams.get('txtFrom') || ''
+
+  const sortBy = searchParams.get('sortBy') || ''
+  const orderBy = searchParams.get('orderBy') || ''
   return {
     status,
     isRead,
@@ -152,6 +188,8 @@ export function getFilterFromSearchParams(searchParams) {
     txtNoBody,
     txtFrom,
     txtTo,
+    sortBy,
+    orderBy,
   }
 }
 
