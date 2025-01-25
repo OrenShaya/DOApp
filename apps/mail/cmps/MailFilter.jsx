@@ -153,7 +153,6 @@ export function MailFilter({ filterBy, handleSetFilter }) {
               onChange={handleChange}
               value={txtNoBody}
               type='text'
-              placeholder='Search mail'
               className='input-search'
             />
           </div>
@@ -174,46 +173,50 @@ export function MailFilter({ filterBy, handleSetFilter }) {
             </select>
           </div>
 
-          <div className='filter-section'>
-            <label htmlFor='categories'>Labels:</label>
-            <input
-              id='labels'
-              name='labels'
-              type='text'
-              placeholder='Search label'
-              value={labels}
-              onChange={handleChange}
-            />
-          </div>
+          <div className='filter-section-trinary'>
+            <div className='filter-section-center'>
+              <label htmlFor='categories'>Labels:</label>
+              <input
+                id='labels'
+                name='labels'
+                type='text'
+                placeholder='Search label'
+                value={labels}
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className='filter-section'>
-            <label htmlFor='isRead'>Read?</label>
-            <input
-              id='isRead'
-              name='isRead'
-              onChange={handleChange}
-              value={`${isRead}` || ''}
-              type='checkbox'
-              checked={!!isRead}
-            />
-          </div>
+            <div className='filter-section-center'>
+              <label htmlFor='isRead'>Read?</label>
+              <input
+                id='isRead'
+                name='isRead'
+                onChange={handleChange}
+                value={`${isRead}` || ''}
+                type='checkbox'
+                checked={!!isRead}
+              />
+            </div>
 
-          <div className='filter-section'>
-            <label htmlFor='labels'>Starred?</label>
-            <input
-              id='isStarred'
-              name='isStarred'
-              type='checkbox'
-              checked={!!isStarred}
-              onChange={handleChange}
-            />
+            <div className='filter-section-center'>
+              <label htmlFor='labels'>Starred?</label>
+              <input
+                id='isStarred'
+                name='isStarred'
+                type='checkbox'
+                checked={!!isStarred}
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
           <div className='.btns-container'>
-            <button type='reset' onClick={onReset}>
+            <button type='reset' className='btn-clear-filter' onClick={onReset}>
               Clear filter
             </button>
-            <button type='submit'>Search</button>
+            <button type='submit' className='btn-submit-filter'>
+              Search
+            </button>
           </div>
         </ModalFilter>
       </form>
