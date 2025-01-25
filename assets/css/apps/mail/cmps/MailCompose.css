@@ -50,16 +50,16 @@ section.mail-compose form {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-inline: 1em;
   width: 100%;
   color: var(--clr-secondary-blue3);
   background-color: var(--bg-clr-secondary2);
 }
 .compose-header .compose-header-title {
-  margin-inline-start: 1em;
+  align-self: start;
   padding-block: 10px;
 }
 .compose-header .compose-header-action-btns {
-  margin-inline-end: 2em;
   padding-block: 10px;
 }
 

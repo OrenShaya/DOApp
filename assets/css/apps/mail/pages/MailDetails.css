@@ -134,8 +134,9 @@ section.mail-details .mail-details-header-row .mail-details-actions {
   .mail-details-body-header {
     grid-column: 2;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     margin-inline-end: 0.5em;
   }
 

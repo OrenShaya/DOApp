@@ -349,7 +349,7 @@ function _createMail(
 export function getEmptyMail(
   subject = '',
   body = '',
-  to = { email: '', fullname: '' },
+  to = '',
   isRead = false,
   isStarred = false,
   sentAt = null,

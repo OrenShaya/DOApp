@@ -19,12 +19,17 @@ export function MailList({
             key={mail.id}
             className={`mail-list-item ${mail.isRead ? 'unread-mail' : ''}`}
           >
-            <MailPreview
-              mail={mail}
-              onRemoveMail={onRemoveMail}
-              onToggleStarredMail={onToggleStarredMail}
-              onToggleReadMail={onToggleReadMail}
-            />
+            <div className='mail-preview-container'>
+              <div className='user-img-container '>
+                <Icon name='accountCircle' dataLabel={'Profile image'} />
+              </div>
+              <MailPreview
+                mail={mail}
+                onRemoveMail={onRemoveMail}
+                onToggleStarredMail={onToggleStarredMail}
+                onToggleReadMail={onToggleReadMail}
+              />
+            </div>
             <div className='on-hover-actions'>
               <Icon
                 name='delete'

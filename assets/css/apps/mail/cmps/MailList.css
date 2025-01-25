@@ -17,6 +17,10 @@ section.mails-list ul.mail-list {
   background-color: var(--bg-clr-secondary2);
 }
 
+section.mails-list .user-img-container {
+  display: none;
+}
+
 section.mails-list ul.mail-list li {
   font-size: 14px;
   background-attachment: scroll;

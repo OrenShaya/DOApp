@@ -1,20 +1,30 @@
 .user-msg {
-  background-color: lightgray;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2em;
+  font-weight: 800;
+  flex-wrap: wrap;
   padding: 1em;
   position: absolute;
-  top: 1em;
+  bottom: 1em;
   right: 1em;
 }
 
 .user-msg.success {
-  background-color: lightgreen;
+  color: rgb(11, 156, 11);
 }
 
 .user-msg.error {
-  background-color: lightpink;
+  color: rgb(182, 15, 40);
 }
 
 .user-msg button {
   float: right;
   margin: 1em;
+  background-color: black;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.5em 0.8em;
 }

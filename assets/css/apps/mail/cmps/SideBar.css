@@ -3,7 +3,7 @@
 section.side-bar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 70px 1fr;
   width: 100%;
 
   overflow-x: hidden;
@@ -34,8 +34,8 @@ section.side-bar .side-bar-folders-container {
   border-radius: 1rem;
 
   padding: 0 1.5em 0 0 0;
-  min-width: 96px;
-  min-height: 54px;
+  min-width: 86px;
+  min-height: 44px;
   width: 118px;
   cursor: pointer;
 

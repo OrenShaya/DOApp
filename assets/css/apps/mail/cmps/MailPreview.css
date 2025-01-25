@@ -2,11 +2,13 @@
 
 .mail-preview {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
 }
 
 .mail-card-main-select {
   grid-column: 1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -15,12 +17,16 @@
 }
 
 .mail-card-main {
-  grid-column: 2;
+  grid-column: 1 / 3;
+  grid-row: 2;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 0.5em;
+  padding: 1em;
 
   overflow-x: hidden;
 }
@@ -42,10 +48,12 @@
   text-align: left;
   font-size: 0.875rem;
   letter-spacing: normal;
+  max-width: 100%;
 }
 
 .mail-card-details {
-  grid-column: 3;
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;

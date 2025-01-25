@@ -32,11 +32,18 @@ section.mail-filter form {
 }
 
 .filter-section,
-.filter-section-trinary,
 .filter-section-center {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 1em;
+  background-color: transparent;
+}
+.filter-section-trinary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 1em;
   background-color: transparent;
 }
@@ -98,6 +105,7 @@ section.mail-filter form {
   white-space-collapse: collapse;
   border-radius: 50%;
 }
+
 .filter-section-header .search-options-menu {
   padding: 0.375em;
   height: 1.5em;
@@ -186,10 +194,13 @@ section.mail-filter form {
     color: var(--clr-secondary-gray6);
   }
 }
+
 .\.btns-container .btn-submit-filter {
   background-color: var(--clr-secondary-blue4);
   color: var(--clr-primary-white1);
-  padding: 0 1rem;
+  padding: 0.4em 1em;
+  border-radius: 1em;
+  border: none;
 
   &:hover {
     box-shadow: var(--box-shadow-tertiary8);
