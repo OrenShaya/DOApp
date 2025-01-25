@@ -38,6 +38,7 @@ export function NoteDetail() {
             {note && !editNote && <section className="note-detail" onClick={onNoteClick}>
                 <h3>{note.info.title}</h3>
                 <pre className="detail-note-txt">{note.info.txt}</pre>
+                {note.type === 'NoteImg' && <img src={note.info.url} alt="note's image" />}
                 <p className="updated-date">Edited at {formatDate(note.updatedAt)}</p>
             </section>}
             {editNote && <NoteEdit incomingNote={note}/>}
