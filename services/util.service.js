@@ -1,5 +1,5 @@
 export const utilService = {
-  makeId, 
+  makeId,
   makeLorem,
   getRandomIntInclusive,
   getRandomColor,
@@ -159,7 +159,6 @@ export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
       if (isRemoveClass) el.classList.remove(`${prefix}animated`, animationName)
       resolve('Animation ended')
     }
-
     el.addEventListener('animationend', handleAnimationEnd, { once: true })
   })
 }
