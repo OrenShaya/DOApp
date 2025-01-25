@@ -58,7 +58,7 @@ function Icon({
     return null
   }
 
-  const svgPath = `../assets/icons/${fileName}`
+  const svgPath = `./assets/icons/${fileName}`
 
   return (
     <div
