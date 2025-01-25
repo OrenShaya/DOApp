@@ -58,6 +58,19 @@ export function MailDetails() {
       })
   }
 
+  function onToggleStarredMailDetails(mailId) {
+    mailService
+      .toggleIsStarred(mailId)
+      .then((updatedMail) => {
+        setMail((prevMail) => prevMail)
+        showSuccessMsg(`Mail ${mailId} toggle starred`)
+      })
+      .catch((err) => {
+        console.error('problems toggle starred details:', err)
+        showErrorMsg(`cannot toggle starred Mail ${mailId}`)
+      })
+  }
+
   if (!mail) return <div>Loading...</div>
   const {
     id,
@@ -81,79 +94,79 @@ export function MailDetails() {
       <div className='mail-details-header-row'>
         <div className='mail-details-actions'>
           <div className='mail-details-actions-btns'>
-            <Icon
-              name='archive'
-              dataLabel='move to archive'
-              onClick={() =>
-                console.log(
-                  'Feature Archive was pressed, development in progress'
-                )
-              }
-              className='btn-archive round-hover'
-            />
-            <Icon
-              name='delete'
-              dataLabel='delete email'
-              onClick={() => onRemoveMailDetails(id)}
-              className='btn-delete round-hover'
-            />
-            <Icon
-              name={isRead ? 'markEmailUnread' : 'markEmailread'}
-              dataLabel={`mark ${isRead ? 'unread' : 'read'}`}
-              onClick={() => onToggleReadMailDetails(id)}
-              className='btn-mark-unread round-hover'
-            />
+            <div className='back-btn-container '>
+              <Icon
+                name='arrowLeft'
+                dataLabel={'Back to index'}
+                onClick={onBack}
+                className='btn-back round-hover'
+              />
+            </div>
+            <div className='mail-details-actions-btn-center'>
+              <Icon
+                name='archive'
+                dataLabel='move to archive'
+                onClick={() =>
+                  console.log(
+                    'Feature Archive was pressed, development in progress'
+                  )
+                }
+                className='btn-archive round-hover'
+              />
+            </div>
+            <div className='mail-details-actions-btn-center'>
+              <Icon
+                name='delete'
+                dataLabel='delete email'
+                onClick={() => onRemoveMailDetails(id)}
+                className='btn-delete round-hover'
+              />
+            </div>
+            <div className='mail-details-actions-btn-center'>
+              <Icon
+                name={isRead ? 'markEmailUnread' : 'markEmailread'}
+                dataLabel={`mark ${isRead ? 'unread' : 'read'}`}
+                onClick={() => onToggleReadMailDetails(id)}
+                className='btn-mark-unread round-hover'
+              />
+            </div>
 
-            {' | '}
-            <Icon
-              name='moreVert'
-              dataLabel='more options'
-              onClick={() => console.log('Dot was pressed')}
-              className='btn-more-vertical round-hover'
-            />
+            <div className='mail-details-actions-btn-center vertical-side-line'>
+              <Icon
+                name='moreVert'
+                dataLabel='more'
+                onClick={() => console.log('Dot was pressed')}
+                className='btn-more-vertical round-hover'
+              />
+            </div>
           </div>
 
           <div className='mail-details-actions-nav'>
-            <Icon
-              name='chevronLeft'
-              className='btn-arrow-nav round-hover'
-              dataLabel={'Navigate previous mail'}
-              onClick={() => {
-                navigate(`/mail/${prevMailId}`)
-              }}
-            />
-
-            <Icon
-              name='chevronRight'
-              className='btn-arrow-nav round-hover'
-              dataLabel={'Navigate next mail'}
-              onClick={() => {
-                navigate(`/mail/${nextMailId}`)
-              }}
-            />
+            <div className='mail-details-nav-chevron'>
+              <Icon
+                name='chevronLeft'
+                className='btn-arrow-nav round-hover'
+                dataLabel={'Navigate previous mail'}
+                onClick={() => {
+                  navigate(`/mail/${prevMailId}`)
+                }}
+              />
+            </div>
+            <div className='mail-details-nav-chevron'>
+              <Icon
+                name='chevronRight'
+                className='btn-arrow-nav round-hover'
+                dataLabel={'Navigate next mail'}
+                onClick={() => {
+                  navigate(`/mail/${nextMailId}`)
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
       <div className='mail-details-grid'>
-        <div className='side-action-items aside'>
-          <div className='back-btn-container '>
-            <Icon
-              name='arrowLeft'
-              dataLabel={'Back to index'}
-              onClick={onBack}
-              className='btn-back round-hover'
-            />
-          </div>
-          <div className='user-img-container '>
-            <Icon
-              name='accountCircle'
-              dataLabel={'Profile image'}
-              className='larger'
-            />
-          </div>
-        </div>
-
-        <div className='mail-details-row'>
+        <div className='mail-details-row mail-details-row-subject'>
           <div className='mail-detail-subject'>
             <h3 className='mail-details-info-subject'>{subject}</h3>
             {labels &&
@@ -163,55 +176,104 @@ export function MailDetails() {
                 </span>
               ))}
           </div>
-          <div className='mail-detail-print'>
+          <div className='mail-details-info-subject-btns'>
+            <div className='mail-detail-print'>
+              <Icon
+                name='print'
+                dataLabel={'print mail'}
+                onClick={() =>
+                  console.log(
+                    'Feature Print was pressed, development in progress'
+                  )
+                }
+                className='btn-print  round-hover'
+              />
+            </div>
+            <div className='mail-detail-open-new-window'>
+              <Icon
+                name='openInNew'
+                dataLabel={'in new window'}
+                onClick={() =>
+                  console.log(
+                    'Feature Open in new window was pressed, development in progress'
+                  )
+                }
+                className='btn-open-new-window  round-hover'
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className='mail-details-row mail-details-row-info'>
+          <div className='user-img-container '>
             <Icon
-              name='print'
-              dataLabel={'print mail'}
-              onClick={() =>
-                console.log(
-                  'Feature Print was pressed, development in progress'
-                )
-              }
-              className='btn-print cursor-pointer'
+              name='accountCircle'
+              dataLabel={'Profile image'}
+              className='larger'
             />
           </div>
+          <div className='mail-details-body-header'>
+            <div className='mail-details-body-header-from'>
+              <span className='mail-details-body-info-name'>
+                {from.name ? from.name : 'Sender name'}
+              </span>
+              <span className='mail-details-body-info-email'>
+                {'<'}
+                {from.email}
+                {'>'}
+              </span>
+            </div>
+            <div className='mail-details-body-header-date'>
+              <span className='mail-details-body-date'>
+                {'('}
+                {new Date(createdAt).toLocaleDateString()}
+                {') '}
+                {mailService.formatTimeDiff(sentAt ? sentAt : createdAt)}
+              </span>
+            </div>
+          </div>
+
+          <div className='mail-details-body-header-actions'>
+            <div className='mail-details-body-header-actions-btn'>
+              <Icon
+                name={`${!isStarred ? 'star' : 'starYellow'}`}
+                onClick={() => {
+                  onToggleStarredMailDetails(id)
+                }}
+                dataLabel={`${!isStarred ? 'not' : ''} starred`}
+              />
+            </div>
+
+            <div className='mail-details-body-header-actions-btn'>
+              <Icon
+                name='reply'
+                className='btn-reply cursor-pointer'
+                dataLabel={'Reply'}
+                onClick={() =>
+                  console.log(
+                    'Feature Reply was pressed, development in progress'
+                  )
+                }
+              />
+            </div>
+            <div className='mail-details-body-header-actions-btn'>
+              <Icon
+                name='moreVert'
+                dataLabel='more'
+                onClick={() => console.log('Dot was pressed')}
+                className='btn-more-vertical round-hover'
+              />
+            </div>
+          </div>
         </div>
 
-        <div className='mail-details-row'>
-          <div className='mail-details-body-header'>
-            <span className='mail-details-body-info'>{from.name}</span>
-            <span className='mail-details-body-info'>{from.email}</span>
-          </div>
-          <div className='mail-details-body-header'>
-            <span className='mail-details-body-date'>
-              {mailService.formatTimeDiff(sentAt ? sentAt : createdAt)}
-            </span>
-            <span className='mail-details-body-info'>
-              {!isStarred ? (
-                <Icon name='star' dataLabel={'not starred'} />
-              ) : (
-                <Icon name='starYellow' dataLabel={'starred'} />
-              )}
-            </span>
-          </div>
-
-          <Icon
-            name='reply'
-            className='btn-reply cursor-pointer'
-            dataLabel={'Reply'}
-            onClick={() =>
-              console.log('Feature Reply was pressed, development in progress')
-            }
-          />
-        </div>
-
-        <div className='mail-details-row'>
+        <div className='mail-details-row mail-details-row-body'>
           <div className='mail-details-body'>
             <pre>{body}</pre>
           </div>
         </div>
 
-        <div className='mail-details-row'>
+        <div className='mail-details-row mail-details-row-footer'>
           <div className='mail-details-footer'>
             <button
               type='button'
