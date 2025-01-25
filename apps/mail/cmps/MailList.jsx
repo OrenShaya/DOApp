@@ -1,9 +1,5 @@
 // apps/mail/cmps/MailList.jsx
 
-/**
- * [] Renders a list of <MailPreview> pass down a mail prop
- */
-
 import Icon from '../../../cmps/Icon.jsx'
 
 import { MailPreview } from './MailPreview.jsx'

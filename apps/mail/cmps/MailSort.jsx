@@ -1,3 +1,5 @@
+// apps/mail/cmps/MailSort.jsx
+
 const { useState, useEffect, useRef } = React
 import Icon from '../../../cmps/Icon.jsx'
 

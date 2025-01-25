@@ -1,12 +1,5 @@
 // apps/mail/cmps/MailPreview.jsx
 
-/**
- * [] Present a mail preview
- * [V] Renders the subject (with text size limit)
- * [V] Gives visual indication for read/unread
- * [V] Support hover state
- */
-
 const { useNavigate } = ReactRouter
 
 import Icon from '../../../cmps/Icon.jsx'

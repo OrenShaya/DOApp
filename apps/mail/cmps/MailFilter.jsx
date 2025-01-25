@@ -1,3 +1,5 @@
+// apps/mail/cmps/MailFilter.jsx
+
 const { useState, useEffect, useRef } = React
 import { utilService } from '../../../services/util.service.js'
 import Icon from '../../../cmps/Icon.jsx'

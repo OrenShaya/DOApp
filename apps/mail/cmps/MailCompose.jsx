@@ -1,3 +1,5 @@
+// apps/mail/cmps/MailCompose.jsx
+
 import { mailService } from '../services/mail.service.js'
 import {
   showSuccessMsg,
