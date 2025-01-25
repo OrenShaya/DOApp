@@ -1,0 +1,98 @@
+section.about {
+  background-color: black;
+  color: white;
+  min-height: 90vh;
+  height: 100%;
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+section.about .about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+}
+
+.about-container .profile-image-container {
+  max-width: 300px;
+  border-radius: 50%;
+}
+.about-container .profile-image-container img {
+  width: 300px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+
+  display: block;
+  width: 100%;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+article.team-profile {
+  position: relative;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  width: min(700px, 100%);
+  z-index: 3 !important;
+
+  p {
+    max-width: 300px;
+  }
+}
+
+.profile-about-me {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5em;
+  border-radius: 1em;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+}
+
+article.team-profile::before,
+article.team-profile::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  right: -50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 10px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+
+  background-image: conic-gradient(
+    from var(--angle),
+    #fac42b,
+    #e44233,
+    #3e6adb,
+    #289351,
+    #fac42b
+  );
+}
+
+article.team-profile::before {
+  filter: blur(1rem);
+  opacity: 0.5;
+}
