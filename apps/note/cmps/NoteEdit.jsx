@@ -59,7 +59,6 @@ export function NoteEdit({ incomingNote }) {
         ev.stopPropagation()
         const incomingType = ev.target.value
         let newType
-        console.log(incomingType)       
         setNoteType(incomingType)
         switch (incomingType) {
             case 'text':
@@ -103,7 +102,7 @@ export function NoteEdit({ incomingNote }) {
                     onChange={handleChange}
                     value={(newNote) ? newNote.info.url : ''}>
                 </input>}
-                <button>Save</button>
+                <button className='save-button'>Save</button>
             </form>
             <div className="note-type-buttons">
                 <button onClick={onChangeNoteType}>
