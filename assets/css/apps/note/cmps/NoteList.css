@@ -1,4 +1,5 @@
 .notes {
+    display: inline-block;
     columns: 15em;
     gap: 1em;
     padding: 1em;

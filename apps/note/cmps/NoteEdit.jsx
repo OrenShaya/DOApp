@@ -9,10 +9,11 @@ export function NoteEdit({ incomingNote }) {
     const navigate = useNavigate()
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('text')
+    const [todoList, setTodoList] = useState([''])
 
     useEffect(() => {
         if (incomingNote) setNewNote(incomingNote)
-      }, [])
+      }, [todoList])
 
     function handleChange({ target }) {
         const field = target.name
@@ -37,12 +38,13 @@ export function NoteEdit({ incomingNote }) {
         }
         else setNewNote(() => {
             return {...newNote, [field]: value, } 
-        })
+        })   
     }
 
     function onSaveNote(ev) {
-        ev.preventDefault()        
-    
+        ev.preventDefault() 
+        if (noteType === 'todo') return onAddTodoItem(ev)
+
         noteService
           .save(newNote)
           .then(() => {
@@ -70,8 +72,12 @@ export function NoteEdit({ incomingNote }) {
             case 'todo':
                 newType = 'NoteTodos'
                 break
-        }
+        }      
         setNewNote({ ...newNote, ['type']: newType} )
+    }
+
+    function onAddTodoItem(ev) {
+        console.log(todoItem0)
     }
 
     return (
@@ -102,6 +108,20 @@ export function NoteEdit({ incomingNote }) {
                     onChange={handleChange}
                     value={(newNote) ? newNote.info.url : ''}>
                 </input>}
+                {noteType === 'todo' && 
+                <div className="todo-item">
+                    0.  <input 
+                        onChange={handleChange} 
+                        type="text"
+                        data-index="0" 
+                        id="todoItem0" 
+                        name="todo" 
+                        placeholder="Enter a new item to do..."/>
+                        {todoList.map((item, index) => {
+                            
+                        })}
+                </div>
+                }
                 <button className='save-button'>Save</button>
             </form>
             <div className="note-type-buttons">
@@ -110,14 +130,23 @@ export function NoteEdit({ incomingNote }) {
                         ev.target.value = 'text'
                         onChangeNoteType(ev, 'text')
                     }} 
+                    title="Text note"
                     src="../../../assets/img/text icon.svg"></img>
                 </button>
-                <button onClick={(ev) => onChangeNoteType(ev, 'todo')}>To-Do Note</button>
+                <button onClick={onChangeNoteType}>
+                    <img onClick={(ev) => {
+                        ev.target.value = 'todo'
+                        onChangeNoteType(ev, 'todo')
+                    }} 
+                    title="To-do note"
+                    src="../../../assets/img/todo icon.svg"></img>
+                </button>
                 <button onClick={onChangeNoteType}>
                     <img onClick={(ev) => {
                         ev.target.value = 'img'
                         onChangeNoteType(ev, 'img')
                     }} 
+                    title="Image note"
                     src="../../../assets/img/image.svg"></img>
                 </button>
                 <button onClick={(ev) => onChangeNoteType(ev, 'video')}>Video</button>
