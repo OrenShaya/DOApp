@@ -28,6 +28,5 @@ section.mail-index .outlet-container-compose {
 .mail-index .main-filter-container {
   grid-column: 2;
   grid-row: 1;
-
   width: 100%;
 }

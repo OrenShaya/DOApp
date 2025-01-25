@@ -2,13 +2,11 @@
 
 .mail-preview {
   display: grid;
-
   grid-template-columns: 1fr 2fr 1fr;
 }
 
 .mail-card-main-select {
   grid-column: 1;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -48,7 +46,6 @@
 
 .mail-card-details {
   grid-column: 3;
-
   display: flex;
   align-items: center;
   justify-content: flex-end;
