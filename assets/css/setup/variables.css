@@ -13,10 +13,64 @@
 
   /* Mail */
   /* ---- Primary Colors ---- */
+  --clr-primary-white1: #ffffff;
+  --clr-primary-blue1: rgb(26, 115, 232);
 
   /* ---- Secondary Colors ---- */
+  --clr-secondary-gray1: rgb(68, 71, 70);
+  --clr-secondary-gray2: rgb(116, 119, 117);
+  --clr-secondary-blue1: rgb(0, 29, 53);
+  --clr-secondary-gray3: rgb(32, 33, 36);
+  --clr-secondary-gray4: rgb(95, 99, 104);
+  --clr-secondary-blue2: rgb(0, 29, 53);
+  --clr-secondary-blue3: rgb(4, 30, 73);
+  --clr-secondary-black1: rgb(0, 0, 0);
+  --clr-secondary-gray5: rgba(60, 64, 67, 0.38);
+  --clr-secondary-gray6: rgb(68, 71, 70);
+  --clr-secondary-blue4: rgb(26, 115, 232);
+  --clr-secondary-blue5: rgb(11, 87, 208);
+  --clr-secondary-white1: rgb(255, 255, 255);
+  --clr-secondary-black2: rgb(0, 0, 0);
 
   /* ---- Background Colors ---- */
+  --bg-clr-primary1: rgb(255, 255, 255); /* same --clr-primary-white1 */
+  --bg-clr-secondary1: rgb(246, 248, 252);
+  --bg-clr-secondary2: rgb(242, 246, 252);
+  --bg-clr-secondary3: rgb(194, 231, 255);
+  --bg-clr-secondary4: rgb(234, 241, 251);
+  --bg-clr-secondary5: rgb(234, 235, 239);
+  --bg-clr-secondary6: rgb(211, 227, 253);
+  --bg-clr-secondary7: rgb(211, 227, 255);
+  --bg-clr-tertiary1: rgb(204, 204, 204);
+  --bg-clr-tertiary2: rgba(0, 0, 0, 0.1);
+  --bg-clr-tertiary3: rgba(0, 0, 0, 0.7);
 
   /* ---- Box Shadows ---- */
+  --box-shadow-primary1: rgba(0, 0, 0, 0) 0px 1px 2px 0px,
+    rgba(0, 0, 0, 0) 0px 1px 3px 1px;
+  --box-shadow-secondary1: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  --box-shadow-secondary2: 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+  --box-shadow-tertiary1: rgba(0, 0, 0, 0.3) 0px 4px 16px;
+  --box-shadow-tertiary2: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  --box-shadow-tertiary3: rgb(66, 133, 244) 0px -1px 0px 0px inset;
+  --box-shadow-tertiary4: inset 1px 0 0 rgb(218, 220, 224),
+    inset -1px 0 0 rgb(218, 220, 224), 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --box-shadow-tertiary5: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  --box-shadow-tertiary6: inset 1px 0 0 rgb(218, 220, 224),
+    inset -1px 0 0 rgb(218, 220, 224), 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --box-shadow-tertiary7: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  --box-shadow-tertiary8: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
+    0 1px 3px 1px rgba(26, 115, 232, 0.3);
+  --box-shadow-tertiary9: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
+    0 2px 6px 2px rgba(26, 115, 232, 0.3);
+  --box-shadow-tertiary10: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  --box-shadow-tertiary11: none;
+  --box-shadow-tertiary12: 0 0 0px 10px rgb(234, 235, 239);
+  --box-shadow-tertiary13: 0 0 0px 10px rgb(234, 235, 238);
+  --box-shadow-tertiary14: 0 1px 2px 0 rgba(26, 115, 232, 0.45),
+    0 2px 6px 2px rgba(26, 115, 232, 0.3);
 }
