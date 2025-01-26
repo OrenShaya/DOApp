@@ -1,9 +1,13 @@
 /* assets/css/setup/mq-mail.css */
 
 @media (max-width: 700px) {
-  :root {
+  :root,
+  html,
+  body {
     font-size: 14px;
+    overflow-x: hidden !important;
   }
+
   /* SideBar */
   .side-bar {
     position: absolute;
@@ -63,10 +67,10 @@
 
   /* Main Layout */
   .mail-page-layout {
-    display: grid;
     width: 100%;
+    max-width: 100%;
     height: 100%;
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 50px calc(1fr+50px);
     grid-template-rows: 100px 1fr;
   }
 
@@ -80,8 +84,8 @@
     min-height: 30px;
 
     img {
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
     }
   }
 
@@ -89,8 +93,6 @@
     display: flex;
     align-items: center;
     gap: 0;
-
-    margin-inline-start: 20px;
   }
 
   /* Filter Modal */
@@ -105,6 +107,12 @@
     padding: 1em;
 
     gap: 0.8em;
+  }
+
+  /* Mail Filter */
+  section.mail-filter form {
+    max-width: 680px;
+    min-width: 224px;
   }
 }
 
@@ -235,7 +243,6 @@
 
 /* ModalFilter */
 .modal-content-filter {
-  position: absolute;
   font-size: 0.875rem;
   top: 100%;
   width: 50vw;
