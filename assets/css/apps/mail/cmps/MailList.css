@@ -36,7 +36,7 @@ section.mails-list ul.mail-list li {
   border-bottom: 1px solid var(--bg-clr-tertiary2);
   border-collapse: collapse;
 
-  box-shadow: var(--box-shadow-tertiary);
+  box-shadow: var(--box-shadow-tertiary1);
   color: var(--clr-secondary-gray3);
   cursor: pointer;
 
