@@ -6,7 +6,7 @@ const { useNavigate } = ReactRouterDOM
 export function NotePreview({ note, changeCmp, updateNoteFunc }) {
     const [noteStyle, setNoteStyle] = useState((note) ? note.style : {'backgroundColor': ''})
     const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
-    const [checkedTodos, setCheckedTodos] = useState(note.info.todos.map((item) => item.doneAt))
+    const [checkedTodos, setCheckedTodos] = useState(note.info.todo ? note.info.todos.map((item) => item.doneAt) : null)
     const navigate = useNavigate()    
 
     function handleClick(note) {
