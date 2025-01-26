@@ -9,3 +9,9 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
+
+.add-note {
+    border-radius: 15px;
+    padding: 0.5em;
+    background-color: #b6d3ff;
+}
