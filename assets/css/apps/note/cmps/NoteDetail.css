@@ -20,6 +20,16 @@
     padding: 1em;
 }
 
+.todo-item-container {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+
+.todo-check {
+    margin-right: 10px;
+}
+
 .note-close-button {
     align-self: center;
     border: none;
@@ -35,4 +45,8 @@
     filter: brightness(150%);
     border-radius: 5px;
     background-color: rgba(105, 105, 105, 0.2);
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }

@@ -63,6 +63,7 @@ function getEmptyNote() {
         title: '',
         txt: '',
         url: '',
+        todos: [{'txt': '', 'doneAt': null}],
     }
   }
 }

@@ -36,9 +36,25 @@ export function NoteDetail() {
     return (
         <section className="note-detail-body">
             {note && !editNote && <section className="note-detail" onClick={onNoteClick}>
-                <h3>{note.info.title}</h3>
-                <pre className="detail-note-txt">{note.info.txt}</pre>
+                <h3 className="note-title">{note.info.title}</h3>
+                {note.type === 'NoteTxt' && <pre className="detail-note-txt">{note.info.txt}</pre>}
                 {note.type === 'NoteImg' && <img src={note.info.url} alt="note's image" />}
+                {note.type === 'NoteTodos' && 
+                <div className="todo-container">
+                    {note.info.todos.map((item, index) => {
+                        return (
+                        <div key={index} className="todo-item-container"> 
+                            <input className={`todo-check ${index}`} 
+                                checked={item.doneAt}  
+                                type="checkbox" 
+                                onChange={(ev) => {
+                                    ev.stopPropagation()
+                                    item.doneAt = !item.doneAt
+                            }}></input>
+                            <p className={`todo-item ${index} ${item.doneAt ? 'strikethrough' : ''}`}>{item.txt}</p>
+                        </div>)
+                    })}
+                </div>}
                 <p className="updated-date">Edited at {formatDate(note.updatedAt)}</p>
             </section>}
             {editNote && <NoteEdit incomingNote={note}/>}
