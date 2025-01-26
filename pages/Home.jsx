@@ -9,10 +9,10 @@ export function Home() {
         <span>DO App</span>
       </div>
       <div className='welcome-message'>
-        <p>
+        <h3>
           Welcome to DO app where we DO it differently with Dor & Oren <br />{' '}
           Check out our mail app and notes app
-        </p>
+        </h3>
       </div>
       <div className='navigation-btns'>
         <button
