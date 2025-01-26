@@ -81,8 +81,8 @@ export function NotePreview({ note, changeCmp, updateNoteFunc }) {
             })}
             </div>}
             <div className="invisable-buttons">
-                <img onClick={toggleColorPicker} className="color-picker-button hover-buttons" src="../../../assets/img/palette.svg"/>
-                <img onClick={onDeleteNote} className="delete-icon hover-buttons" src="../../../assets/img/delete.svg"/>
+                <img onClick={toggleColorPicker} className="color-picker-button hover-buttons" src="./../../../assets/img/palette.svg"/>
+                <img onClick={onDeleteNote} className="delete-icon hover-buttons" src="./../../../assets/img/delete.svg"/>
             </div>
             {isColorPickerVisible && <div className="color-picker"> <ColorPicker changeNoteColorFunc={changeNoteColor} /> </div>} 
         </section>

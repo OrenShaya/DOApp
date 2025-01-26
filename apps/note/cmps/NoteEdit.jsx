@@ -194,7 +194,7 @@ export function NoteEdit({ incomingNote }) {
                         onChangeNoteType(ev, 'text')
                     }} 
                     title="Text note"
-                    src="../../../assets/img/text icon.svg"></img>
+                    src="./../../../assets/img/text icon.svg"></img>
                 </button>
                 <button onClick={onChangeNoteType}>
                     <img onClick={(ev) => {
@@ -202,7 +202,7 @@ export function NoteEdit({ incomingNote }) {
                         onChangeNoteType(ev, 'todo')
                     }} 
                     title="To-do note"
-                    src="../../../assets/img/todo icon.svg"></img>
+                    src="./../../../assets/img/todo icon.svg"></img>
                 </button>
                 <button onClick={onChangeNoteType}>
                     <img onClick={(ev) => {
@@ -210,7 +210,7 @@ export function NoteEdit({ incomingNote }) {
                         onChangeNoteType(ev, 'img')
                     }} 
                     title="Image note"
-                    src="../../../assets/img/image.svg"></img>
+                    src="./../../../assets/img/image.svg"></img>
                 </button>
             </div>
         </section>
