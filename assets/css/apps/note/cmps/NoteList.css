@@ -1,9 +1,7 @@
 .notes {
-    display: flex;
-    justify-content: center;
     columns: 15em;
     gap: 1em;
     padding: 1em;
-    margin: 1em;
-    width: 97%;
+    margin: 1em 5vw;
+    width: 87vw;
 }

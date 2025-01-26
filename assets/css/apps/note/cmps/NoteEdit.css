@@ -53,3 +53,9 @@ body {
     border: none;
     color: var(--notes-color-dark);
 }
+
+@media only screen and (max-width: 600px) {
+    .note-form {
+        margin: 2em;
+    }
+}
