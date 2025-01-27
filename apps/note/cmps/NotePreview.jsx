@@ -6,7 +6,7 @@ const { useNavigate } = ReactRouterDOM
 export function NotePreview({ note, changeCmp, updateNoteFunc }) {
     const [noteStyle, setNoteStyle] = useState((note) ? note.style : {'backgroundColor': ''})
     const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
-    const [checkedTodos, setCheckedTodos] = useState(note.info.todo ? note.info.todos.map((item) => item.doneAt) : null)
+    const [checkedTodos, setCheckedTodos] = useState(note.info.todos ? note.info.todos.map((item) => item.doneAt) : null)
     const navigate = useNavigate()    
 
     function handleClick(note) {
@@ -70,13 +70,13 @@ export function NotePreview({ note, changeCmp, updateNoteFunc }) {
                 return (
                 <div key={index} className="todo-item-container"> 
                     <input className={`todo-check ${index}`} 
-                        checked={checkedTodos[index] ? checkedTodos[index] : false}
+                        checked={checkedTodos && checkedTodos[index] ? checkedTodos[index] : false}
                         type="checkbox" 
                         onChange={(ev) => {
                             onCheckedTodo(ev, +index)
                         }}
                         onClick={(ev) => ev.stopPropagation()}></input>
-                    <p className={`todo-item ${index} ${checkedTodos[index] ? 'strikethrough' : ''}`}>{item.txt}</p>
+                    <p className={`todo-item ${index} ${checkedTodos && checkedTodos[index] ? 'strikethrough' : ''}`}>{item.txt}</p>
                 </div>)
             })}
             </div>}
